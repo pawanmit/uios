@@ -7,6 +7,9 @@
 //
 
 #import "DisplayUsersOnMapViewController.h"
+#import "User.h"
+#import "UmanlyClientDelegate.h";
+#import "AppDelegate.h"
 
 @interface DisplayUsersOnMapViewController ()
 
@@ -26,7 +29,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSLog(@"User Loaded from DisplayUsersOnMapViewController with id %@", appDelegate.user.userId );
 	// Do any additional setup after loading the view.
+    //Get user location
+    //Update user object with location and save it to the database.
+    //Display user location on the map.
 }
 
 - (void)didReceiveMemoryWarning

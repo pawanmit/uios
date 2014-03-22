@@ -10,6 +10,7 @@
 #import "User.h"
 #import "UmanlyClientDelegate.h";
 #import "DisplayUsersOnMapViewController.h"
+#import "AppDelegate.h"
 
 @interface FacebookLoginViewController ()
 
@@ -183,8 +184,10 @@
             UmanlyClientDelegate *umanlyClientDelegate = [[UmanlyClientDelegate alloc] init];
             [umanlyClientDelegate saveOrUpdateUser:user
                                     withSuccessHandler:^(){
-                                     NSLog(@"User Saved with id %@", umanlyClientDelegate.user.userId );
-                                     [self performSegueWithIdentifier:@"next" sender:self];
+                                    NSLog(@"User Saved with id %@", umanlyClientDelegate.user.userId );
+                                    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+                                    appDelegate.user = umanlyClientDelegate.user;
+                                    [self performSegueWithIdentifier:@"next" sender:self];
                                  }];
             //[umanlyClientDelegate getUsers];
         } else {
