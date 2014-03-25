@@ -21,6 +21,7 @@
 @property NSString *employer;
 @property NSDate   *birthday;
 @property UserLocation *location;
+@property NSArray *nearByUsers;
 
 
 @end

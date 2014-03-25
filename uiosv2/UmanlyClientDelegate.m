@@ -79,13 +79,17 @@
 {
     NSArray *userArray = [[NSArray alloc] init];
     NSString *searchByLocationEndPoint = [NSString stringWithFormat:@"http://api.umanly.com/user/search/distance/?longitude=%f&latitude=%f&distance=2", user.location.longitude, user.location.latitude];
-    //NSLog(searchByLocationEndPoint);
     NSURL *url = [NSURL URLWithString:searchByLocationEndPoint];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Response %@", (NSDictionary *)responseObject);
+    responseObject = (NSDictionary *) responseObject;
+            id users = [responseObject objectForKey:@"users"];
+            NSArray *nearByUsers = [self getNearByUsersFromJson:users];
+        self.user.nearByUsers = nearByUsers;
+        successHandler();
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error: %@" , error);
     }];
@@ -94,5 +98,24 @@
     return userArray;
 }
 
+-(NSMutableArray *) getNearByUsersFromJson:(id) users
+{
+    NSMutableArray *nearbyUsers = [[NSMutableArray alloc] init];
+    for (id userId in users) {
+        id user = [users objectForKey:userId];
+        User *nearByUser = [[User alloc] init];
+        nearByUser.userId = [user objectForKey:@"id"];
+        nearByUser.firstName = [user objectForKey:@"first_name"];
+        nearByUser.lastName = [user objectForKey:@"last_name"];
+        id location = [user objectForKey:@"location"];
+        UserLocation *userLocation = [[UserLocation alloc] init];
+        userLocation.latitude = [[location objectForKey:@"latitude"] floatValue];
+        userLocation.longitude = [[location objectForKey:@"longitude"] floatValue];
+        nearByUser.location = userLocation;
+        [nearbyUsers addObject:nearByUser];
+        NSLog(@"%@", nearByUser);
+    }
+    return nearbyUsers;
+}
 
 @end

@@ -42,7 +42,7 @@
     
     NSLog(@"User Loaded from DisplayUsersOnMapViewController with id %@", self.user.userId );
     
-    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(updateAnnotations) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(updateAnnotations) userInfo:nil repeats:NO];
 
 
     [super viewDidLoad];
