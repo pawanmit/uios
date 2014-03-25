@@ -15,5 +15,6 @@
 
 @property User *user;
 @property UmanlyClientDelegate *umanlyClientDelegate;
+@property CLLocationManager *locationManager;
 
 @end

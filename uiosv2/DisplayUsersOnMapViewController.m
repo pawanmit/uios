@@ -29,7 +29,10 @@
 - (void)viewDidLoad
 {
     [self.map setDelegate: self];
-     self.map.showsUserLocation=YES;
+    self.map.showsUserLocation=YES;
+    
+    //if (nil == self.locationManager)
+    //    self.locationManager = [[CLLocationManager alloc] init];
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     self.user = appDelegate.user;
@@ -38,6 +41,9 @@
     self.umanlyClientDelegate = umanlyClientDelegate;
     
     NSLog(@"User Loaded from DisplayUsersOnMapViewController with id %@", self.user.userId );
+    
+    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(updateAnnotations) userInfo:nil repeats:YES];
+
 
     [super viewDidLoad];
 }
@@ -61,8 +67,20 @@
                                     self.user.location = self.umanlyClientDelegate.user.location;
                                     NSLog(@"User location updated to Longitude %f and Latitude %f ",  self.user.location.longitude, self.user.location.latitude);
                                     self.map.centerCoordinate = userLocation.location.coordinate;
+                                    CLLocationCoordinate2D clLocation;
+                                    clLocation.latitude = self.user.location.latitude;
+                                    clLocation.longitude =self.user.location.longitude;
+                                    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(clLocation, 1000, 1000);
+                                    MKCoordinateRegion adjustedRegion = [self.map regionThatFits:viewRegion];
+                                    [self.map setRegion:adjustedRegion animated:YES];
+                                    //self.map setS
                                 }];
-    self.user.location = currentLocation;
+}
+
+-(void) updateAnnotations {
+    NSLog(@"updating annotations");
+    [self.umanlyClientDelegate getUsersNearUser:self.user
+                             withSuccessHandler:^{} ];
 }
 
 @end

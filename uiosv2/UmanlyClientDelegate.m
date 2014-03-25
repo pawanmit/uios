@@ -34,22 +34,6 @@
     }];
 }
 
--(void) getUsers
-{
-    static NSString * const BaseURLString = @"http://api.umanly.com/user";
-    NSURL *url = [NSURL URLWithString:BaseURLString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    operation.responseSerializer = [AFJSONResponseSerializer serializer];
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Response %@", (NSDictionary *)responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error: %@" , error);
-    }];
-    
-    [operation start];
-}
-
 -(void) updateUser: (User *) user
       withLocation: (UserLocation *) location
     withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler
@@ -72,6 +56,42 @@
         NSLog(@"Error: %@", error);
     }];
     
+}
+
+-(void) getUsers
+{
+    static NSString * const BaseURLString = @"http://api.umanly.com/user";
+    NSURL *url = [NSURL URLWithString:BaseURLString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Response %@", (NSDictionary *)responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error: %@" , error);
+    }];
+    
+    [operation start];
+}
+
+-(NSArray *) getUsersNearUser:(User *) user
+           withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler
+{
+    NSArray *userArray = [[NSArray alloc] init];
+    NSString *searchByLocationEndPoint = [NSString stringWithFormat:@"http://api.umanly.com/user/search/distance/?longitude=%f&latitude=%f&distance=2", user.location.longitude, user.location.latitude];
+    //NSLog(searchByLocationEndPoint);
+    NSURL *url = [NSURL URLWithString:searchByLocationEndPoint];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Response %@", (NSDictionary *)responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error: %@" , error);
+    }];
+    
+    [operation start];
+    return userArray;
 }
 
 

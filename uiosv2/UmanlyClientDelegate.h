@@ -26,4 +26,7 @@ typedef void (^UmanlyRequestSuccessHandler)(void);
 
 -(void) getUsers;
 
+-(NSArray *) getUsersNearUser:(User *) user
+           withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler;
+
 @end
