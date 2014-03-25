@@ -45,6 +45,8 @@
 		D4BC77DA18DD005A00171C7C /* DisplayUsersOnMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BC77D918DD005A00171C7C /* DisplayUsersOnMapViewController.m */; };
 		D4BC77DD18DD00F900171C7C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BC77DC18DD00F900171C7C /* User.m */; };
 		D4BC77E018DD013600171C7C /* UmanlyClientDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BC77DF18DD013600171C7C /* UmanlyClientDelegate.m */; };
+		D4C6782C18E0DABC006847FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4C6782B18E0DABC006847FF /* MapKit.framework */; };
+		D4C6783218E0ED63006847FF /* UserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C6783118E0ED63006847FF /* UserLocation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +125,9 @@
 		D4BC77DC18DD00F900171C7C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		D4BC77DE18DD013600171C7C /* UmanlyClientDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UmanlyClientDelegate.h; sourceTree = "<group>"; };
 		D4BC77DF18DD013600171C7C /* UmanlyClientDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UmanlyClientDelegate.m; sourceTree = "<group>"; };
+		D4C6782B18E0DABC006847FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D4C6783018E0ED63006847FF /* UserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserLocation.h; path = ../UserLocation.h; sourceTree = "<group>"; };
+		D4C6783118E0ED63006847FF /* UserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserLocation.m; path = ../UserLocation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4C6782C18E0DABC006847FF /* MapKit.framework in Frameworks */,
 				D48A74D218DCEE32008D1C9A /* MobileCoreServices.framework in Frameworks */,
 				D48A74D018DCEE24008D1C9A /* SystemConfiguration.framework in Frameworks */,
 				D48A74CE18DCEE16008D1C9A /* Security.framework in Frameworks */,
@@ -175,6 +181,7 @@
 		D48A749018DCED13008D1C9A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D4C6782B18E0DABC006847FF /* MapKit.framework */,
 				D48A74F218DCEFE7008D1C9A /* UIKit+AFNetworking */,
 				D48A74D518DCEFDC008D1C9A /* AFNetworking */,
 				D48A74D118DCEE32008D1C9A /* MobileCoreServices.framework */,
@@ -192,6 +199,8 @@
 		D48A749718DCED13008D1C9A /* uiosv2 */ = {
 			isa = PBXGroup;
 			children = (
+				D4C6783018E0ED63006847FF /* UserLocation.h */,
+				D4C6783118E0ED63006847FF /* UserLocation.m */,
 				D48A74A018DCED13008D1C9A /* AppDelegate.h */,
 				D48A74A118DCED13008D1C9A /* AppDelegate.m */,
 				D48A74A318DCED13008D1C9A /* Main.storyboard */,
@@ -402,6 +411,7 @@
 				D48A750B18DCEFE7008D1C9A /* UIWebView+AFNetworking.m in Sources */,
 				D48A74EB18DCEFDC008D1C9A /* AFHTTPSessionManager.m in Sources */,
 				D48A750618DCEFE7008D1C9A /* UIAlertView+AFNetworking.m in Sources */,
+				D4C6783218E0ED63006847FF /* UserLocation.m in Sources */,
 				D48A74EF18DCEFDC008D1C9A /* AFURLRequestSerialization.m in Sources */,
 				D48A750418DCEFE7008D1C9A /* AFNetworkActivityIndicatorManager.m in Sources */,
 				D48A74F118DCEFDC008D1C9A /* AFURLSessionManager.m in Sources */,

@@ -8,7 +8,7 @@
 
 #import "FacebookLoginViewController.h"
 #import "User.h"
-#import "UmanlyClientDelegate.h";
+#import "UmanlyClientDelegate.h"
 #import "DisplayUsersOnMapViewController.h"
 #import "AppDelegate.h"
 

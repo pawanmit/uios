@@ -50,4 +50,29 @@
     [operation start];
 }
 
+-(void) updateUser: (User *) user
+      withLocation: (UserLocation *) location
+    withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler
+{
+    NSMutableString *updateLocationUrl = [NSMutableString stringWithCapacity:100];
+    [updateLocationUrl appendString:@"http://api.umanly.com/user/"];
+    [updateLocationUrl appendString:user.userId];
+    [updateLocationUrl appendString:@"/location"];
+    NSDictionary *params = @{@"longitude": [NSString stringWithFormat:@"%f", location.longitude],
+                             @"latitude": [NSString stringWithFormat:@"%f", location.latitude]
+                             };
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager POST:updateLocationUrl parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *userId = [responseObject objectForKey:@"id"];
+        self.user = user;
+        self.user.location = location;
+        successHandler();
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    
+}
+
+
 @end

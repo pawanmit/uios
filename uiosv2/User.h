@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UserLocation.h"
 
 @interface User : NSObject
 
@@ -19,6 +20,7 @@
 @property NSString *facebookProfileLink;
 @property NSString *employer;
 @property NSDate   *birthday;
+@property UserLocation *location;
 
 
 @end

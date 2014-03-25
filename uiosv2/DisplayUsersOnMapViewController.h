@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import "User.h"
+#import "UmanlyClientDelegate.h"
 
-@interface DisplayUsersOnMapViewController : UIViewController
+@interface DisplayUsersOnMapViewController : UIViewController <MKMapViewDelegate>
+
+@property User *user;
+@property UmanlyClientDelegate *umanlyClientDelegate;
 
 @end

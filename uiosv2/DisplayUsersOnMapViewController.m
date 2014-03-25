@@ -7,11 +7,11 @@
 //
 
 #import "DisplayUsersOnMapViewController.h"
-#import "User.h"
-#import "UmanlyClientDelegate.h";
+#import "UmanlyClientDelegate.h"
 #import "AppDelegate.h"
 
 @interface DisplayUsersOnMapViewController ()
+@property (weak, nonatomic) IBOutlet MKMapView *map;
 
 @end
 
@@ -28,19 +28,41 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    [self.map setDelegate: self];
+     self.map.showsUserLocation=YES;
+    
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    NSLog(@"User Loaded from DisplayUsersOnMapViewController with id %@", appDelegate.user.userId );
-	// Do any additional setup after loading the view.
-    //Get user location
-    //Update user object with location and save it to the database.
-    //Display user location on the map.
+    self.user = appDelegate.user;
+    
+    UmanlyClientDelegate *umanlyClientDelegate = [[UmanlyClientDelegate alloc] init];
+    self.umanlyClientDelegate = umanlyClientDelegate;
+    
+    NSLog(@"User Loaded from DisplayUsersOnMapViewController with id %@", self.user.userId );
+
+    [super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)mapView:(MKMapView *)mapView
+    didUpdateUserLocation: (MKUserLocation *)userLocation
+{
+    UserLocation *currentLocation = [[UserLocation alloc] init];
+    currentLocation.longitude = userLocation.location.coordinate.longitude;
+    currentLocation.latitude = userLocation.location.coordinate.latitude;
+    [self.umanlyClientDelegate updateUser:self.user
+                                withLocation:currentLocation
+                                withSuccessHandler: ^()
+                                {
+                                    self.user.location = self.umanlyClientDelegate.user.location;
+                                    NSLog(@"User location updated to Longitude %f and Latitude %f ",  self.user.location.longitude, self.user.location.latitude);
+                                    self.map.centerCoordinate = userLocation.location.coordinate;
+                                }];
+    self.user.location = currentLocation;
 }
 
 @end

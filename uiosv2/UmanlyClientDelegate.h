@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "User.h"
+#import "UserLocation.h"
 
 @interface UmanlyClientDelegate : NSObject
 
@@ -17,6 +18,12 @@ typedef void (^UmanlyRequestSuccessHandler)(void);
 
 -(void) saveOrUpdateUser:(User *) user
         withSuccessHandler: (UmanlyRequestSuccessHandler) handler;
+
+-(void) updateUser: (User *) user
+        withLocation: (UserLocation *) location
+        withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler;
+
+
 -(void) getUsers;
 
 @end
