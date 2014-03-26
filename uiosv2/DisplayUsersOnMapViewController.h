@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "User.h"
+#import "AppDelegate.h"
+
 #import "UmanlyClientDelegate.h"
+#import "User.h"
+#import "UserLocation.h"
+#import "UserAnnotation.h"
+
 
 @interface DisplayUsersOnMapViewController : UIViewController <MKMapViewDelegate>
 

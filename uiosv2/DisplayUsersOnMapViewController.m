@@ -7,8 +7,6 @@
 //
 
 #import "DisplayUsersOnMapViewController.h"
-#import "UmanlyClientDelegate.h"
-#import "AppDelegate.h"
 
 @interface DisplayUsersOnMapViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *map;
@@ -42,7 +40,9 @@
     
     NSLog(@"User Loaded from DisplayUsersOnMapViewController with id %@", self.user.userId );
     
-    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(updateAnnotations) userInfo:nil repeats:NO];
+    //[self updateAnnotations];
+    
+    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(updateAnnotations) userInfo:nil repeats:YES];
 
 
     [super viewDidLoad];
@@ -80,7 +80,20 @@
 -(void) updateAnnotations {
     NSLog(@"updating annotations");
     [self.umanlyClientDelegate getUsersNearUser:self.user
-                             withSuccessHandler:^{} ];
+                             withSuccessHandler:^{
+                                 for (User *nearByUser in self.umanlyClientDelegate.user.nearByUsers) {
+                                     // coordinate
+                                     CLLocationCoordinate2D clLocation;
+                                     clLocation.latitude = [nearByUser.location latitude];
+                                     clLocation.longitude = nearByUser.location.longitude;
+                                     NSString *title = [NSString stringWithFormat:@"%@ %@", nearByUser.firstName, nearByUser.lastName];
+                                     UserAnnotation *annotation = [[UserAnnotation alloc] initWithPosition:clLocation];
+                                     annotation.title = title;
+                                     NSLog(@"Adding annotation with title %@", title);
+                                     [self.map addAnnotation:annotation];
+                                 }
+                             }];
+    
 }
 
 @end

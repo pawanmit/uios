@@ -42,6 +42,7 @@
 		D48A750918DCEFE7008D1C9A /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D48A74FF18DCEFE7008D1C9A /* UIProgressView+AFNetworking.m */; };
 		D48A750A18DCEFE7008D1C9A /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D48A750118DCEFE7008D1C9A /* UIRefreshControl+AFNetworking.m */; };
 		D48A750B18DCEFE7008D1C9A /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D48A750318DCEFE7008D1C9A /* UIWebView+AFNetworking.m */; };
+		D4AFDE8718E24A4800813320 /* UserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AFDE8618E24A4800813320 /* UserAnnotation.m */; };
 		D4BC77DA18DD005A00171C7C /* DisplayUsersOnMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BC77D918DD005A00171C7C /* DisplayUsersOnMapViewController.m */; };
 		D4BC77DD18DD00F900171C7C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BC77DC18DD00F900171C7C /* User.m */; };
 		D4BC77E018DD013600171C7C /* UmanlyClientDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BC77DF18DD013600171C7C /* UmanlyClientDelegate.m */; };
@@ -119,6 +120,8 @@
 		D48A750118DCEFE7008D1C9A /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		D48A750218DCEFE7008D1C9A /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		D48A750318DCEFE7008D1C9A /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		D4AFDE8518E24A4800813320 /* UserAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAnnotation.h; sourceTree = "<group>"; };
+		D4AFDE8618E24A4800813320 /* UserAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAnnotation.m; sourceTree = "<group>"; };
 		D4BC77D818DD005A00171C7C /* DisplayUsersOnMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayUsersOnMapViewController.h; sourceTree = "<group>"; };
 		D4BC77D918DD005A00171C7C /* DisplayUsersOnMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayUsersOnMapViewController.m; sourceTree = "<group>"; };
 		D4BC77DB18DD00F900171C7C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -214,6 +217,8 @@
 				D4BC77DC18DD00F900171C7C /* User.m */,
 				D4BC77DE18DD013600171C7C /* UmanlyClientDelegate.h */,
 				D4BC77DF18DD013600171C7C /* UmanlyClientDelegate.m */,
+				D4AFDE8518E24A4800813320 /* UserAnnotation.h */,
+				D4AFDE8618E24A4800813320 /* UserAnnotation.m */,
 			);
 			path = uiosv2;
 			sourceTree = "<group>";
@@ -414,6 +419,7 @@
 				D4C6783218E0ED63006847FF /* UserLocation.m in Sources */,
 				D48A74EF18DCEFDC008D1C9A /* AFURLRequestSerialization.m in Sources */,
 				D48A750418DCEFE7008D1C9A /* AFNetworkActivityIndicatorManager.m in Sources */,
+				D4AFDE8718E24A4800813320 /* UserAnnotation.m in Sources */,
 				D48A74F118DCEFDC008D1C9A /* AFURLSessionManager.m in Sources */,
 				D4BC77E018DD013600171C7C /* UmanlyClientDelegate.m in Sources */,
 				D48A74A218DCED13008D1C9A /* AppDelegate.m in Sources */,
