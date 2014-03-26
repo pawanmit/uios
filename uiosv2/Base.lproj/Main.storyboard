@@ -15,30 +15,9 @@
                     <view key="view" contentMode="scaleToFill" id="EAy-m4-gSC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khg-ds-Vjj">
-                                <rect key="frame" x="139" y="75" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D9w-jV-Lqi" customClass="FBLoginView">
-                                <rect key="frame" x="53" y="157" width="214" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xGc-3J-OOc" customClass="FBProfilePictureView">
-                                <rect key="frame" x="40" y="75" width="78" height="76"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="fbLoginView" destination="D9w-jV-Lqi" id="0Hi-Cu-S6c"/>
-                        <outlet property="nameLabel" destination="khg-ds-Vjj" id="rIv-kV-LyT"/>
-                        <outlet property="profilePictureView" destination="xGc-3J-OOc" id="MLz-aX-5Lf"/>
                         <segue destination="437-0U-xY6" kind="modal" identifier="next" id="PMZ-ij-RZv"/>
                     </connections>
                 </viewController>

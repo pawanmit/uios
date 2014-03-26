@@ -25,11 +25,19 @@
 
 - (void)viewDidLoad
 {
+    UIImage *background = [UIImage imageNamed: @"Umanly_Background.png"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage: background];
+    [self.view addSubview: imageView];
+    
+    FBLoginView *loginView = [[FBLoginView alloc] init];
+    [self.view addSubview:loginView];
+    loginView.frame =CGRectMake(60, 300, loginView.frame.size.width, loginView.frame.size.height);
+    
     [super viewDidLoad];
     NSLog(@"viewDidLoad");
     // Ask for basic permissions on login
-    [self.fbLoginView setReadPermissions:@[@"basic_info"]];
-    [self.fbLoginView setDelegate:self];
+    [loginView setReadPermissions:@[@"basic_info"]];
+    [loginView setDelegate:self];
     self.objectID= nil;
 }
 
