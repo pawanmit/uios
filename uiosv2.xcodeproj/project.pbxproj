@@ -21,7 +21,6 @@
 		D48A74BB18DCED13008D1C9A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D48A74B918DCED13008D1C9A /* InfoPlist.strings */; };
 		D48A74BD18DCED13008D1C9A /* uiosv2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D48A74BC18DCED13008D1C9A /* uiosv2Tests.m */; };
 		D48A74C818DCED50008D1C9A /* FacebookLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D48A74C718DCED50008D1C9A /* FacebookLoginViewController.m */; };
-		D48A74CC18DCEDAC008D1C9A /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48A74CB18DCEDAC008D1C9A /* FacebookSDK.framework */; };
 		D48A74CE18DCEE16008D1C9A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48A74CD18DCEE16008D1C9A /* Security.framework */; };
 		D48A74D018DCEE24008D1C9A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48A74CF18DCEE24008D1C9A /* SystemConfiguration.framework */; };
 		D48A74D218DCEE32008D1C9A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48A74D118DCEE32008D1C9A /* MobileCoreServices.framework */; };
@@ -42,6 +41,7 @@
 		D48A750918DCEFE7008D1C9A /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D48A74FF18DCEFE7008D1C9A /* UIProgressView+AFNetworking.m */; };
 		D48A750A18DCEFE7008D1C9A /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D48A750118DCEFE7008D1C9A /* UIRefreshControl+AFNetworking.m */; };
 		D48A750B18DCEFE7008D1C9A /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D48A750318DCEFE7008D1C9A /* UIWebView+AFNetworking.m */; };
+		D49BAB6418E38D42007ADB35 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49BAB6318E38D42007ADB35 /* FacebookSDK.framework */; };
 		D4AFDE8718E24A4800813320 /* UserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AFDE8618E24A4800813320 /* UserAnnotation.m */; };
 		D4BC77DA18DD005A00171C7C /* DisplayUsersOnMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BC77D918DD005A00171C7C /* DisplayUsersOnMapViewController.m */; };
 		D4BC77DD18DD00F900171C7C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BC77DC18DD00F900171C7C /* User.m */; };
@@ -80,7 +80,6 @@
 		D48A74BC18DCED13008D1C9A /* uiosv2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = uiosv2Tests.m; sourceTree = "<group>"; };
 		D48A74C618DCED50008D1C9A /* FacebookLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookLoginViewController.h; sourceTree = "<group>"; };
 		D48A74C718DCED50008D1C9A /* FacebookLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookLoginViewController.m; sourceTree = "<group>"; };
-		D48A74CB18DCEDAC008D1C9A /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		D48A74CD18DCEE16008D1C9A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D48A74CF18DCEE24008D1C9A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D48A74D118DCEE32008D1C9A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -120,6 +119,7 @@
 		D48A750118DCEFE7008D1C9A /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		D48A750218DCEFE7008D1C9A /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		D48A750318DCEFE7008D1C9A /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		D49BAB6318E38D42007ADB35 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		D4AFDE8518E24A4800813320 /* UserAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAnnotation.h; sourceTree = "<group>"; };
 		D4AFDE8618E24A4800813320 /* UserAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAnnotation.m; sourceTree = "<group>"; };
 		D4BC77D818DD005A00171C7C /* DisplayUsersOnMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayUsersOnMapViewController.h; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 				D48A74D018DCEE24008D1C9A /* SystemConfiguration.framework in Frameworks */,
 				D48A74CE18DCEE16008D1C9A /* Security.framework in Frameworks */,
 				D48A749418DCED13008D1C9A /* CoreGraphics.framework in Frameworks */,
-				D48A74CC18DCEDAC008D1C9A /* FacebookSDK.framework in Frameworks */,
+				D49BAB6418E38D42007ADB35 /* FacebookSDK.framework in Frameworks */,
 				D48A749618DCED13008D1C9A /* UIKit.framework in Frameworks */,
 				D48A749218DCED13008D1C9A /* Foundation.framework in Frameworks */,
 			);
@@ -184,13 +184,13 @@
 		D48A749018DCED13008D1C9A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D49BAB6318E38D42007ADB35 /* FacebookSDK.framework */,
 				D4C6782B18E0DABC006847FF /* MapKit.framework */,
 				D48A74F218DCEFE7008D1C9A /* UIKit+AFNetworking */,
 				D48A74D518DCEFDC008D1C9A /* AFNetworking */,
 				D48A74D118DCEE32008D1C9A /* MobileCoreServices.framework */,
 				D48A74CF18DCEE24008D1C9A /* SystemConfiguration.framework */,
 				D48A74CD18DCEE16008D1C9A /* Security.framework */,
-				D48A74CB18DCEDAC008D1C9A /* FacebookSDK.framework */,
 				D48A749118DCED13008D1C9A /* Foundation.framework */,
 				D48A749318DCED13008D1C9A /* CoreGraphics.framework */,
 				D48A749518DCED13008D1C9A /* UIKit.framework */,
@@ -553,6 +553,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/pmittal/workspace/uiosv2,
+					/Users/pmittal/workspace/uios,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "uiosv2/uiosv2-Prefix.pch";
@@ -570,6 +571,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/pmittal/workspace/uiosv2,
+					/Users/pmittal/workspace/uios,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "uiosv2/uiosv2-Prefix.pch";
