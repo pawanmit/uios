@@ -13,18 +13,19 @@
 -(void) saveOrUpdateUser:(User *) user
       withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler
 {
-    NSLog([NSString stringWithFormat:@"%@" , user]);
+    NSLog([NSString stringWithFormat:@"%@" , user.firstName]);
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *params = @{@"first_name": user.firstName,
                              @"last_name": user.lastName,
                              @"email": user.email,
-                             @"hometown": user.hometown,
+                             @"hometown": [self convertNilToEmptyString:user.hometown],
                              @"gender": user.gender,
-                             @"birthday": user.birthday,
+                             @"birthday": [self convertNilToEmptyString:user.birthday],
                              @"facebook_link": user.facebookProfileLink
                              };
     [manager POST:@"http://localhost/user" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *userId = [responseObject objectForKey:@"id"];
+        NSLog(@"User saved with id %@",  userId);
         self.user = user;
         self.user.userId = userId;
         successHandler();
@@ -116,6 +117,15 @@
         NSLog(@"%@", nearByUser);
     }
     return nearbyUsers;
+}
+
+-(NSString *) convertNilToEmptyString:(NSString *) text
+{
+    if (text == nil) {
+        return @"";
+    } else {
+        return text;
+    }
 }
 
 @end
