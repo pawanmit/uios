@@ -81,19 +81,27 @@
     NSLog(@"updating annotations");
     [self.umanlyClientDelegate getUsersNearUser:self.user
                              withSuccessHandler:^{
+                                 [self.map removeAnnotations:[self.map annotations]];
                                  for (User *nearByUser in self.umanlyClientDelegate.user.nearByUsers) {
-                                     // coordinate
-                                     CLLocationCoordinate2D clLocation;
-                                     clLocation.latitude = [nearByUser.location latitude];
-                                     clLocation.longitude = nearByUser.location.longitude;
-                                     NSString *title = [NSString stringWithFormat:@"%@ %@", nearByUser.firstName, nearByUser.lastName];
-                                     UserAnnotation *annotation = [[UserAnnotation alloc] initWithPosition:clLocation];
-                                     annotation.title = title;
-                                     NSLog(@"Adding annotation with title %@", title);
-                                     [self.map addAnnotation:annotation];
+                                     //Don't add annoatation for current user
+                                     if (![nearByUser.userId isEqualToString:self.user.userId]) {
+                                         [self addNearByUserAnnotation:nearByUser];
+                                     }
                                  }
                              }];
     
+}
+
+-(void) addNearByUserAnnotation:(User *) nearByUser
+{
+    CLLocationCoordinate2D clLocation;
+    clLocation.latitude = [nearByUser.location latitude];
+    clLocation.longitude = nearByUser.location.longitude;
+    NSString *title = [NSString stringWithFormat:@"%@ %@", nearByUser.firstName, nearByUser.lastName];
+    UserAnnotation *annotation = [[UserAnnotation alloc] initWithPosition:clLocation];
+    annotation.title = title;
+    NSLog(@"Adding annotation with title %@", title);
+    [self.map addAnnotation:annotation];
 }
 
 @end
