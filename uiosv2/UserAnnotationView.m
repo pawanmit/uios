@@ -23,7 +23,7 @@
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
         UIImage *annotationImage = [UIImage imageWithData:imageData];
         UIImageView *annotationImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"test_annotation.png"]];
-        annotationImageView.image = annotationImage;
+        self.image = [UIImage imageNamed:@"Umanly_app_annotation_pin.png"];
         self.enabled = YES;
         self.canShowCallout = YES;
         self.leftCalloutAccessoryView = annotationImageView;
