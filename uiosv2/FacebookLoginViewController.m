@@ -226,7 +226,7 @@
                                     NSLog(@"User Saved with id %@", umanlyClientDelegate.user.userId );
                                     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
                                     appDelegate.user = umanlyClientDelegate.user;
-                                    [self performSegueWithIdentifier:@"next" sender:self];
+                                    [self performSegueWithIdentifier:@"segueToMapView" sender:self];
                                  }
                                 withFailureHandler:^(){
                                     [self.viewUtility showAlertMessage:@"Error connecting to umanly. Please try later."
