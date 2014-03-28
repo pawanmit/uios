@@ -12,6 +12,7 @@
 
 @interface DisplayUsersOnMapViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *map;
+@property (weak, nonatomic) IBOutlet UIButton *userMenuButton;
 
 @end
 
@@ -129,6 +130,14 @@
         view = [[UserAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
     }
     return view;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"nextView"])
+    {
+        DisplayUsersOnMapViewController *nextVC = [segue destinationViewController];
+    }
 }
 
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D43FC18718E6192C0059EC05 /* ViewUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D43FC18618E6192C0059EC05 /* ViewUtility.m */; };
 		D441536C18E6302E00108730 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D441536B18E6302E00108730 /* Images.xcassets */; };
+		D45D64B818E6405500EA87D0 /* UserMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D45D64B718E6405500EA87D0 /* UserMenuViewController.m */; };
 		D48A749218DCED13008D1C9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48A749118DCED13008D1C9A /* Foundation.framework */; };
 		D48A749418DCED13008D1C9A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48A749318DCED13008D1C9A /* CoreGraphics.framework */; };
 		D48A749618DCED13008D1C9A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48A749518DCED13008D1C9A /* UIKit.framework */; };
@@ -66,6 +67,8 @@
 		D43FC18518E6192C0059EC05 /* ViewUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewUtility.h; sourceTree = "<group>"; };
 		D43FC18618E6192C0059EC05 /* ViewUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewUtility.m; sourceTree = "<group>"; };
 		D441536B18E6302E00108730 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D45D64B618E6405500EA87D0 /* UserMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserMenuViewController.h; sourceTree = "<group>"; };
+		D45D64B718E6405500EA87D0 /* UserMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserMenuViewController.m; sourceTree = "<group>"; };
 		D48A748E18DCED13008D1C9A /* uiosv2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uiosv2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D48A749118DCED13008D1C9A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D48A749318DCED13008D1C9A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -229,6 +232,8 @@
 				D43FC18518E6192C0059EC05 /* ViewUtility.h */,
 				D43FC18618E6192C0059EC05 /* ViewUtility.m */,
 				D441536B18E6302E00108730 /* Images.xcassets */,
+				D45D64B618E6405500EA87D0 /* UserMenuViewController.h */,
+				D45D64B718E6405500EA87D0 /* UserMenuViewController.m */,
 			);
 			path = uiosv2;
 			sourceTree = "<group>";
@@ -415,6 +420,7 @@
 				D48A74C818DCED50008D1C9A /* FacebookLoginViewController.m in Sources */,
 				D4E1049C18E4D522004CFB3A /* UserAnnotationView.m in Sources */,
 				D43FC18718E6192C0059EC05 /* ViewUtility.m in Sources */,
+				D45D64B818E6405500EA87D0 /* UserMenuViewController.m in Sources */,
 				D48A74EA18DCEFDC008D1C9A /* AFHTTPRequestOperationManager.m in Sources */,
 				D48A750918DCEFE7008D1C9A /* UIProgressView+AFNetworking.m in Sources */,
 				D4BC77DD18DD00F900171C7C /* User.m in Sources */,
