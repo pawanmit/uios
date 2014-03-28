@@ -11,6 +11,7 @@
 #import "UmanlyClientDelegate.h"
 #import "DisplayUsersOnMapViewController.h"
 #import "AppDelegate.h"
+#import "ViewUtility.h";
 
 @interface FacebookLoginViewController ()
 
@@ -18,6 +19,7 @@
 
 @property (weak, nonatomic) IBOutlet FBLoginView *fbLoginView;
 @property (weak, nonatomic) IBOutlet FBProfilePictureView *profilePictureView;
+@property ViewUtility *viewUtility;
 
 @end
 
@@ -39,14 +41,8 @@
     [loginView setReadPermissions:@[@"basic_info"]];
     [loginView setDelegate:self];
     self.objectID= nil;
-}
-
-// This method will be called when the user information has been fetched after login
-- (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
-                            user:(id<FBGraphUser>)user {
-    //self.profilePictureView.profileID = user.id;
-    //self.nameLabel.text = user.name;
-    //[self performSegueWithIdentifier:@"next" sender:self];
+    
+    self.viewUtility = [[ViewUtility alloc] init];
 }
 
 // Implement the loginViewShowingLoggedInUser: delegate method to modify your app's UI for a logged-in user experience
@@ -179,7 +175,7 @@
     [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
         if (!error) {
             // Success! Include your code to handle the results here
-            //NSLog([NSString stringWithFormat:@"user info: %@", result]);
+            NSLog([NSString stringWithFormat:@"user info: %@", result]);
             User *user = [[User alloc] init];
             user.birthday = [result objectForKey:@"birthday"];
             user.firstName = [result objectForKey:@"first_name"];
@@ -188,6 +184,7 @@
             user.gender = [result objectForKey:@"gender"];
             user.hometown = [[result objectForKey:@"hometown"] objectForKey:@"name"];
             user.facebookProfileLink = [result objectForKey:@"link"];
+            user.facebookUsername = [result objectForKey:@"username"];
             //user.employer = [[[result objectForKey:@"work"] objectForKey:@"employer"] objectForKey:@"name"] ;
             UmanlyClientDelegate *umanlyClientDelegate = [[UmanlyClientDelegate alloc] init];
             [umanlyClientDelegate saveOrUpdateUser:user
@@ -196,7 +193,11 @@
                                     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
                                     appDelegate.user = umanlyClientDelegate.user;
                                     [self performSegueWithIdentifier:@"next" sender:self];
-                                 }];
+                                 }
+                                withFailureHandler:^(){
+                                    [self.viewUtility showAlertMessage:@"Error connecting to umanly. Please try later."
+                                                                 withTitle:@"Umanly Connection Error"];
+                                }];
             //[umanlyClientDelegate getUsers];
         } else {
             // An error occurred, we need to handle the error
@@ -205,5 +206,6 @@
         }
     }];
 }
+
 
 @end

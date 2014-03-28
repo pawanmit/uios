@@ -7,6 +7,8 @@
 //
 
 #import "DisplayUsersOnMapViewController.h"
+#import "AFNetworking.h"
+#import "UserAnnotationView.h"
 
 @interface DisplayUsersOnMapViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *map;
@@ -41,8 +43,8 @@
     NSLog(@"User Loaded from DisplayUsersOnMapViewController with id %@", self.user.userId );
     
     //[self updateAnnotations];
-    
-    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(updateAnnotations) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(locateNearByUsers) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(updateNeayByUsersAnnotations) userInfo:nil repeats:YES];
 
 
     [super viewDidLoad];
@@ -73,24 +75,37 @@
                                     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(clLocation, 1000, 1000);
                                     MKCoordinateRegion adjustedRegion = [self.map regionThatFits:viewRegion];
                                     [self.map setRegion:adjustedRegion animated:YES];
-                                    //self.map setS
-                                }];
+                                }
+                       withFailureHandler:^() {}];
 }
 
--(void) updateAnnotations {
-    NSLog(@"updating annotations");
+-(void) locateNearByUsers
+{
+    NSLog(@"Finding nearby Users");
     [self.umanlyClientDelegate getUsersNearUser:self.user
                              withSuccessHandler:^{
-                                 [self.map removeAnnotations:[self.map annotations]];
-                                 for (User *nearByUser in self.umanlyClientDelegate.user.nearByUsers) {
-                                     //Don't add annoatation for current user
-                                     if (![nearByUser.userId isEqualToString:self.user.userId]) {
-                                         [self addNearByUserAnnotation:nearByUser];
-                                     }
+                                 self.user = self.umanlyClientDelegate.user;
                                  }
-                             }];
+                             withFailureHandler:^{}
+     ];
+}
+
+-(void) updateNeayByUsersAnnotations {
+    NSLog(@"updating annotations");
+    [self.map removeAnnotations:[self.map annotations]];
+    for (User *nearByUser in self.user.nearByUsers) {
+        //Don't add annoatation for current user
+        if (![nearByUser.userId isEqualToString:self.user.userId]) {
+            [self addNearByUserAnnotation:nearByUser];
+        }
+    }
+}
+
+-(void) updateNearByUserFacebookProfileImages
+{
     
 }
+
 
 -(void) addNearByUserAnnotation:(User *) nearByUser
 {
@@ -100,8 +115,22 @@
     NSString *title = [NSString stringWithFormat:@"%@ %@", nearByUser.firstName, nearByUser.lastName];
     UserAnnotation *annotation = [[UserAnnotation alloc] initWithPosition:clLocation];
     annotation.title = title;
+    annotation.facebookUsername = nearByUser.facebookUsername;
     NSLog(@"Adding annotation with title %@", title);
     [self.map addAnnotation:annotation];
 }
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+
+    static NSString *identifier = @"pin";
+    UserAnnotationView *view = (UserAnnotationView *)[self.map dequeueReusableAnnotationViewWithIdentifier:identifier];
+    if (view == nil) {
+        view = [[UserAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+    }
+    return view;
+}
+
+
 
 @end

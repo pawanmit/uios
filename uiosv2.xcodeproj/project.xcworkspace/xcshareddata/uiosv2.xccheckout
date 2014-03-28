@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>92346210-BBFC-45DC-A930-3BF4EE236830</string>
+	<key>IDESourceControlProjectName</key>
+	<string>uiosv2</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1FAC2FEB-ECED-44FA-B7C6-F0C12C0F06D4</key>
+		<string>https://github.com/pawanmit/uios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>uiosv2.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1FAC2FEB-ECED-44FA-B7C6-F0C12C0F06D4</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/pawanmit/uios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1FAC2FEB-ECED-44FA-B7C6-F0C12C0F06D4</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1FAC2FEB-ECED-44FA-B7C6-F0C12C0F06D4</string>
+			<key>IDESourceControlWCCName</key>
+			<string>uios</string>
+		</dict>
+	</array>
+</dict>
+</plist>

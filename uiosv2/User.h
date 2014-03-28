@@ -17,11 +17,15 @@
 @property NSString *email;
 @property NSString *hometown;
 @property NSString *gender;
-@property NSString *facebookProfileLink;
 @property NSString *employer;
 @property NSDate   *birthday;
+
+@property NSString *facebookProfileLink;
+@property NSString *facebookUsername;
+
 @property UserLocation *location;
 @property NSArray *nearByUsers;
 
+@property NSMutableDictionary *nearByUsersImages;
 
 @end

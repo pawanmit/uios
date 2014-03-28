@@ -16,17 +16,22 @@
 
 typedef void (^UmanlyRequestSuccessHandler)(void);
 
+typedef void (^UmanlyRequestFailureHandler)(void);
+
 -(void) saveOrUpdateUser:(User *) user
-        withSuccessHandler: (UmanlyRequestSuccessHandler) handler;
+        withSuccessHandler: (UmanlyRequestSuccessHandler) handler
+        withFailureHandler: (UmanlyRequestFailureHandler) failureHander;
 
 -(void) updateUser: (User *) user
         withLocation: (UserLocation *) location
-        withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler;
+        withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler
+        withFailureHandler: (UmanlyRequestFailureHandler) failureHander;
 
 
 -(void) getUsers;
 
 -(NSArray *) getUsersNearUser:(User *) user
-           withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler;
+           withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler
+           withFailureHandler: (UmanlyRequestFailureHandler) failureHander;
 
 @end

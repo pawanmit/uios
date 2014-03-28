@@ -12,6 +12,7 @@
 
 -(void) saveOrUpdateUser:(User *) user
       withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler
+      withFailureHandler: (UmanlyRequestFailureHandler) failureHander
 {
     NSLog([NSString stringWithFormat:@"%@" , user.firstName]);
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -21,7 +22,8 @@
                              @"hometown": [self convertNilToEmptyString:user.hometown],
                              @"gender": user.gender,
                              @"birthday": [self convertNilToEmptyString:user.birthday],
-                             @"facebook_link": user.facebookProfileLink
+                             @"facebook_link": user.facebookProfileLink,
+                             @"facebook_username": user.facebookUsername
                              };
     [manager POST:@"http://localhost/user" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *userId = [responseObject objectForKey:@"id"];
@@ -32,12 +34,14 @@
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
+        failureHander();
     }];
 }
 
 -(void) updateUser: (User *) user
       withLocation: (UserLocation *) location
     withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler
+    withFailureHandler: (UmanlyRequestFailureHandler) failureHander
 {
     NSMutableString *updateLocationUrl = [NSMutableString stringWithCapacity:100];
     [updateLocationUrl appendString:@"http://api.umanly.com/user/"];
@@ -48,13 +52,13 @@
                              };
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager POST:updateLocationUrl parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSString *userId = [responseObject objectForKey:@"id"];
         self.user = user;
         self.user.location = location;
         successHandler();
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
+        failureHander();
     }];
     
 }
@@ -77,6 +81,7 @@
 
 -(NSArray *) getUsersNearUser:(User *) user
            withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler
+           withFailureHandler: (UmanlyRequestFailureHandler) failureHandler
 {
     NSArray *userArray = [[NSArray alloc] init];
     NSString *searchByLocationEndPoint = [NSString stringWithFormat:@"http://api.umanly.com/user/search/distance/?longitude=%f&latitude=%f&distance=2", user.location.longitude, user.location.latitude];
@@ -88,11 +93,13 @@
     responseObject = (NSDictionary *) responseObject;
             id users = [responseObject objectForKey:@"users"];
             NSArray *nearByUsers = [self getNearByUsersFromJson:users];
-        self.user.nearByUsers = nearByUsers;
+        user.nearByUsers = nearByUsers;
+        self.user = user;
         successHandler();
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error: %@" , error);
+        failureHandler();
     }];
     
     [operation start];
@@ -108,6 +115,7 @@
         nearByUser.userId = [user objectForKey:@"id"];
         nearByUser.firstName = [user objectForKey:@"first_name"];
         nearByUser.lastName = [user objectForKey:@"last_name"];
+        nearByUser.facebookUsername = [user objectForKey:@"facebook_username"];
         id location = [user objectForKey:@"location"];
         UserLocation *userLocation = [[UserLocation alloc] init];
         userLocation.latitude = [[location objectForKey:@"latitude"] floatValue];
