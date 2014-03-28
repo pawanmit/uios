@@ -27,28 +27,62 @@
 
 - (void)viewDidLoad
 {
-    UIImage *background = [UIImage imageNamed: @"Umanly_Background.png"];
+    UIImage *background = [UIImage imageNamed: @"Umanly_app_background_320x480.png"];
     UIImageView *imageView = [[UIImageView alloc] initWithImage: background];
     [self.view addSubview: imageView];
     
-    FBLoginView *loginView = [[FBLoginView alloc] init];
-    [self.view addSubview:loginView];
-    loginView.frame =CGRectMake(60, 300, loginView.frame.size.width, loginView.frame.size.height);
+    [self setupFbLoginViewToUIView];
     
     [super viewDidLoad];
     NSLog(@"viewDidLoad");
-    // Ask for basic permissions on login
-    [loginView setReadPermissions:@[@"basic_info"]];
-    [loginView setDelegate:self];
+
     self.objectID= nil;
     
     self.viewUtility = [[ViewUtility alloc] init];
+}
+
+-(void) setupFbLoginViewToUIView
+{
+    FBLoginView *loginView = [[FBLoginView alloc] init];
+    [self.view addSubview:loginView];
+    
+    
+    // TODO: Update FB Login view with custome image
+    [self updateFbLoginView:loginView];
+    
+    // Ask for basic permissions on login
+    [loginView setReadPermissions:@[@"basic_info"]];
+    [loginView setDelegate:self];
 }
 
 // Implement the loginViewShowingLoggedInUser: delegate method to modify your app's UI for a logged-in user experience
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
     NSLog(@"User logged in");
     [self requestUserInfo];
+}
+
+-(void) updateFbLoginView:(FBLoginView *)loginView
+{
+    loginView.frame = CGRectMake(10, 330, 300, 46);
+    for (id obj in loginView.subviews)
+    {
+        if ([obj isKindOfClass:[UIButton class]])
+        {
+            UIButton * loginButton =  obj;
+            UIImage *facebookLoginViewImage = [UIImage imageNamed: @"Umanly_app_Facebook_300x46.png"];
+            [loginButton setBackgroundImage:facebookLoginViewImage forState:UIControlStateNormal];
+            [loginButton setBackgroundImage:nil forState:UIControlStateSelected];
+            [loginButton setBackgroundImage:nil forState:UIControlStateHighlighted];
+            [loginButton sizeToFit];
+        }
+        if ([obj isKindOfClass:[UILabel class]])
+        {
+            UILabel * loginLabel =  obj;
+            loginLabel.text = @"";
+            loginLabel.textAlignment = UITextAlignmentCenter;
+            loginLabel.frame = CGRectMake(10, 330, 300, 46);
+        }
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

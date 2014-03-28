@@ -15,7 +15,6 @@
 		D48A749E18DCED13008D1C9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D48A749D18DCED13008D1C9A /* main.m */; };
 		D48A74A218DCED13008D1C9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D48A74A118DCED13008D1C9A /* AppDelegate.m */; };
 		D48A74A518DCED13008D1C9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D48A74A318DCED13008D1C9A /* Main.storyboard */; };
-		D48A74AA18DCED13008D1C9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D48A74A918DCED13008D1C9A /* Images.xcassets */; };
 		D48A74B118DCED13008D1C9A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48A74B018DCED13008D1C9A /* XCTest.framework */; };
 		D48A74B218DCED13008D1C9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48A749118DCED13008D1C9A /* Foundation.framework */; };
 		D48A74B318DCED13008D1C9A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48A749518DCED13008D1C9A /* UIKit.framework */; };
@@ -76,7 +75,6 @@
 		D48A74A018DCED13008D1C9A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D48A74A118DCED13008D1C9A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D48A74A418DCED13008D1C9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D48A74A918DCED13008D1C9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D48A74AF18DCED13008D1C9A /* uiosv2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = uiosv2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D48A74B018DCED13008D1C9A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D48A74B818DCED13008D1C9A /* uiosv2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "uiosv2Tests-Info.plist"; sourceTree = "<group>"; };
@@ -215,7 +213,6 @@
 				D48A74A318DCED13008D1C9A /* Main.storyboard */,
 				D48A74C618DCED50008D1C9A /* FacebookLoginViewController.h */,
 				D48A74C718DCED50008D1C9A /* FacebookLoginViewController.m */,
-				D48A74A918DCED13008D1C9A /* Images.xcassets */,
 				D48A749818DCED13008D1C9A /* Supporting Files */,
 				D4BC77D818DD005A00171C7C /* DisplayUsersOnMapViewController.h */,
 				D4BC77D918DD005A00171C7C /* DisplayUsersOnMapViewController.m */,
@@ -388,7 +385,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D48A74AA18DCED13008D1C9A /* Images.xcassets in Resources */,
 				D48A749C18DCED13008D1C9A /* InfoPlist.strings in Resources */,
 				D48A74A518DCED13008D1C9A /* Main.storyboard in Resources */,
 			);
