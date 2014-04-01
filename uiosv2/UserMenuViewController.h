@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UmanlyViewController.h"
 
-@interface UserMenuViewController : UIViewController
+@interface UserMenuViewController : UmanlyViewController
 
 @end

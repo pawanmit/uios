@@ -8,6 +8,7 @@
 
 #import "UserMenuViewController.h"
 #import "ViewUtility.h"
+#import "DisplayUsersOnMapViewController.h"
 
 @interface UserMenuViewController ()
 
@@ -21,18 +22,10 @@
 
 @implementation UserMenuViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
-
+    NSLog(@"UserMenuViewController: User loaded with id %@", self.user.userId);
     [self prepareView];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
@@ -56,8 +49,16 @@
     //[viewUtility changButtonSize:self.mapButton withWidth:154 withHeight:35];
     [self.messagesButton setBackgroundImage:[UIImage imageNamed:@"Umanly_app_Messages_Button.png"] forState:UIControlStateNormal];
     //[viewUtility changButtonSize:self.messagesButton withWidth:154 withHeight:35];
+}
 
-    
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"segueToMapMenu"])
+    {
+        DisplayUsersOnMapViewController *nextVC = [segue destinationViewController];
+        nextVC.sourceView = @"UserMenuView";
+        nextVC.user = self.user;
+    }
 }
 
 @end

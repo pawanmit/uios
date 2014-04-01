@@ -44,6 +44,7 @@
 		D48A750A18DCEFE7008D1C9A /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D48A750118DCEFE7008D1C9A /* UIRefreshControl+AFNetworking.m */; };
 		D48A750B18DCEFE7008D1C9A /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D48A750318DCEFE7008D1C9A /* UIWebView+AFNetworking.m */; };
 		D49BAB6418E38D42007ADB35 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49BAB6318E38D42007ADB35 /* FacebookSDK.framework */; };
+		D4AEF28818EB6D620078F291 /* UmanlyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AEF28718EB6D620078F291 /* UmanlyViewController.m */; };
 		D4AFDE8718E24A4800813320 /* UserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AFDE8618E24A4800813320 /* UserAnnotation.m */; };
 		D4BC77DA18DD005A00171C7C /* DisplayUsersOnMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BC77D918DD005A00171C7C /* DisplayUsersOnMapViewController.m */; };
 		D4BC77DD18DD00F900171C7C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BC77DC18DD00F900171C7C /* User.m */; };
@@ -127,6 +128,8 @@
 		D48A750218DCEFE7008D1C9A /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		D48A750318DCEFE7008D1C9A /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		D49BAB6318E38D42007ADB35 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		D4AEF28618EB6D620078F291 /* UmanlyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UmanlyViewController.h; sourceTree = "<group>"; };
+		D4AEF28718EB6D620078F291 /* UmanlyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UmanlyViewController.m; sourceTree = "<group>"; };
 		D4AFDE8518E24A4800813320 /* UserAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAnnotation.h; sourceTree = "<group>"; };
 		D4AFDE8618E24A4800813320 /* UserAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAnnotation.m; sourceTree = "<group>"; };
 		D4BC77D818DD005A00171C7C /* DisplayUsersOnMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayUsersOnMapViewController.h; sourceTree = "<group>"; };
@@ -234,6 +237,8 @@
 				D441536B18E6302E00108730 /* Images.xcassets */,
 				D45D64B618E6405500EA87D0 /* UserMenuViewController.h */,
 				D45D64B718E6405500EA87D0 /* UserMenuViewController.m */,
+				D4AEF28618EB6D620078F291 /* UmanlyViewController.h */,
+				D4AEF28718EB6D620078F291 /* UmanlyViewController.m */,
 			);
 			path = uiosv2;
 			sourceTree = "<group>";
@@ -426,6 +431,7 @@
 				D4BC77DD18DD00F900171C7C /* User.m in Sources */,
 				D48A74EC18DCEFDC008D1C9A /* AFNetworkReachabilityManager.m in Sources */,
 				D48A74F018DCEFDC008D1C9A /* AFURLResponseSerialization.m in Sources */,
+				D4AEF28818EB6D620078F291 /* UmanlyViewController.m in Sources */,
 				D48A74EE18DCEFDC008D1C9A /* AFURLConnectionOperation.m in Sources */,
 				D48A750718DCEFE7008D1C9A /* UIButton+AFNetworking.m in Sources */,
 				D48A750518DCEFE7008D1C9A /* UIActivityIndicatorView+AFNetworking.m in Sources */,

@@ -7,11 +7,7 @@
 //
 
 #import "FacebookLoginViewController.h"
-#import "User.h"
-#import "UmanlyClientDelegate.h"
 #import "DisplayUsersOnMapViewController.h"
-#import "AppDelegate.h"
-#import "ViewUtility.h";
 
 @interface FacebookLoginViewController ()
 
@@ -82,14 +78,6 @@
             loginLabel.textAlignment = UITextAlignmentCenter;
             loginLabel.frame = CGRectMake(10, 330, 300, 46);
         }
-    }
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"nextView"])
-    {
-        DisplayUsersOnMapViewController *nextVC = [segue destinationViewController];
     }
 }
 
@@ -209,7 +197,7 @@
     [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
         if (!error) {
             // Success! Include your code to handle the results here
-            NSLog([NSString stringWithFormat:@"user info: %@", result]);
+            //NSLog([NSString stringWithFormat:@"user info: %@", result]);
             User *user = [[User alloc] init];
             user.birthday = [result objectForKey:@"birthday"];
             user.firstName = [result objectForKey:@"first_name"];
@@ -220,12 +208,12 @@
             user.facebookProfileLink = [result objectForKey:@"link"];
             user.facebookUsername = [result objectForKey:@"username"];
             //user.employer = [[[result objectForKey:@"work"] objectForKey:@"employer"] objectForKey:@"name"] ;
-            UmanlyClientDelegate *umanlyClientDelegate = [[UmanlyClientDelegate alloc] init];
-            [umanlyClientDelegate saveOrUpdateUser:user
+
+            [self.umanlyClientDelegate saveOrUpdateUser:user
                                     withSuccessHandler:^(){
-                                    NSLog(@"User Saved with id %@", umanlyClientDelegate.user.userId );
-                                    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-                                    appDelegate.user = umanlyClientDelegate.user;
+                                    NSLog(@"User Saved with id %@", self.umanlyClientDelegate.user.userId );
+                                        self.user = user;
+                                        self.user.userId = self.umanlyClientDelegate.user.userId;
                                     [self performSegueWithIdentifier:@"segueToMapView" sender:self];
                                  }
                                 withFailureHandler:^(){
@@ -241,5 +229,13 @@
     }];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"segueToMapView"])
+    {
+        DisplayUsersOnMapViewController *nextVC = [segue destinationViewController];
+        nextVC.user = self.user;
+    }
+}
 
 @end

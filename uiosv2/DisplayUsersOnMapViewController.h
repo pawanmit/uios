@@ -10,16 +10,12 @@
 #import <MapKit/MapKit.h>
 #import "AppDelegate.h"
 
-#import "UmanlyClientDelegate.h"
-#import "User.h"
-#import "UserLocation.h"
+#import "UmanlyViewController.h"
 #import "UserAnnotation.h"
 
 
-@interface DisplayUsersOnMapViewController : UIViewController <MKMapViewDelegate>
+@interface DisplayUsersOnMapViewController : UmanlyViewController <MKMapViewDelegate>
 
-@property User *user;
-@property UmanlyClientDelegate *umanlyClientDelegate;
 @property CLLocationManager *locationManager;
 
 @end

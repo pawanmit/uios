@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 umanly. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "UmanlyViewController.h"
 
-@interface FacebookLoginViewController : UIViewController <FBLoginViewDelegate>
+@interface FacebookLoginViewController : UmanlyViewController <FBLoginViewDelegate>
 
 @property (strong, nonatomic) NSString *objectID;
 

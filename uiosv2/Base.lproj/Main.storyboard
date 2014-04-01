@@ -23,7 +23,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gJZ-hh-l7o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-332" y="-53"/>
+            <point key="canvasLocation" x="-380" y="-53"/>
         </scene>
         <!--Display Users On Map View Controller-->
         <scene sceneID="OGn-PY-h0U">
@@ -94,7 +94,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="437-0U-xY6" kind="modal" id="SfI-Vo-Qa8"/>
+                                    <segue destination="437-0U-xY6" kind="modal" identifier="segueToMapView" id="SfI-Vo-Qa8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysw-Rq-u8k">
@@ -125,6 +125,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="SfI-Vo-Qa8"/>
+        <segue reference="PMZ-ij-RZv"/>
     </inferredMetricsTieBreakers>
 </document>

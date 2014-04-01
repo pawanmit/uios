@@ -7,26 +7,19 @@
 //
 
 #import "DisplayUsersOnMapViewController.h"
-#import "AFNetworking.h"
 #import "UserAnnotationView.h"
-#import "ViewUtility.h"
+#include "UserMenuViewController.h"
 
 @interface DisplayUsersOnMapViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *map;
 @property (weak, nonatomic) IBOutlet UIButton *userMenuButton;
+@property NSTimer *locateNearByUsersTimer;
+@property NSTimer *updateNeayByUsersAnnotationsTimer;
 
 @end
 
 @implementation DisplayUsersOnMapViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -34,21 +27,14 @@
     
     [self.map setDelegate: self];
     self.map.showsUserLocation=YES;
-    
-    //if (nil == self.locationManager)
-    //    self.locationManager = [[CLLocationManager alloc] init];
-    
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    self.user = appDelegate.user;
-    
-    UmanlyClientDelegate *umanlyClientDelegate = [[UmanlyClientDelegate alloc] init];
-    self.umanlyClientDelegate = umanlyClientDelegate;
-    
+        
     NSLog(@"User Loaded from DisplayUsersOnMapViewController with id %@", self.user.userId );
     
-    //[self updateAnnotations];
-    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(locateNearByUsers) userInfo:nil repeats:YES];
-    [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(updateNeayByUsersAnnotations) userInfo:nil repeats:YES];
+    if ([self.sourceView isEqualToString:@"UserMenuView"]) {
+        [self showUserOnMap:self.user.location];
+    }
+    
+    [self scheduleTimers];
     
     [super viewDidLoad];
 }
@@ -70,14 +56,7 @@
                                 withSuccessHandler: ^()
                                 {
                                     self.user.location = self.umanlyClientDelegate.user.location;
-                                    NSLog(@"User location updated to Longitude %f and Latitude %f ",  self.user.location.longitude, self.user.location.latitude);
-                                    self.map.centerCoordinate = userLocation.location.coordinate;
-                                    CLLocationCoordinate2D clLocation;
-                                    clLocation.latitude = self.user.location.latitude;
-                                    clLocation.longitude =self.user.location.longitude;
-                                    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(clLocation, 1000, 1000);
-                                    MKCoordinateRegion adjustedRegion = [self.map regionThatFits:viewRegion];
-                                    [self.map setRegion:adjustedRegion animated:YES];
+                                    [self showUserOnMap:self.user.location];
                                 }
                        withFailureHandler:^() {}];
 }
@@ -87,19 +66,23 @@
     NSLog(@"Finding nearby Users");
     [self.umanlyClientDelegate getUsersNearUser:self.user
                              withSuccessHandler:^{
-                                 self.user = self.umanlyClientDelegate.user;
+                                 if ([self.locateNearByUsersTimer isValid]) {
+                                        self.user = self.umanlyClientDelegate.user;
+                                    }
                                  }
                              withFailureHandler:^{}
      ];
 }
 
 -(void) updateNeayByUsersAnnotations {
-    NSLog(@"updating annotations");
-    [self.map removeAnnotations:[self.map annotations]];
-    for (User *nearByUser in self.user.nearByUsers) {
-        //Don't add annoatation for current user
-        if (![nearByUser.userId isEqualToString:self.user.userId]) {
-            [self addNearByUserAnnotation:nearByUser];
+    if ([self.updateNeayByUsersAnnotationsTimer isValid]) {
+        NSLog(@"updating annotations");
+        [self.map removeAnnotations:[self.map annotations]];
+        for (User *nearByUser in self.user.nearByUsers) {
+            //Don't add annoatation for current user
+            if (![nearByUser.userId isEqualToString:self.user.userId]) {
+                [self addNearByUserAnnotation:nearByUser];
+            }
         }
     }
 }
@@ -143,5 +126,48 @@
     [viewUtility changButtonSize:self.userMenuButton withWidth:49 withHeight:39];
 }
 
+
+- (void) showUserOnMap: (UserLocation *) location
+{
+    NSLog(@"User location: Longitude %f and Latitude %f ",  self.user.location.longitude, self.user.location.latitude);
+    //self.map.centerCoordinate = userLocation.location.coordinate;
+    CLLocationCoordinate2D clLocation;
+    clLocation.latitude = location.latitude;
+    clLocation.longitude = location.longitude;
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(clLocation, 1000, 1000);
+    MKCoordinateRegion adjustedRegion = [self.map regionThatFits:viewRegion];
+    [self.map setRegion:adjustedRegion animated:YES];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"segueToUserMenu"])
+    {
+        UserMenuViewController *nextVC = [segue destinationViewController];
+        nextVC.sourceView = @"DisplayUsersOnMapView";
+        nextVC.user = self.user;
+    }
+}
+
+-(void) scheduleTimers
+{
+    //[self updateAnnotations];
+    self.locateNearByUsersTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(locateNearByUsers) userInfo:nil repeats:YES];
+    self.updateNeayByUsersAnnotationsTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(updateNeayByUsersAnnotations) userInfo:nil repeats:YES];
+    
+}
+
+-(void) unscheduleTimers
+{
+    if (self.locateNearByUsersTimer != nil) {
+        [self.locateNearByUsersTimer invalidate];
+         self.locateNearByUsersTimer = nil;
+    }
+    
+    if (self.updateNeayByUsersAnnotationsTimer != nil) {
+        [self.updateNeayByUsersAnnotationsTimer invalidate];
+        self.updateNeayByUsersAnnotationsTimer = nil;
+    }
+}
 
 @end
