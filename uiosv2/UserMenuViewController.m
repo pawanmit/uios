@@ -53,7 +53,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"segueToMapMenu"])
+    if ([[segue identifier] isEqualToString:@"segueToMapView"])
     {
         DisplayUsersOnMapViewController *nextVC = [segue destinationViewController];
         nextVC.sourceView = @"UserMenuView";

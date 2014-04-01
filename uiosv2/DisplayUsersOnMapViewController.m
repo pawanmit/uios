@@ -30,12 +30,13 @@
         
     NSLog(@"User Loaded from DisplayUsersOnMapViewController with id %@", self.user.userId );
     
-    if ([self.sourceView isEqualToString:@"UserMenuView"]) {
-        [self showUserOnMap:self.user.location];
-    }
     
     [self scheduleTimers];
     
+    if ([self.sourceView isEqualToString:@"UserMenuView"]) {
+        [self showUserOnMap:self.user.location];
+        [self updateNeayByUsersAnnotations];
+    }
     [super viewDidLoad];
 }
 
@@ -85,11 +86,6 @@
             }
         }
     }
-}
-
--(void) updateNearByUserFacebookProfileImages
-{
-    
 }
 
 
@@ -147,6 +143,8 @@
         nextVC.sourceView = @"DisplayUsersOnMapView";
         nextVC.user = self.user;
     }
+    
+    [self unscheduleTimers];
 }
 
 -(void) scheduleTimers
