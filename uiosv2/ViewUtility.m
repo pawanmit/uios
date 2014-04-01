@@ -20,4 +20,15 @@
                                           otherButtonTitles:nil];
     [alert show];
 }
+
+
+-(void) changButtonSize:(UIButton *) button
+              withWidth: (int) width
+             withHeight: (int) height
+{
+    CGRect      buttonFrame = button.frame;
+    buttonFrame.size = CGSizeMake(width, height);
+    button.frame = buttonFrame;
+}
+
 @end

@@ -12,4 +12,9 @@
 
 -(void) showAlertMessage:(NSString *) message
                withTitle:(NSString *) title;
+
+-(void) changButtonSize:(UIButton *) button
+              withWidth: (int) width
+             withHeight: (int) height;
+
 @end

@@ -9,6 +9,7 @@
 #import "DisplayUsersOnMapViewController.h"
 #import "AFNetworking.h"
 #import "UserAnnotationView.h"
+#import "ViewUtility.h"
 
 @interface DisplayUsersOnMapViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *map;
@@ -29,6 +30,8 @@
 
 - (void)viewDidLoad
 {
+    [self prepareView];
+    
     [self.map setDelegate: self];
     self.map.showsUserLocation=YES;
     
@@ -46,8 +49,7 @@
     //[self updateAnnotations];
     [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(locateNearByUsers) userInfo:nil repeats:YES];
     [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(updateNeayByUsersAnnotations) userInfo:nil repeats:YES];
-
-
+    
     [super viewDidLoad];
 }
 
@@ -132,14 +134,14 @@
     return view;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"nextView"])
-    {
-        DisplayUsersOnMapViewController *nextVC = [segue destinationViewController];
-    }
-}
 
+- (void)prepareView
+{
+    ViewUtility *viewUtility = [[ViewUtility alloc] init];
+
+    [self.userMenuButton setBackgroundImage:[UIImage imageNamed:@"Umanly_app_Hamburger_Button.png"] forState:UIControlStateNormal];
+    [viewUtility changButtonSize:self.userMenuButton withWidth:49 withHeight:39];
+}
 
 
 @end
