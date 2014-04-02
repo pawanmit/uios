@@ -15,7 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet FBLoginView *fbLoginView;
 @property (weak, nonatomic) IBOutlet FBProfilePictureView *profilePictureView;
-@property ViewUtility *viewUtility;
 
 @end
 
@@ -34,7 +33,6 @@
 
     self.objectID= nil;
     
-    self.viewUtility = [[ViewUtility alloc] init];
 }
 
 -(void) setupFbLoginViewToUIView

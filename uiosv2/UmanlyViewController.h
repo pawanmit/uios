@@ -17,5 +17,6 @@
 @property NSString *sourceView;
 @property User *user;
 @property UmanlyClientDelegate *umanlyClientDelegate;
+@property ViewUtility *viewUtility;
 
 @end

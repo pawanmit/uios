@@ -22,6 +22,10 @@
     if (self.umanlyClientDelegate == nil) {
         self.umanlyClientDelegate = umanlyClientDelegate;
     }
+    
+    if (self.viewUtility == nil) {
+        self.viewUtility = [[ViewUtility alloc] init];
+    }
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }

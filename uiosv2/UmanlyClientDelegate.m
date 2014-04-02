@@ -75,6 +75,7 @@ NSString *const BaseURLString = @"http://api.umanly.com/user/";
     NSDictionary *params = @{@"availability": availability};
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager POST:updateAvailabilityUrl parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        self.user.isAvailable = isAvailable;
         successHandler();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);

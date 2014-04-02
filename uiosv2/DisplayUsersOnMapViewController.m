@@ -36,8 +36,6 @@
     if ([self.sourceView isEqualToString:@"UserMenuView"]) {
         [self showUserOnMap:self.user.location];
         [self updateNeayByUsersAnnotations];
-    } else if ( [self.sourceView isEqualToString:@"FacebookLoginView"] ) {
-        self.user.isAvailable = YES;
     }
     [super viewDidLoad];
 }

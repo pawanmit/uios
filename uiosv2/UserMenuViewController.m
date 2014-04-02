@@ -35,8 +35,13 @@
     }
     self.umanlyClientDelegate.user = self.user;
     [self.umanlyClientDelegate updateUserAvailability:isAvailable
-                                   withSuccessHandler:^() {}
-                                   withFailureHandler:^() {}
+                                   withSuccessHandler:^() {self.user.isAvailable = isAvailable;}
+                                   withFailureHandler:^() {
+                                       [self.availabilitySwitch setOn:!isAvailable];
+                                       [ self.viewUtility showAlertMessage:@"Unable to change your availabilty status. Plese try again"
+                                                                withTitle:@"Operation Failed" ];
+                                   }
+
      ];
 }
 
