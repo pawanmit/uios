@@ -36,6 +36,8 @@
     if ([self.sourceView isEqualToString:@"UserMenuView"]) {
         [self showUserOnMap:self.user.location];
         [self updateNeayByUsersAnnotations];
+    } else if ( [self.sourceView isEqualToString:@"FacebookLoginView"] ) {
+        self.user.isAvailable = YES;
     }
     [super viewDidLoad];
 }
@@ -76,7 +78,7 @@
 }
 
 -(void) updateNeayByUsersAnnotations {
-    if ([self.updateNeayByUsersAnnotationsTimer isValid]) {
+    if ( [self.updateNeayByUsersAnnotationsTimer isValid] && self.user.isAvailable == YES ) {
         NSLog(@"updating annotations");
         [self.map removeAnnotations:[self.map annotations]];
         for (User *nearByUser in self.user.nearByUsers) {
