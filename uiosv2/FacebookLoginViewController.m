@@ -235,7 +235,9 @@
     {
         DisplayUsersOnMapViewController *nextVC = [segue destinationViewController];
         nextVC.user = self.user;
+        nextVC.sourceView = @"FacebookLoginView";
     }
+    
 }
 
 @end
