@@ -23,6 +23,23 @@
 
 @implementation UserMenuViewController
 
+- (IBAction)availabilitySwiched:(id)sender {
+    BOOL isAvailable;
+    if(self.availabilitySwitch.on) {
+        NSLog(@"User id %@ Availability On.", self.user.userId);
+        isAvailable = YES;
+    }
+    else {
+        NSLog(@"User id %@ Availability Off.", self.user.userId);
+        isAvailable = NO;
+    }
+    self.umanlyClientDelegate.user = self.user;
+    [self.umanlyClientDelegate updateUserAvailability:isAvailable
+                                   withSuccessHandler:^() {}
+                                   withFailureHandler:^() {}
+     ];
+}
+
 
 - (void)viewDidLoad
 {
@@ -37,6 +54,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 - (void)prepareView
 {

@@ -68,6 +68,18 @@ NSString *const BaseURLString = @"http://api.umanly.com/user/";
             withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler
             withFailureHandler: (UmanlyRequestFailureHandler) failureHander
 {
+    NSMutableString *updateAvailabilityUrl = [NSMutableString stringWithCapacity:100];
+    [updateAvailabilityUrl appendString:BaseURLString];
+    [updateAvailabilityUrl appendFormat:@"%@/availability", self.user.userId];
+    NSString *availability = (isAvailable) ? @"1" : @"0";
+    NSDictionary *params = @{@"availability": availability};
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager POST:updateAvailabilityUrl parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        successHandler();
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        failureHander();
+    }];
     
 }
 
