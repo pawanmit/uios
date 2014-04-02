@@ -10,6 +10,8 @@
 
 @implementation UmanlyClientDelegate
 
+NSString *const BaseURLString = @"http://api.umanly.com/user/";
+
 -(void) saveOrUpdateUser:(User *) user
       withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler
       withFailureHandler: (UmanlyRequestFailureHandler) failureHander
@@ -25,7 +27,7 @@
                              @"facebook_link": user.facebookProfileLink,
                              @"facebook_username": user.facebookUsername
                              };
-    [manager POST:@"http://localhost/user" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:BaseURLString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *userId = [responseObject objectForKey:@"id"];
         NSLog(@"User saved with id %@",  userId);
         self.user = user;
@@ -44,7 +46,7 @@
     withFailureHandler: (UmanlyRequestFailureHandler) failureHander
 {
     NSMutableString *updateLocationUrl = [NSMutableString stringWithCapacity:100];
-    [updateLocationUrl appendString:@"http://api.umanly.com/user/"];
+    [updateLocationUrl appendString:BaseURLString];
     [updateLocationUrl appendString:user.userId];
     [updateLocationUrl appendString:@"/location"];
     NSDictionary *params = @{@"longitude": [NSString stringWithFormat:@"%f", location.longitude],
@@ -60,12 +62,18 @@
         NSLog(@"Error: %@", error);
         failureHander();
     }];
+}
+
+-(void) updateUserAvailability: (BOOL) isAvailable
+            withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler
+            withFailureHandler: (UmanlyRequestFailureHandler) failureHander
+{
     
 }
 
+
 -(void) getUsers
 {
-    static NSString * const BaseURLString = @"http://api.umanly.com/user";
     NSURL *url = [NSURL URLWithString:BaseURLString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -84,7 +92,9 @@
            withFailureHandler: (UmanlyRequestFailureHandler) failureHandler
 {
     NSArray *userArray = [[NSArray alloc] init];
-    NSString *searchByLocationEndPoint = [NSString stringWithFormat:@"http://api.umanly.com/user/search/distance/?longitude=%f&latitude=%f&distance=2", user.location.longitude, user.location.latitude];
+    NSMutableString *searchByLocationEndPoint = [NSMutableString stringWithCapacity:100];
+    [searchByLocationEndPoint appendString:BaseURLString];
+    [searchByLocationEndPoint appendFormat:@"search/distance/?longitude=%f&latitude=%f&distance=2", user.location.longitude, user.location.latitude];
     NSURL *url = [NSURL URLWithString:searchByLocationEndPoint];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
