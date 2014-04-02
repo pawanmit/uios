@@ -75,15 +75,14 @@
      ];
 }
 
--(void) updateNeayByUsersAnnotations {
-    if ( [self.updateNeayByUsersAnnotationsTimer isValid] && self.user.isAvailable == YES ) {
-        NSLog(@"updating annotations");
-        [self.map removeAnnotations:[self.map annotations]];
-        for (User *nearByUser in self.user.nearByUsers) {
-            //Don't add annoatation for current user
-            if (![nearByUser.userId isEqualToString:self.user.userId]) {
-                [self addNearByUserAnnotation:nearByUser];
-            }
+-(void) updateNeayByUsersAnnotations
+{
+    NSLog(@"updating annotations");
+    [self.map removeAnnotations:[self.map annotations]];
+    for (User *nearByUser in self.user.nearByUsers) {
+        //Don't add annoatation for current user and users with availabilty off
+        if ( (![nearByUser.userId isEqualToString:self.user.userId]) && nearByUser.isAvailable) {
+            [self addNearByUserAnnotation:nearByUser];
         }
     }
 }

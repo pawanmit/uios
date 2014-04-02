@@ -209,9 +209,8 @@
 
             [self.umanlyClientDelegate saveOrUpdateUser:user
                                     withSuccessHandler:^(){
-                                    NSLog(@"User Saved with id %@", self.umanlyClientDelegate.user.userId );
-                                        self.user = user;
-                                        self.user.userId = self.umanlyClientDelegate.user.userId;
+                                        self.user = self.umanlyClientDelegate.user;
+                                        NSLog(@"User retrived with id %@ and availability %i", self.user.userId, self.user.isAvailable );
                                     [self performSegueWithIdentifier:@"segueToMapView" sender:self];
                                  }
                                 withFailureHandler:^(){

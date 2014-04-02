@@ -28,10 +28,8 @@ NSString *const BaseURLString = @"http://api.umanly.com/user/";
                              @"facebook_username": user.facebookUsername
                              };
     [manager POST:BaseURLString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSString *userId = [responseObject objectForKey:@"id"];
-        NSLog(@"User saved with id %@",  userId);
+        User *user = [self getUserFromJson:responseObject];
         self.user = user;
-        self.user.userId = userId;
         successHandler();
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -100,6 +98,28 @@ NSString *const BaseURLString = @"http://api.umanly.com/user/";
     [operation start];
 }
 
+-(void) getUserById:(NSString *) userId
+ withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler
+ withFailureHandler: (UmanlyRequestFailureHandler) failureHander
+{
+    NSMutableString *getUserByIdUrl = [NSMutableString stringWithCapacity:100];
+    [getUserByIdUrl appendString:BaseURLString];
+    [getUserByIdUrl appendString:userId];
+    NSURL *url = [NSURL URLWithString:getUserByIdUrl];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Response %@", (NSDictionary *)responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error: %@" , error);
+    }];
+    
+    [operation start];
+    
+}
+
+
 -(NSArray *) getUsersNearUser:(User *) user
            withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler
            withFailureHandler: (UmanlyRequestFailureHandler) failureHandler
@@ -134,20 +154,30 @@ NSString *const BaseURLString = @"http://api.umanly.com/user/";
     NSMutableArray *nearbyUsers = [[NSMutableArray alloc] init];
     for (id userId in users) {
         id user = [users objectForKey:userId];
-        User *nearByUser = [[User alloc] init];
-        nearByUser.userId = [user objectForKey:@"id"];
-        nearByUser.firstName = [user objectForKey:@"first_name"];
-        nearByUser.lastName = [user objectForKey:@"last_name"];
-        nearByUser.facebookUsername = [user objectForKey:@"facebook_username"];
-        id location = [user objectForKey:@"location"];
+        User *nearByUser = [self getUserFromJson:user];
+        [nearbyUsers addObject:nearByUser];
+    }
+    return nearbyUsers;
+}
+
+-(User *) getUserFromJson: (id) userJson
+{
+    NSLog(@"%@", userJson);
+    User *user = [[User alloc] init];
+    user.userId = [userJson objectForKey:@"id"];
+    user.firstName = [userJson objectForKey:@"first_name"];
+    user.lastName = [userJson objectForKey:@"last_name"];
+    user.facebookUsername = [userJson objectForKey:@"facebook_username"];
+    id location = [userJson objectForKey:@"location"];
+    if (location != nil) {
         UserLocation *userLocation = [[UserLocation alloc] init];
         userLocation.latitude = [[location objectForKey:@"latitude"] floatValue];
         userLocation.longitude = [[location objectForKey:@"longitude"] floatValue];
-        nearByUser.location = userLocation;
-        [nearbyUsers addObject:nearByUser];
-        NSLog(@"%@", nearByUser);
+        user.location = userLocation;
     }
-    return nearbyUsers;
+    NSString *availability = [userJson objectForKey:@"availability"];
+    user.isAvailable = [availability boolValue];
+    return user;
 }
 
 -(NSString *) convertNilToEmptyString:(NSString *) text

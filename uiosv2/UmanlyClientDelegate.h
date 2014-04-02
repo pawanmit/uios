@@ -38,4 +38,8 @@ typedef void (^UmanlyRequestFailureHandler)(void);
             withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler
             withFailureHandler: (UmanlyRequestFailureHandler) failureHander;
 
+-(void) getUserById:(NSString *) userId
+ withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler
+ withFailureHandler: (UmanlyRequestFailureHandler) failureHander;
+
 @end
