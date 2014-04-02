@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIButton *profileButton;
 @property (weak, nonatomic) IBOutlet UIButton *messagesButton;
+@property (weak, nonatomic) IBOutlet UISwitch *availabilitySwitch;
 
 @property (weak, nonatomic) IBOutlet UIButton *mapButton;
 @end

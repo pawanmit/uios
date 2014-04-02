@@ -104,10 +104,15 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IMX-rZ-YPx">
+                                <rect key="frame" x="20" y="78" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="availabilitySwitch" destination="IMX-rZ-YPx" id="2a2-NS-rNM"/>
                         <outlet property="backgroundImageView" destination="r1b-jY-XLo" id="YON-oP-KE9"/>
                         <outlet property="mapButton" destination="fYi-1j-zmw" id="3tk-Oz-kZR"/>
                         <outlet property="messagesButton" destination="ysw-Rq-u8k" id="lJt-cq-aLg"/>
@@ -125,6 +130,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="PMZ-ij-RZv"/>
+        <segue reference="SfI-Vo-Qa8"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -34,4 +34,8 @@ typedef void (^UmanlyRequestFailureHandler)(void);
            withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler
            withFailureHandler: (UmanlyRequestFailureHandler) failureHander;
 
+-(void) updateUserAvailability: (BOOL) isAvailable
+            withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler
+            withFailureHandler: (UmanlyRequestFailureHandler) failureHander;
+
 @end
