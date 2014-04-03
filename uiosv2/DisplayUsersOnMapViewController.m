@@ -8,11 +8,15 @@
 
 #import "DisplayUsersOnMapViewController.h"
 #import "UserAnnotationView.h"
+#import "AFNetworking.h"
+
 #include "UserMenuViewController.h"
+
 
 @interface DisplayUsersOnMapViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *map;
 @property (weak, nonatomic) IBOutlet UIButton *userMenuButton;
+
 @property NSTimer *locateNearByUsersTimer;
 @property NSTimer *updateNeayByUsersAnnotationsTimer;
 
@@ -98,7 +102,14 @@
     annotation.title = title;
     annotation.facebookUsername = nearByUser.facebookUsername;
     NSLog(@"Adding annotation with title %@", title);
-    [self.map addAnnotation:annotation];
+    [self setImageForAnnotation:annotation
+             withSuccessHandler:^(){
+                 [self.map addAnnotation:annotation];
+             }
+             withFailureHandler:^(){
+                 [self.map addAnnotation:annotation];
+             }
+     ];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
@@ -131,7 +142,7 @@
     clLocation.longitude = location.longitude;
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(clLocation, 1000, 1000);
     MKCoordinateRegion adjustedRegion = [self.map regionThatFits:viewRegion];
-    [self.map setRegion:adjustedRegion animated:YES];
+    [self.map setRegion:adjustedRegion animated:NO];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -149,8 +160,8 @@
 -(void) scheduleTimers
 {
     //[self updateAnnotations];
-    self.locateNearByUsersTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(locateNearByUsers) userInfo:nil repeats:YES];
-    self.updateNeayByUsersAnnotationsTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(updateNeayByUsersAnnotations) userInfo:nil repeats:YES];
+    self.locateNearByUsersTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(locateNearByUsers) userInfo:nil repeats:YES];
+    self.updateNeayByUsersAnnotationsTimer = [NSTimer scheduledTimerWithTimeInterval:8 target:self selector:@selector(updateNeayByUsersAnnotations) userInfo:nil repeats:YES];
     
 }
 
@@ -166,5 +177,29 @@
         self.updateNeayByUsersAnnotationsTimer = nil;
     }
 }
+
+-(void) setImageForAnnotation:(UserAnnotation *) annotation
+     withSuccessHandler: (void(^)(void))successHandler
+     withFailureHandler: (void(^)(void))failureHander
+
+{
+    NSString *facebookProfileImageUrl = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture", annotation.facebookUsername];
+    NSURL *imageURL = [NSURL URLWithString:facebookProfileImageUrl];
+    NSURLRequest *request = [NSURLRequest requestWithURL:imageURL];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFImageResponseSerializer serializer];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        annotation.annotationImage = responseObject;
+        successHandler();
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error getting facebook profile image for  %@" ,  annotation.facebookUsername);
+        UIImage *annotationImage = [UIImage imageNamed:@"test_annotation.png"];
+        failureHander();
+        annotation.annotationImage = annotationImage;
+        NSLog(@"error: %@" , error);
+    }];
+    [operation start];
+}
+
 
 @end
