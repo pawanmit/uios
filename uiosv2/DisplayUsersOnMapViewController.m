@@ -89,6 +89,8 @@
             [self addNearByUserAnnotation:nearByUser];
         }
     }
+    [self unscheduleTimers];
+
 }
 
 
@@ -101,6 +103,11 @@
     UserAnnotation *annotation = [[UserAnnotation alloc] initWithPosition:clLocation];
     annotation.title = title;
     annotation.facebookUsername = nearByUser.facebookUsername;
+    UIButton *annotationButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [annotationButton addTarget:self
+                     action:@selector(segueToDisplayUserProfile)
+                     forControlEvents:UIControlEventTouchUpInside];
+    annotation.annotationButton = annotationButton;
     NSLog(@"Adding annotation with title %@", title);
     [self setImageForAnnotation:annotation
              withSuccessHandler:^(){
@@ -201,5 +208,10 @@
     [operation start];
 }
 
+-(void) segueToDisplayUserProfile
+{
+    NSLog(@"Seguing to DisplayUserProfileView");
+    [self performSegueWithIdentifier:@"segueToDisplayUserProfile" sender:self];
+}
 
 @end

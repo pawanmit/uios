@@ -16,6 +16,7 @@
 @property (nonatomic, copy) NSString *subtitle;
 @property NSString* facebookUsername;
 @property UIImage *annotationImage;
+@property UIButton *annotationButton;
 
 
 - initWithPosition:(CLLocationCoordinate2D)coords;

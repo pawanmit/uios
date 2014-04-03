@@ -8,6 +8,7 @@
 
 #import "UserAnnotationView.h"
 #import "UserAnnotation.h"
+#import "DisplayUsersOnMapViewController.h"
 
 @implementation UserAnnotationView
 
@@ -22,6 +23,7 @@
         self.enabled = YES;
         self.canShowCallout = YES;
         self.leftCalloutAccessoryView = annotationImageView;
+        self.rightCalloutAccessoryView = userAnnotation.annotationButton;
     }
     
     return self;

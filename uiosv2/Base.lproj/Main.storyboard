@@ -57,11 +57,12 @@
                     <connections>
                         <outlet property="map" destination="ub3-Dh-0sh" id="JxB-NG-PaX"/>
                         <outlet property="userMenuButton" destination="flo-KI-64R" id="LHO-kw-fUX"/>
+                        <segue destination="FVi-lx-zNs" kind="modal" identifier="segueToDisplayUserProfile" id="xrW-Er-1tq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tee-kQ-IDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="121" y="-53"/>
+            <point key="canvasLocation" x="159" y="-37"/>
         </scene>
         <!--User Menu View Controller-->
         <scene sceneID="B3a-v1-Nkg">
@@ -127,7 +128,33 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCk-Rp-mQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="583" y="-53"/>
+            <point key="canvasLocation" x="761" y="-347"/>
+        </scene>
+        <!--Display User Profile View Controller-->
+        <scene sceneID="PiQ-Sh-Aw3">
+            <objects>
+                <viewController id="FVi-lx-zNs" customClass="DisplayUserProfileViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JgE-Wh-xRH"/>
+                        <viewControllerLayoutGuide type="bottom" id="EG3-Jc-eMO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AEo-39-k5b">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TEST" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFv-Db-lkk">
+                                <rect key="frame" x="139" y="197" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GT5-3C-wWH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="761" y="264"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -136,6 +163,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="SfI-Vo-Qa8"/>
+        <segue reference="PMZ-ij-RZv"/>
     </inferredMetricsTieBreakers>
 </document>

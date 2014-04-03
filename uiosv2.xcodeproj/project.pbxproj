@@ -52,6 +52,7 @@
 		D4C6782C18E0DABC006847FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4C6782B18E0DABC006847FF /* MapKit.framework */; };
 		D4C6783218E0ED63006847FF /* UserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C6783118E0ED63006847FF /* UserLocation.m */; };
 		D4E1049C18E4D522004CFB3A /* UserAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E1049B18E4D522004CFB3A /* UserAnnotationView.m */; };
+		D4E46C5218EE0B0C009B6306 /* DisplayUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E46C5118EE0B0C009B6306 /* DisplayUserProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +144,8 @@
 		D4C6783118E0ED63006847FF /* UserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserLocation.m; path = ../UserLocation.m; sourceTree = "<group>"; };
 		D4E1049A18E4D522004CFB3A /* UserAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAnnotationView.h; sourceTree = "<group>"; };
 		D4E1049B18E4D522004CFB3A /* UserAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAnnotationView.m; sourceTree = "<group>"; };
+		D4E46C5018EE0B0C009B6306 /* DisplayUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayUserProfileViewController.h; sourceTree = "<group>"; };
+		D4E46C5118EE0B0C009B6306 /* DisplayUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayUserProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +242,8 @@
 				D45D64B718E6405500EA87D0 /* UserMenuViewController.m */,
 				D4AEF28618EB6D620078F291 /* UmanlyViewController.h */,
 				D4AEF28718EB6D620078F291 /* UmanlyViewController.m */,
+				D4E46C5018EE0B0C009B6306 /* DisplayUserProfileViewController.h */,
+				D4E46C5118EE0B0C009B6306 /* DisplayUserProfileViewController.m */,
 			);
 			path = uiosv2;
 			sourceTree = "<group>";
@@ -447,6 +452,7 @@
 				D48A74F118DCEFDC008D1C9A /* AFURLSessionManager.m in Sources */,
 				D4BC77E018DD013600171C7C /* UmanlyClientDelegate.m in Sources */,
 				D48A74A218DCED13008D1C9A /* AppDelegate.m in Sources */,
+				D4E46C5218EE0B0C009B6306 /* DisplayUserProfileViewController.m in Sources */,
 				D48A749E18DCED13008D1C9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
