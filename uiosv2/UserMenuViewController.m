@@ -67,11 +67,11 @@
     UIImage *backgroundImage = [UIImage imageNamed: @"Umanly_app_Menu_Background.png"];
     self.backgroundImageView.image =  backgroundImage;
 
-    [self.profileButton setBackgroundImage:[UIImage imageNamed:@"Umanly_app_Profile_Button.png"] forState:UIControlStateNormal];
+    [self.profileButton setBackgroundImage:[UIImage imageNamed:@"User_Menu_Profile_Button.png"] forState:UIControlStateNormal];
     //[viewUtility changButtonSize:self.profileButton withWidth:154 withHeight:35];
-    [self.mapButton setBackgroundImage:[UIImage imageNamed:@"Umanly_app_Map_Button.png"] forState:UIControlStateNormal];
+    [self.mapButton setBackgroundImage:[UIImage imageNamed:@"User_Menu_Map_Button.png"] forState:UIControlStateNormal];
     //[viewUtility changButtonSize:self.mapButton withWidth:154 withHeight:35];
-    [self.messagesButton setBackgroundImage:[UIImage imageNamed:@"Umanly_app_Messages_Button.png"] forState:UIControlStateNormal];
+    [self.messagesButton setBackgroundImage:[UIImage imageNamed:@"User_Menu_Messages_Button.png"] forState:UIControlStateNormal];
     //[viewUtility changButtonSize:self.messagesButton withWidth:154 withHeight:35];
 }
 
