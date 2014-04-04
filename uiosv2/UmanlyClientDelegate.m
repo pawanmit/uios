@@ -16,7 +16,7 @@ NSString *const BaseURLString = @"http://api.umanly.com/user/";
       withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler
       withFailureHandler: (UmanlyRequestFailureHandler) failureHander
 {
-    NSLog([NSString stringWithFormat:@"%@" , user.firstName]);
+    //NSLog([NSString stringWithFormat:@"%@" , user.firstName]);
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *params = @{@"first_name": user.firstName,
                              @"last_name": user.lastName,
@@ -162,7 +162,7 @@ NSString *const BaseURLString = @"http://api.umanly.com/user/";
 
 -(User *) getUserFromJson: (id) userJson
 {
-    NSLog(@"%@", userJson);
+    //NSLog(@"%@", userJson);
     User *user = [[User alloc] init];
     user.userId = [userJson objectForKey:@"id"];
     user.firstName = [userJson objectForKey:@"first_name"];

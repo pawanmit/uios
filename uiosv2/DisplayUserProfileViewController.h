@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UmanlyViewController.h"
 
-@interface DisplayUserProfileViewController : UIViewController
+@interface DisplayUserProfileViewController : UmanlyViewController
+
+@property NSString *currentUserId;
 
 @end

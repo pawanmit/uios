@@ -11,6 +11,7 @@
 #import "AFNetworking.h"
 
 #include "UserMenuViewController.h"
+#include "DisplayUserProfileViewController.h"
 
 
 @interface DisplayUsersOnMapViewController ()
@@ -89,7 +90,7 @@
             [self addNearByUserAnnotation:nearByUser];
         }
     }
-    [self unscheduleTimers];
+    //[self unscheduleTimers];
 
 }
 
@@ -104,8 +105,9 @@
     annotation.title = title;
     annotation.facebookUsername = nearByUser.facebookUsername;
     UIButton *annotationButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    annotationButton.tag = [nearByUser.userId integerValue];
     [annotationButton addTarget:self
-                     action:@selector(segueToDisplayUserProfile)
+                         action:@selector(segueToDisplayUserProfile:)
                      forControlEvents:UIControlEventTouchUpInside];
     annotation.annotationButton = annotationButton;
     NSLog(@"Adding annotation with title %@", title);
@@ -117,6 +119,14 @@
                  [self.map addAnnotation:annotation];
              }
      ];
+}
+
+-(void) segueToDisplayUserProfile:(id)sender
+{
+    UIButton *buttonClicked = (UIButton *)sender;
+    NSLog(@"Seguing to user profile with id %d", buttonClicked.tag);
+    NSLog(@"Seguing to DisplayUserProfileView");
+    [self performSegueWithIdentifier:@"segueToDisplayUserProfile" sender:self];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
@@ -159,6 +169,12 @@
         UserMenuViewController *nextVC = [segue destinationViewController];
         nextVC.sourceView = @"DisplayUsersOnMapView";
         nextVC.user = self.user;
+    } else if ([[segue identifier] isEqualToString:@"segueToDisplayUserProfile"]) {
+        DisplayUserProfileViewController *nextVC = [segue destinationViewController];
+        nextVC.sourceView = @"DisplayUsersOnMapView";
+        nextVC.user = self.user;
+        //UIButton *button = (UIButton*) sender;
+        //NSLog(@"Loading profile for near by user %i", (int)button.tag);
     }
     
     [self unscheduleTimers];
@@ -196,6 +212,7 @@
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFImageResponseSerializer serializer];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"success getting facebook profile image for  %@" ,  annotation.facebookUsername);
         annotation.annotationImage = responseObject;
         successHandler();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -206,12 +223,6 @@
         NSLog(@"error: %@" , error);
     }];
     [operation start];
-}
-
--(void) segueToDisplayUserProfile
-{
-    NSLog(@"Seguing to DisplayUserProfileView");
-    [self performSegueWithIdentifier:@"segueToDisplayUserProfile" sender:self];
 }
 
 @end
