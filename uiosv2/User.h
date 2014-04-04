@@ -25,8 +25,8 @@
 @property NSString *facebookUsername;
 
 @property UserLocation *location;
-@property NSArray *nearByUsers;
+//@property NSArray *nearByUsers;
 
-@property NSMutableDictionary *nearByUsersImages;
+@property NSDictionary *nearByUsers;
 
 @end

@@ -84,7 +84,8 @@
 {
     NSLog(@"updating annotations");
     [self.map removeAnnotations:[self.map annotations]];
-    for (User *nearByUser in self.user.nearByUsers) {
+    for (id userId in self.user.nearByUsers) {
+        User *nearByUser = [self.user.nearByUsers objectForKey:userId];
         //Don't add annoatation for current user and users with availabilty off
         if ( (![nearByUser.userId isEqualToString:self.user.userId]) && nearByUser.isAvailable) {
             [self addNearByUserAnnotation:nearByUser];

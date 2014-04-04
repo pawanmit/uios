@@ -135,8 +135,8 @@ NSString *const BaseURLString = @"http://api.umanly.com/user/";
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
     responseObject = (NSDictionary *) responseObject;
             id users = [responseObject objectForKey:@"users"];
-            NSArray *nearByUsers = [self getNearByUsersFromJson:users];
-        user.nearByUsers = nearByUsers;
+            NSDictionary *nearByUsersDictionary = [self getNearByUsersFromJson:users];
+        user.nearByUsers = nearByUsersDictionary;
         self.user = user;
         successHandler();
         
@@ -149,15 +149,16 @@ NSString *const BaseURLString = @"http://api.umanly.com/user/";
     return userArray;
 }
 
--(NSMutableArray *) getNearByUsersFromJson:(id) users
+-(NSMutableDictionary *) getNearByUsersFromJson:(id) users
 {
-    NSMutableArray *nearbyUsers = [[NSMutableArray alloc] init];
+    //NSMutableArray *nearbyUsers = [[NSMutableArray alloc] init];
+    NSMutableDictionary *nearbyUsersDictionary = [[NSMutableDictionary alloc] init];
     for (id userId in users) {
         id user = [users objectForKey:userId];
         User *nearByUser = [self getUserFromJson:user];
-        [nearbyUsers addObject:nearByUser];
+        [nearbyUsersDictionary setObject:nearByUser forKey:nearByUser.userId];
     }
-    return nearbyUsers;
+    return nearbyUsersDictionary;
 }
 
 -(User *) getUserFromJson: (id) userJson
