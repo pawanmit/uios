@@ -124,44 +124,9 @@
 
 -(void) segueToDisplayUserProfile:(id)sender
 {
-    UIButton *buttonClicked = (UIButton *)sender;
-    NSLog(@"Seguing to user profile with id %d", buttonClicked.tag);
-    NSLog(@"Seguing to DisplayUserProfileView");
-    [self performSegueWithIdentifier:@"segueToDisplayUserProfile" sender:self];
+    [self performSegueWithIdentifier:@"segueToDisplayUserProfile" sender:sender];
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
-{
-
-    static NSString *identifier = @"pin";
-    UserAnnotationView *view = (UserAnnotationView *)[self.map dequeueReusableAnnotationViewWithIdentifier:identifier];
-    if (view == nil) {
-        view = [[UserAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
-    }
-    return view;
-}
-
-
-- (void)prepareView
-{
-    ViewUtility *viewUtility = [[ViewUtility alloc] init];
-
-    [self.userMenuButton setBackgroundImage:[UIImage imageNamed:@"Umanly_app_Hamburger_Button.png"] forState:UIControlStateNormal];
-    [viewUtility changButtonSize:self.userMenuButton withWidth:49 withHeight:39];
-}
-
-
-- (void) showUserOnMap: (UserLocation *) location
-{
-    NSLog(@"User location: Longitude %f and Latitude %f ",  self.user.location.longitude, self.user.location.latitude);
-    //self.map.centerCoordinate = userLocation.location.coordinate;
-    CLLocationCoordinate2D clLocation;
-    clLocation.latitude = location.latitude;
-    clLocation.longitude = location.longitude;
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(clLocation, 1000, 1000);
-    MKCoordinateRegion adjustedRegion = [self.map regionThatFits:viewRegion];
-    [self.map setRegion:adjustedRegion animated:NO];
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -174,8 +139,9 @@
         DisplayUserProfileViewController *nextVC = [segue destinationViewController];
         nextVC.sourceView = @"DisplayUsersOnMapView";
         nextVC.user = self.user;
-        //UIButton *button = (UIButton*) sender;
-        //NSLog(@"Loading profile for near by user %i", (int)button.tag);
+        UIButton *buttonClicked = (UIButton*) sender;
+        nextVC.currentUserId = [NSString stringWithFormat:@"%d",(int)buttonClicked.tag];
+        NSLog(@"Loading profile for near by user %@",  nextVC.currentUserId );
     }
     
     [self unscheduleTimers];
@@ -200,6 +166,38 @@
         [self.updateNeayByUsersAnnotationsTimer invalidate];
         self.updateNeayByUsersAnnotationsTimer = nil;
     }
+}
+
+- (void)prepareView
+{
+    ViewUtility *viewUtility = [[ViewUtility alloc] init];
+    
+    [self.userMenuButton setBackgroundImage:[UIImage imageNamed:@"Umanly_app_Hamburger_Button.png"] forState:UIControlStateNormal];
+    [viewUtility changButtonSize:self.userMenuButton withWidth:49 withHeight:39];
+}
+
+
+- (void) showUserOnMap: (UserLocation *) location
+{
+    NSLog(@"User location: Longitude %f and Latitude %f ",  self.user.location.longitude, self.user.location.latitude);
+    //self.map.centerCoordinate = userLocation.location.coordinate;
+    CLLocationCoordinate2D clLocation;
+    clLocation.latitude = location.latitude;
+    clLocation.longitude = location.longitude;
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(clLocation, 1000, 1000);
+    MKCoordinateRegion adjustedRegion = [self.map regionThatFits:viewRegion];
+    [self.map setRegion:adjustedRegion animated:NO];
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    
+    static NSString *identifier = @"pin";
+    UserAnnotationView *view = (UserAnnotationView *)[self.map dequeueReusableAnnotationViewWithIdentifier:identifier];
+    if (view == nil) {
+        view = [[UserAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+    }
+    return view;
 }
 
 -(void) setImageForAnnotation:(UserAnnotation *) annotation

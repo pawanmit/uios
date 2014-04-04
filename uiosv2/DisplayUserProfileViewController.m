@@ -14,19 +14,12 @@
 
 @implementation DisplayUserProfileViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
+    User *currentUser = [self.user.nearByUsers objectForKey:self.currentUserId];
+    NSLog(@"DisplayUserProfileViewController: Loading user %@", currentUser.firstName);
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
