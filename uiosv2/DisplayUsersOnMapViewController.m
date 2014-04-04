@@ -20,6 +20,7 @@
 
 @property NSTimer *locateNearByUsersTimer;
 @property NSTimer *updateNeayByUsersAnnotationsTimer;
+@property (weak, nonatomic) IBOutlet UILabel *logoLabel;
 
 @end
 
@@ -173,7 +174,8 @@
     ViewUtility *viewUtility = [[ViewUtility alloc] init];
     
     [self.userMenuButton setBackgroundImage:[UIImage imageNamed:@"Umanly_app_Hamburger_Button.png"] forState:UIControlStateNormal];
-    [viewUtility changButtonSize:self.userMenuButton withWidth:49 withHeight:39];
+    self.logoLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Umanly_Logo_Top.png"]];
+
 }
 
 
