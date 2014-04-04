@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 umanly. All rights reserved.
 //
 
-#import "DisplayUserProfileViewController.h"
+#import "UserProfileViewController.h"
 
-@interface DisplayUserProfileViewController ()
+@interface UserProfileViewController ()
 
 @end
 
-@implementation DisplayUserProfileViewController
+@implementation UserProfileViewController
 
 
 - (void)viewDidLoad

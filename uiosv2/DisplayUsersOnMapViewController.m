@@ -11,7 +11,7 @@
 #import "AFNetworking.h"
 
 #include "UserMenuViewController.h"
-#include "DisplayUserProfileViewController.h"
+#include "UserProfileViewController.h"
 
 
 @interface DisplayUsersOnMapViewController ()
@@ -137,7 +137,7 @@
         nextVC.sourceView = @"DisplayUsersOnMapView";
         nextVC.user = self.user;
     } else if ([[segue identifier] isEqualToString:@"segueToDisplayUserProfile"]) {
-        DisplayUserProfileViewController *nextVC = [segue destinationViewController];
+        UserProfileViewController *nextVC = [segue destinationViewController];
         nextVC.sourceView = @"DisplayUsersOnMapView";
         nextVC.user = self.user;
         UIButton *buttonClicked = (UIButton*) sender;

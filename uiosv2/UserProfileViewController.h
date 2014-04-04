@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UmanlyViewController.h"
 
-@interface DisplayUserProfileViewController : UmanlyViewController
+@interface UserProfileViewController : UmanlyViewController
 
 @property NSString *currentUserId;
 

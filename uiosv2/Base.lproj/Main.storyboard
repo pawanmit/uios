@@ -138,10 +138,10 @@
             </objects>
             <point key="canvasLocation" x="761" y="-347"/>
         </scene>
-        <!--Display User Profile View Controller-->
+        <!--User Profile View Controller-->
         <scene sceneID="PiQ-Sh-Aw3">
             <objects>
-                <viewController id="FVi-lx-zNs" customClass="DisplayUserProfileViewController" sceneMemberID="viewController">
+                <viewController id="FVi-lx-zNs" customClass="UserProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JgE-Wh-xRH"/>
                         <viewControllerLayoutGuide type="bottom" id="EG3-Jc-eMO"/>
