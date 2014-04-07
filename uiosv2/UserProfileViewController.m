@@ -16,7 +16,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelForGeneralInterests;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelForChatInterests;
+@property (weak, nonatomic) IBOutlet UIButton *greetUserButton;
 @property (weak, nonatomic) IBOutlet UILabel *labelForTopBar;
+@property (weak, nonatomic) IBOutlet UILabel *labelForBasicInfoData;
+@property (weak, nonatomic) IBOutlet UILabel *labelForHeadingData;
 @end
 
 @implementation UserProfileViewController
@@ -24,8 +27,8 @@
 
 - (void)viewDidLoad
 {
-    User *currentUser = [self.user.nearByUsers objectForKey:self.currentUserId];
-    NSLog(@"DisplayUserProfileViewController: Loading user %@", currentUser.firstName);
+    User *profiledUser = [self.user.nearByUsers objectForKey:self.userIdOfProfiledUser];
+    NSLog(@"DisplayUserProfileViewController: Loading user %@", profiledUser.firstName);
     [self prepareView];
     [super viewDidLoad];
 }
@@ -44,9 +47,30 @@
     self.labelForBasicInfo.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"User_Profile_Basic_Info_Icon.png"]];
     self.labelForGeneralInterests.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"User_Profile_General_Interests_Icon.png"]];
     self.labelForChatInterests.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"User_Profile_Chat_Interests_Icon.png"]];
-    
-        self.labelForTopBar.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"User_Profile_Top_Bar.png"]];
+    self.labelForTopBar.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"User_Profile_Top_Bar.png"]];
 
+    [self.greetUserButton setBackgroundImage:[UIImage imageNamed:@"Greetings_Button.png"] forState:UIControlStateNormal];
+    [self.greetUserButton setTitle:@"Say Hello" forState:UIControlStateNormal];
+    
+    User *profiledUser = [self.user.nearByUsers objectForKey:self.userIdOfProfiledUser];
+    self.labelForHeadingData.text = [NSString stringWithFormat:@"%@ %@\r%@", profiledUser.firstName, profiledUser.lastName, profiledUser.hometown];
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"LL/d/yyyy"];
+    NSDate *dateOfBirth = [dateFormat dateFromString:profiledUser.birthday];
+    int age = [self calculateAge:dateOfBirth];
+    self.labelForBasicInfoData.text = [NSString stringWithFormat:@"AGE: %d\rGENDER: %@", age, profiledUser.gender];
+    
+    
 }
 
+- (NSInteger)calculateAge:(NSDate *)birthday {
+    NSDate *today = [NSDate date];
+    NSDateComponents *ageComponents = [[NSCalendar currentCalendar]
+                                       components:NSYearCalendarUnit
+                                       fromDate:birthday
+                                       toDate:today
+                                       options:0];
+    return ageComponents.year;
+}
 @end

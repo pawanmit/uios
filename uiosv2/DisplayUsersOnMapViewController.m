@@ -141,8 +141,8 @@
         nextVC.sourceView = @"DisplayUsersOnMapView";
         nextVC.user = self.user;
         UIButton *buttonClicked = (UIButton*) sender;
-        nextVC.currentUserId = [NSString stringWithFormat:@"%d",(int)buttonClicked.tag];
-        NSLog(@"Loading profile for near by user %@",  nextVC.currentUserId );
+        nextVC.userIdOfProfiledUser = [NSString stringWithFormat:@"%d",(int)buttonClicked.tag];
+        NSLog(@"Loading profile for near by user %@",  nextVC.userIdOfProfiledUser );
     }
     
     [self unscheduleTimers];

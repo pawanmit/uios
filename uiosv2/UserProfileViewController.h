@@ -11,6 +11,6 @@
 
 @interface UserProfileViewController : UmanlyViewController
 
-@property NSString *currentUserId;
+@property NSString *userIdOfProfiledUser;
 
 @end

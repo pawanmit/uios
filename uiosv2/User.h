@@ -18,7 +18,7 @@
 @property NSString *hometown;
 @property NSString *gender;
 @property NSString *employer;
-@property NSDate   *birthday;
+@property NSString *birthday;
 @property BOOL isAvailable;
 
 @property NSString *facebookProfileLink;
