@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelForGeneralInterests;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelForChatInterests;
+@property (weak, nonatomic) IBOutlet UILabel *labelForTopBar;
 @end
 
 @implementation UserProfileViewController
@@ -43,6 +44,8 @@
     self.labelForBasicInfo.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"User_Profile_Basic_Info_Icon.png"]];
     self.labelForGeneralInterests.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"User_Profile_General_Interests_Icon.png"]];
     self.labelForChatInterests.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"User_Profile_Chat_Interests_Icon.png"]];
+    
+        self.labelForTopBar.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"User_Profile_Top_Bar.png"]];
 
 }
 

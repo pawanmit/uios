@@ -45,7 +45,7 @@
     [self updateFbLoginView:loginView];
     
     // Ask for basic permissions on login
-    [loginView setReadPermissions:@[@"basic_info"]];
+    [loginView setReadPermissions:@[@"basic_info", @"birthday"]];
     [loginView setDelegate:self];
 }
 
