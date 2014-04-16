@@ -135,7 +135,10 @@ NSString *const BaseURLString = @"http://api.umanly.com/user/";
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Response %@", (NSDictionary *)responseObject);
+        id userJson = [responseObject objectForKey:@"User"];
+        self.user = [self getUserFromJson:userJson];
+        successHandler();
+        //NSLog(@"Response %@", (NSDictionary *)responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error: %@" , error);
     }];
@@ -205,6 +208,7 @@ NSString *const BaseURLString = @"http://api.umanly.com/user/";
     }
     NSString *availability = [userJson objectForKey:@"availability"];
     user.isAvailable = [availability boolValue];
+    user.chatStatus = [userJson objectForKey:@"chat_status"];
     return user;
 }
 

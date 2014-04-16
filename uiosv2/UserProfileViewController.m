@@ -69,6 +69,14 @@
 {
     NSLog(@"Greeting user: %@", self.userIdOfProfiledUser );
     //check if profiled user chat_status is available.
+    [self.umanlyClientDelegate getUserById:self.userIdOfProfiledUser
+                        withSuccessHandler:^{
+                            User *profiledUser = self.umanlyClientDelegate.user;
+                            NSLog(@"User chat status %@", profiledUser.chatStatus );
+                        }
+                        withFailureHandler:^{
+                            
+                        }];
     //if she is available, update her status to unavailable so while a chat connection is being set up no other user can request chat with her.
     //Update current user availability to waiting_for_response
     //Request chat with self.userIdOfProfiledUser
