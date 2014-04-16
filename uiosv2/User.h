@@ -20,6 +20,7 @@
 @property NSString *employer;
 @property NSString *birthday;
 @property BOOL isAvailable;
+@property NSString *chatStatus;
 
 @property NSString *facebookProfileLink;
 @property NSString *facebookUsername;
