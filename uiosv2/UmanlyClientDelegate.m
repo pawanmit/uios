@@ -18,17 +18,10 @@ NSString *const BaseURLString = @"http://api.umanly.com/user/";
 {
     //NSLog([NSString stringWithFormat:@"%@" , user.firstName]);
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSDictionary *params = @{@"first_name": user.firstName,
-                             @"last_name": user.lastName,
-                             @"email": user.email,
-                             @"hometown": [self convertNilToEmptyString:user.hometown],
-                             @"gender": user.gender,
-                             @"birthday": [self convertNilToEmptyString:user.birthday],
-                             @"facebook_link": user.facebookProfileLink,
-                             @"facebook_username": user.facebookUsername
-                             };
+    NSDictionary *params = [self getParamsFromUser:user];
     [manager POST:BaseURLString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        User *user = [self getUserFromJson:responseObject];
+        id userJson = [responseObject objectForKey:@"User"];
+        User *user = [self getUserFromJson:userJson];
         self.user = user;
         successHandler();
 
@@ -36,6 +29,38 @@ NSString *const BaseURLString = @"http://api.umanly.com/user/";
         NSLog(@"Error: %@", error);
         failureHander();
     }];
+}
+
+- (NSDictionary*) getParamsFromUser:(User *)user
+{
+    NSMutableDictionary *userParams = [[NSMutableDictionary alloc] init];
+    
+    if ( ![self isNilOrEmpty:user.firstName] ) {
+        [userParams setObject:user.firstName forKey:@"first_name"];
+    }
+    if ( ![self isNilOrEmpty:user.lastName] ) {
+        [userParams setObject:user.lastName forKey:@"last_name"];
+    }
+    if ( ![self isNilOrEmpty:user.email] ) {
+        [userParams setObject:user.email forKey:@"email"];
+    }
+    if ( ![self isNilOrEmpty:user.hometown] ) {
+        [userParams setObject:user.hometown forKey:@"hometown"];
+    }
+    if ( ![self isNilOrEmpty:user.birthday] ) {
+        [userParams setObject:user.birthday forKey:@"birthday"];
+    }
+    if ( ![self isNilOrEmpty:user.facebookProfileLink] ) {
+        [userParams setObject:user.facebookProfileLink forKey:@"facebook_link"];
+    }
+    if ( ![self isNilOrEmpty:user.facebookUsername] ) {
+        [userParams setObject:user.facebookUsername forKey:@"facebook_username"];
+    }
+    if ( ![self isNilOrEmpty:user.chatStatus] ) {
+        [userParams setObject:user.chatStatus forKey:@"chat_status"];
+    }
+    
+    return userParams;
 }
 
 -(void) updateUser: (User *) user
@@ -163,7 +188,6 @@ NSString *const BaseURLString = @"http://api.umanly.com/user/";
 
 -(User *) getUserFromJson: (id) userJson
 {
-    //NSLog(@"%@", userJson);
     User *user = [[User alloc] init];
     user.userId = [userJson objectForKey:@"id"];
     user.firstName = [userJson objectForKey:@"first_name"];
@@ -193,4 +217,17 @@ NSString *const BaseURLString = @"http://api.umanly.com/user/";
     }
 }
 
+-(BOOL) isNilOrEmpty:(NSString *) string
+{
+    BOOL isNilOrEmpty = NO;
+    if (string == nil) {
+        isNilOrEmpty = YES;
+    } else {
+     NSString *trimmedString = [string stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]];
+        if ([trimmedString length] < 1) {
+            isNilOrEmpty = YES;
+        }
+    }
+    return isNilOrEmpty;
+}
 @end
