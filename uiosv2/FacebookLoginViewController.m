@@ -228,6 +228,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    [self listenForIncomingChatRequestsForUser:self.user.userId];
     if ([[segue identifier] isEqualToString:@"segueToMapView"])
     {
         DisplayUsersOnMapViewController *nextVC = [segue destinationViewController];

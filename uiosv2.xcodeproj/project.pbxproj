@@ -51,6 +51,10 @@
 		D4BC77E018DD013600171C7C /* UmanlyClientDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BC77DF18DD013600171C7C /* UmanlyClientDelegate.m */; };
 		D4C6782C18E0DABC006847FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4C6782B18E0DABC006847FF /* MapKit.framework */; };
 		D4C6783218E0ED63006847FF /* UserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C6783118E0ED63006847FF /* UserLocation.m */; };
+		D4D8F5FE18FDA4D400A33BEC /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D8F5FD18FDA4D400A33BEC /* Firebase.framework */; };
+		D4D8F60018FDA52700A33BEC /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D8F5FF18FDA52700A33BEC /* libicucore.dylib */; };
+		D4D8F60218FDA54000A33BEC /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D8F60118FDA54000A33BEC /* libc++.dylib */; };
+		D4D8F60418FDA54F00A33BEC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D8F60318FDA54F00A33BEC /* CFNetwork.framework */; };
 		D4E1049C18E4D522004CFB3A /* UserAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E1049B18E4D522004CFB3A /* UserAnnotationView.m */; };
 		D4E46C5218EE0B0C009B6306 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E46C5118EE0B0C009B6306 /* UserProfileViewController.m */; };
 /* End PBXBuildFile section */
@@ -142,6 +146,10 @@
 		D4C6782B18E0DABC006847FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D4C6783018E0ED63006847FF /* UserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserLocation.h; path = ../UserLocation.h; sourceTree = "<group>"; };
 		D4C6783118E0ED63006847FF /* UserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserLocation.m; path = ../UserLocation.m; sourceTree = "<group>"; };
+		D4D8F5FD18FDA4D400A33BEC /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = ../../Downloads/Firebase.framework; sourceTree = "<group>"; };
+		D4D8F5FF18FDA52700A33BEC /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		D4D8F60118FDA54000A33BEC /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		D4D8F60318FDA54F00A33BEC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D4E1049A18E4D522004CFB3A /* UserAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAnnotationView.h; sourceTree = "<group>"; };
 		D4E1049B18E4D522004CFB3A /* UserAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAnnotationView.m; sourceTree = "<group>"; };
 		D4E46C5018EE0B0C009B6306 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
@@ -153,6 +161,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4D8F60418FDA54F00A33BEC /* CFNetwork.framework in Frameworks */,
+				D4D8F60218FDA54000A33BEC /* libc++.dylib in Frameworks */,
+				D4D8F60018FDA52700A33BEC /* libicucore.dylib in Frameworks */,
+				D4D8F5FE18FDA4D400A33BEC /* Firebase.framework in Frameworks */,
 				D4C6782C18E0DABC006847FF /* MapKit.framework in Frameworks */,
 				D48A74D218DCEE32008D1C9A /* MobileCoreServices.framework in Frameworks */,
 				D48A74D018DCEE24008D1C9A /* SystemConfiguration.framework in Frameworks */,
@@ -199,6 +211,10 @@
 		D48A749018DCED13008D1C9A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D4D8F60318FDA54F00A33BEC /* CFNetwork.framework */,
+				D4D8F60118FDA54000A33BEC /* libc++.dylib */,
+				D4D8F5FF18FDA52700A33BEC /* libicucore.dylib */,
+				D4D8F5FD18FDA4D400A33BEC /* Firebase.framework */,
 				D49BAB6318E38D42007ADB35 /* FacebookSDK.framework */,
 				D4C6782B18E0DABC006847FF /* MapKit.framework */,
 				D48A74F218DCEFE7008D1C9A /* UIKit+AFNetworking */,
@@ -584,10 +600,12 @@
 					"$(inherited)",
 					/Users/pmittal/workspace/uiosv2,
 					/Users/pmittal/workspace/uios,
+					/Users/pmittal/Downloads,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "uiosv2/uiosv2-Prefix.pch";
 				INFOPLIST_FILE = "uiosv2/uiosv2-Info.plist";
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -602,10 +620,12 @@
 					"$(inherited)",
 					/Users/pmittal/workspace/uiosv2,
 					/Users/pmittal/workspace/uios,
+					/Users/pmittal/Downloads,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "uiosv2/uiosv2-Prefix.pch";
 				INFOPLIST_FILE = "uiosv2/uiosv2-Info.plist";
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

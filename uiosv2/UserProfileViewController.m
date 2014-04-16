@@ -51,6 +51,9 @@
 
     [self.greetUserButton setBackgroundImage:[UIImage imageNamed:@"Greetings_Button.png"] forState:UIControlStateNormal];
     [self.greetUserButton setTitle:@"Say Hello" forState:UIControlStateNormal];
+    [self.greetUserButton addTarget:self
+                         action:@selector(greetUser)
+                        forControlEvents:UIControlEventTouchUpInside];
     
     User *profiledUser = [self.user.nearByUsers objectForKey:self.userIdOfProfiledUser];
     self.labelForHeadingData.text = [NSString stringWithFormat:@"%@ %@\r%@", profiledUser.firstName, profiledUser.lastName, profiledUser.hometown];
@@ -60,8 +63,16 @@
     NSDate *dateOfBirth = [dateFormat dateFromString:profiledUser.birthday];
     int age = [self calculateAge:dateOfBirth];
     self.labelForBasicInfoData.text = [NSString stringWithFormat:@"AGE: %d\rGENDER: %@", age, profiledUser.gender];
-    
-    
+}
+
+-(void) greetUser
+{
+    NSLog(@"Greeting user: %@", self.userIdOfProfiledUser );
+    //check if profiled user chat_status is available.
+    //if she is available, update her status to unavailable so while a chat connection is being set up no other user can request chat with her.
+    //Update current user availability to waiting_for_response
+    //Request chat with self.userIdOfProfiledUser
+    //When user accepts her chat request segue to chat view
 }
 
 - (NSInteger)calculateAge:(NSDate *)birthday {
