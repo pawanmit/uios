@@ -14,8 +14,6 @@
 
 @implementation UmanlyViewController
 
-NSString *const FireBaseURL = @"https://popping-fire-3020.firebaseIO.com/";
-
 - (void)viewDidLoad
 {
  
@@ -25,27 +23,15 @@ NSString *const FireBaseURL = @"https://popping-fire-3020.firebaseIO.com/";
         self.umanlyClientDelegate = umanlyClientDelegate;
     }
     
+    if (self.umanlyChatDelegate == nil) {
+        self.umanlyChatDelegate = [[UmanlyChatDelegate alloc] init];
+    }
     if (self.viewUtility == nil) {
         self.viewUtility = [[ViewUtility alloc] init];
     }
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
-
-- (void) listenForIncomingChatRequestsForUser:(NSString *) userId
-{
-    NSMutableString *fireBaseUserUrl = [NSMutableString stringWithCapacity:100];
-    [fireBaseUserUrl appendString:FireBaseURL];
-    [fireBaseUserUrl appendFormat:userId];
-    NSLog(@"Initializing firebase with URL %@", fireBaseUserUrl);
-
-    self.firebase = [[Firebase alloc] initWithUrl:fireBaseUserUrl];
-    
-    [self.firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
-        NSLog(@"%@", snapshot);
-        
-    }];
-}
-
 
 @end

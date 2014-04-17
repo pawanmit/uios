@@ -11,8 +11,7 @@
 #import "UserLocation.h"
 #import "ViewUtility.h"
 #import "UmanlyClientDelegate.h"
-#import <Firebase/Firebase.h>
-
+#import "UmanlyChatDelegate.h"
 
 @interface UmanlyViewController : UIViewController
 
@@ -20,9 +19,6 @@
 @property User *user;
 @property UmanlyClientDelegate *umanlyClientDelegate;
 @property ViewUtility *viewUtility;
-@property Firebase *firebase;
-
-
-- (void) listenForIncomingChatRequestsForUser:(NSString *) userId;
+@property UmanlyChatDelegate *umanlyChatDelegate;
 
 @end

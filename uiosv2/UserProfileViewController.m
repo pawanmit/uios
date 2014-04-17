@@ -73,14 +73,22 @@
                         withSuccessHandler:^{
                             User *profiledUser = self.umanlyClientDelegate.user;
                             NSLog(@"User chat status %@", profiledUser.chatStatus );
+                            if ( [profiledUser.chatStatus isEqualToString:@"available"] ) {
+                                
+                            } else {
+                                NSString *message = [NSString stringWithFormat:@"%@ not available for chat right now", profiledUser.firstName];
+                                [self.viewUtility showAlertMessage:message withTitle:@""];
+                            }
                         }
                         withFailureHandler:^{
-                            
+                            [self.viewUtility showAlertMessage:@"Please try again" withTitle:@""];
                         }];
-    //if she is available, update her status to unavailable so while a chat connection is being set up no other user can request chat with her.
-    //Update current user availability to waiting_for_response
-    //Request chat with self.userIdOfProfiledUser
-    //When user accepts her chat request segue to chat view
+}
+
+-(void) sendChatRequestToUser:(NSString *) userId
+{
+    NSLog(@"Requesting chat with user %@", userId);
+    
 }
 
 - (NSInteger)calculateAge:(NSDate *)birthday {
