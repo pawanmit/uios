@@ -228,7 +228,13 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [self.umanlyChatDelegate listenForIncomingChatRequestsForUser:self.user.userId];
+    [self.umanlyChatDelegate listenForIncomingChatRequestsForUser:self.user.userId
+     withSuccessHandler:^(){
+     }
+   withFailureHandler:^(){
+       [self.viewUtility showAlertMessage:@"Error connecting to chat" withTitle:@""];
+   }];
+    
     if ([[segue identifier] isEqualToString:@"segueToMapView"])
     {
         DisplayUsersOnMapViewController *nextVC = [segue destinationViewController];

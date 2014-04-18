@@ -74,7 +74,11 @@
                             User *profiledUser = self.umanlyClientDelegate.user;
                             NSLog(@"User chat status %@", profiledUser.chatStatus );
                             if ( [profiledUser.chatStatus isEqualToString:@"available"] ) {
-                                
+                                [self.umanlyChatDelegate requestChatWithUser:profiledUser.userId withSuccessHandler:^(){
+                                    }
+                                     withFailureHandler:^{
+                                         
+                                     }];
                             } else {
                                 NSString *message = [NSString stringWithFormat:@"%@ not available for chat right now", profiledUser.firstName];
                                 [self.viewUtility showAlertMessage:message withTitle:@""];

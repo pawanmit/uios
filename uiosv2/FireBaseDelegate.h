@@ -9,8 +9,18 @@
 #import <Foundation/Foundation.h>
 #import <Firebase/Firebase.h>
 
+typedef void (^FireBaseSuccessHandler)(void);
+typedef void (^FireBaseFailureHandler)(void);
+
 @interface FireBaseDelegate : NSObject
 
--(void) observeEndPoint:(NSString *) endPointUrl;
+-(void) observeEndPoint:(NSString *) endPointUrl
+     withSuccessHandler: (FireBaseSuccessHandler) successHandler
+     withFailureHandler: (FireBaseFailureHandler) failureHandler;
+
+-(void) appendMessage: (NSString *) message
+           ToEndPoint:(NSString *) endPointUrl
+           withSuccessHandler: (FireBaseSuccessHandler) successHandler
+           withFailureHandler: (FireBaseFailureHandler) failureHandler;
 
 @end

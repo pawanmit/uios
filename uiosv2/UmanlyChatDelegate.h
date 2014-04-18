@@ -13,8 +13,21 @@
 
 @property FireBaseDelegate *fireBaseDelegate;
 
--(void) requestChatWithUser:(NSString *) userId;
+typedef void (^UmanlyChatSuccessHandler)(void);
 
--(void) listenForIncomingChatRequestsForUser:(NSString *) userId;
+typedef void (^UmanlyChatFailureHandler)(void);
+
+-(void) requestChatWithUser:(NSString *) userId
+         withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
+         withFailureHandler: (UmanlyChatFailureHandler) failureHander;
+
+-(void) sendMessage:(NSString *) message
+         ToUser:(NSString *) userId
+         withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
+         withFailureHandler: (UmanlyChatFailureHandler) failureHander;
+
+-(void) listenForIncomingChatRequestsForUser:(NSString *) userId
+          withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
+          withFailureHandler: (UmanlyChatFailureHandler) failureHander;
 
 @end
