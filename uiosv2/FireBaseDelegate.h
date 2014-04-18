@@ -14,12 +14,12 @@ typedef void (^FireBaseFailureHandler)(void);
 
 @interface FireBaseDelegate : NSObject
 
--(void) observeEndPoint:(NSString *) endPointUrl
+-(void) observeLocation:(NSString *) Location
      withSuccessHandler: (FireBaseSuccessHandler) successHandler
      withFailureHandler: (FireBaseFailureHandler) failureHandler;
 
--(void) appendMessage: (NSString *) message
-           ToEndPoint:(NSString *) endPointUrl
+-(void) appendValue: (NSString *) message
+           ToLocation:(NSString *) location
            withSuccessHandler: (FireBaseSuccessHandler) successHandler
            withFailureHandler: (FireBaseFailureHandler) failureHandler;
 

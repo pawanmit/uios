@@ -12,34 +12,34 @@
 
 NSString *const FireBaseURL = @"https://popping-fire-3020.firebaseIO.com/";
 
--(void) observeEndPoint:(NSString *)endPointUrl
+-(void) observeLocation:(NSString *) location
      withSuccessHandler: (FireBaseSuccessHandler) successHandler
      withFailureHandler: (FireBaseFailureHandler) failureHandler
 {
 
     //NSLog(@"Observing firebase url %@", fireBaseUrl);
-    Firebase *firebase = [self getFireBaseReferenceForEndPoint:endPointUrl];
+    Firebase *firebase = [self getFireBaseReferenceForLocation:location];
     [firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         //NSLog(@"%@", snapshot);
         
     }];
 }
 
--(void) appendMessage: (NSString *) message
-        ToEndPoint:(NSString *) endPointUrl
-        withSuccessHandler: (FireBaseSuccessHandler) successHandler
-        withFailureHandler: (FireBaseFailureHandler) failureHandler
+-(void) appendValue: (NSDictionary *) message
+           ToLocation:(NSString *) location
+            withSuccessHandler: (FireBaseSuccessHandler) successHandler
+            withFailureHandler: (FireBaseFailureHandler) failureHandler
 {
  
-    Firebase *firebase = [self getFireBaseReferenceForEndPoint:endPointUrl];
-    [[firebase childByAppendingPath:@"message"] setValue:message];
+    Firebase *firebase = [self getFireBaseReferenceForLocation:location];
+    [firebase setValue:message];
 }
 
--(Firebase *) getFireBaseReferenceForEndPoint:(NSString *) endPointUrl
+-(Firebase *) getFireBaseReferenceForLocation:(NSString *) location
 {
     NSMutableString *fireBaseUrl = [NSMutableString stringWithCapacity:100];
     [fireBaseUrl appendString:FireBaseURL];
-    [fireBaseUrl appendFormat:endPointUrl];
+    [fireBaseUrl appendFormat:location];
     NSLog(@"Firebase Ref created for URL %@", fireBaseUrl);
     Firebase *firebase = [[Firebase alloc] initWithUrl:fireBaseUrl];
     return firebase;

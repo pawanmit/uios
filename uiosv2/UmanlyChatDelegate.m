@@ -23,12 +23,12 @@
          withFailureHandler: (UmanlyChatFailureHandler) failureHander;
 {
     NSMutableDictionary *requestChatParams = [[NSMutableDictionary alloc] init];
-    [requestChatParams setObject:@"chat_request" forKey:@"type"];
-    [requestChatParams setObject:userId forKey:@"sender"];
-    NSString *requestJson = [self getJsonFromChatParams:requestChatParams];
-    NSLog(@"Requesting chat %@", requestJson);
-    [self.fireBaseDelegate appendMessage:requestJson
-                            ToEndPoint:userId
+    [requestChatParams setObject:userId forKey:@"user_id"];
+    NSMutableString *chatRequestLocation = [NSMutableString stringWithCapacity:20];
+    [chatRequestLocation appendString:userId];
+    [chatRequestLocation appendFormat:@"/chat_requests/sender"];
+    [self.fireBaseDelegate appendValue:requestChatParams
+                            ToLocation:chatRequestLocation
                             withSuccessHandler: ^(){
                             }
                             withFailureHandler:^(){
@@ -41,7 +41,10 @@
            withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
            withFailureHandler: (UmanlyChatFailureHandler) failureHander;
 {
-    [self.fireBaseDelegate observeEndPoint:userId
+    NSMutableString *chatRequestLocation = [NSMutableString stringWithCapacity:20];
+    [chatRequestLocation appendString:userId];
+    [chatRequestLocation appendFormat:@"/chat_requests"];
+    [self.fireBaseDelegate observeLocation:chatRequestLocation
                         withSuccessHandler: ^(){}
                         withFailureHandler:^(){}
      ];
