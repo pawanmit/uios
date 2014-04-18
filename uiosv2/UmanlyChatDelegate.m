@@ -18,14 +18,15 @@
     return(self);
 }
 
--(void) requestChatWithUser:(NSString *) userId
+-(void) sendChatRequestFromUser:(NSString *) senderUserId
+        ToUser:(NSString *) receiverUserId
          withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
-         withFailureHandler: (UmanlyChatFailureHandler) failureHander;
+         withFailureHandler: (UmanlyChatFailureHandler) failureHander
 {
     NSMutableDictionary *requestChatParams = [[NSMutableDictionary alloc] init];
-    [requestChatParams setObject:userId forKey:@"user_id"];
+    [requestChatParams setObject:senderUserId forKey:@"user_id"];
     NSMutableString *chatRequestLocation = [NSMutableString stringWithCapacity:20];
-    [chatRequestLocation appendString:userId];
+    [chatRequestLocation appendString:receiverUserId];
     [chatRequestLocation appendFormat:@"/chat_requests/sender"];
     [self.fireBaseDelegate appendValue:requestChatParams
                             ToLocation:chatRequestLocation
