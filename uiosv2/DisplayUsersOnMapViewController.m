@@ -13,6 +13,8 @@
 #include "UserMenuViewController.h"
 #include "UserProfileViewController.h"
 
+#import "ChatConfirmationController.h"
+#import "UmanlyStoryboardSegue.h"
 
 @interface DisplayUsersOnMapViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *map;
@@ -44,6 +46,35 @@
         [self updateNeayByUsersAnnotations];
     }
     [super viewDidLoad];
+}
+
+-(void) viewDidAppear:(BOOL) animated
+
+{
+    [self setUpChatForUser:self.user.userId];
+    [super viewDidAppear:animated];
+    
+}
+
+-(void) setUpChatForUser:(NSString *) userId
+{
+    [self.umanlyChatDelegate listenForIncomingChatRequestsForUser:userId
+                                               withSuccessHandler:^(){
+                                                   NSLog(@"Chat request received. Seguing to chat confirmation view");
+                                                   [self displayChatConfirmationView];
+                                               }
+                                               withFailureHandler:^(){
+                                                   [self.viewUtility showAlertMessage:@"Error connecting to chat" withTitle:@""];
+                                               }];
+}
+
+-(void) displayChatConfirmationView
+{
+    
+    ChatConfirmationController *chatConfirmationVC = [[ChatConfirmationController alloc] init];
+    UmanlyStoryboardSegue *segue = [[UmanlyStoryboardSegue alloc] initWithIdentifier:@"" source:self destination:chatConfirmationVC];
+    [self prepareForSegue:segue sender:self];
+    [segue perform];
 }
 
 - (void)didReceiveMemoryWarning

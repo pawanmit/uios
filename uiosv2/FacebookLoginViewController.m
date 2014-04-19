@@ -8,6 +8,7 @@
 
 #import "FacebookLoginViewController.h"
 #import "DisplayUsersOnMapViewController.h"
+#import "ChatConfirmationController.h"
 
 @interface FacebookLoginViewController ()
 
@@ -228,12 +229,6 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [self.umanlyChatDelegate listenForIncomingChatRequestsForUser:self.user.userId
-     withSuccessHandler:^(){
-     }
-   withFailureHandler:^(){
-       [self.viewUtility showAlertMessage:@"Error connecting to chat" withTitle:@""];
-   }];
     
     if ([[segue identifier] isEqualToString:@"segueToMapView"])
     {
@@ -241,6 +236,7 @@
         nextVC.user = self.user;
         nextVC.sourceView = @"FacebookLoginView";
     }
+    //[self setUpChatForUser:self.user.userId];
 
 }
 

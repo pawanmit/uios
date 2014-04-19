@@ -7,6 +7,8 @@
 //
 
 #import "UmanlyChatDelegate.h"
+#import "ChatConfirmationController.h"
+#import "UmanlyStoryboardSegue.h"
 
 @implementation UmanlyChatDelegate
 
@@ -46,10 +48,13 @@
     [chatRequestLocation appendString:userId];
     [chatRequestLocation appendFormat:@"/chat_requests"];
     [self.fireBaseDelegate observeLocation:chatRequestLocation
-                        withSuccessHandler: ^(){}
+                        withSuccessHandler: ^(){
+                            successHandler();
+                        }
                         withFailureHandler:^(){}
      ];
 }
+
 
 -(NSString *) getJsonFromChatParams:(NSDictionary *) chatParams
 {
