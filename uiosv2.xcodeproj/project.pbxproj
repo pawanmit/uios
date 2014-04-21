@@ -47,7 +47,6 @@
 		D4AEF28818EB6D620078F291 /* UmanlyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AEF28718EB6D620078F291 /* UmanlyViewController.m */; };
 		D4AFDE8718E24A4800813320 /* UserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AFDE8618E24A4800813320 /* UserAnnotation.m */; };
 		D4B9DE5E1901B1A000819F8F /* ChatConfirmationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B9DE5D1901B1A000819F8F /* ChatConfirmationController.m */; };
-		D4B9DE611901CC2900819F8F /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B9DE601901CC2900819F8F /* TestViewController.m */; };
 		D4B9DE651901D34100819F8F /* UmanlyStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B9DE641901D34100819F8F /* UmanlyStoryboardSegue.m */; };
 		D4BC77DA18DD005A00171C7C /* DisplayUsersOnMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BC77D918DD005A00171C7C /* DisplayUsersOnMapViewController.m */; };
 		D4BC77DD18DD00F900171C7C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BC77DC18DD00F900171C7C /* User.m */; };
@@ -144,8 +143,6 @@
 		D4AFDE8618E24A4800813320 /* UserAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAnnotation.m; sourceTree = "<group>"; };
 		D4B9DE5C1901B1A000819F8F /* ChatConfirmationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatConfirmationController.h; sourceTree = "<group>"; };
 		D4B9DE5D1901B1A000819F8F /* ChatConfirmationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatConfirmationController.m; sourceTree = "<group>"; };
-		D4B9DE5F1901CC2900819F8F /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
-		D4B9DE601901CC2900819F8F /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		D4B9DE631901D34100819F8F /* UmanlyStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UmanlyStoryboardSegue.h; sourceTree = "<group>"; };
 		D4B9DE641901D34100819F8F /* UmanlyStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UmanlyStoryboardSegue.m; sourceTree = "<group>"; };
 		D4BC77D818DD005A00171C7C /* DisplayUsersOnMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayUsersOnMapViewController.h; sourceTree = "<group>"; };
@@ -279,8 +276,6 @@
 				D4E46C5118EE0B0C009B6306 /* UserProfileViewController.m */,
 				D4B9DE5C1901B1A000819F8F /* ChatConfirmationController.h */,
 				D4B9DE5D1901B1A000819F8F /* ChatConfirmationController.m */,
-				D4B9DE5F1901CC2900819F8F /* TestViewController.h */,
-				D4B9DE601901CC2900819F8F /* TestViewController.m */,
 			);
 			path = uiosv2;
 			sourceTree = "<group>";
@@ -494,7 +489,6 @@
 				D48A750918DCEFE7008D1C9A /* UIProgressView+AFNetworking.m in Sources */,
 				D4FC995119008CDB00C15606 /* FireBaseDelegate.m in Sources */,
 				D4BC77DD18DD00F900171C7C /* User.m in Sources */,
-				D4B9DE611901CC2900819F8F /* TestViewController.m in Sources */,
 				D48A74EC18DCEFDC008D1C9A /* AFNetworkReachabilityManager.m in Sources */,
 				D48A74F018DCEFDC008D1C9A /* AFURLResponseSerialization.m in Sources */,
 				D4FC994E19008CB100C15606 /* UmanlyChatDelegate.m in Sources */,

@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"Received chat request from %@", self.chatRequestSenderId );
+    //NSLog(@"Received chat request from %@", self.chatRequestSenderId );
     [self prepareView];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.

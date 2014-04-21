@@ -71,7 +71,9 @@
 -(void) displayChatConfirmationView
 {
     
-    ChatConfirmationController *chatConfirmationVC = [[ChatConfirmationController alloc] init];
+    //ChatConfirmationController *chatConfirmationVC = [[ChatConfirmationController alloc] init];
+    UIViewController *chatConfirmationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ChatConfirmationController"];
+
     UmanlyStoryboardSegue *segue = [[UmanlyStoryboardSegue alloc] initWithIdentifier:@"" source:self destination:chatConfirmationVC];
     [self prepareForSegue:segue sender:self];
     [segue perform];

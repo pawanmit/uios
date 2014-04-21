@@ -219,7 +219,7 @@
         <!--Chat Confirmation Controller-->
         <scene sceneID="ZHG-a3-uvP">
             <objects>
-                <viewController id="VLB-qV-IP4" customClass="ChatConfirmationController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatConfirmationController" id="VLB-qV-IP4" customClass="ChatConfirmationController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="euY-ZV-IeR"/>
                         <viewControllerLayoutGuide type="bottom" id="OLt-7l-iD3"/>
@@ -242,6 +242,13 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qkb-uS-x6O">
+                                <rect key="frame" x="139" y="216" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -254,24 +261,6 @@
             </objects>
             <point key="canvasLocation" x="1279" y="-306"/>
         </scene>
-        <!--Test View Controller-->
-        <scene sceneID="Pj2-GC-8Ub">
-            <objects>
-                <viewController storyboardIdentifier="TestViewControllerId" id="u9m-wX-VFg" customClass="TestViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5a1-RK-a5B"/>
-                        <viewControllerLayoutGuide type="bottom" id="Pxv-26-0fC"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="GhP-45-K9w">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xJl-IY-lRt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1279" y="264"/>
-        </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -279,6 +268,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="PMZ-ij-RZv"/>
+        <segue reference="SfI-Vo-Qa8"/>
     </inferredMetricsTieBreakers>
 </document>
