@@ -11,6 +11,6 @@
 
 @interface ChatConfirmationController : UmanlyViewController
 
-@property NSString* chatRequestSenderId;
+@property NSString* userIdForIncomingChatRequest;
 
 @end

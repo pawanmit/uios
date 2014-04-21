@@ -14,6 +14,8 @@ typedef void (^FireBaseFailureHandler)(void);
 
 @interface FireBaseDelegate : NSObject
 
+@property id fireBaseData;
+
 -(void) observeLocation:(NSString *) Location
      withSuccessHandler: (FireBaseSuccessHandler) successHandler
      withFailureHandler: (FireBaseFailureHandler) failureHandler;

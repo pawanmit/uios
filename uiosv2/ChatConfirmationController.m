@@ -23,6 +23,7 @@
     [self prepareView];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    NSLog(@"Chat request received for user %@ from user %@", self.user.userId, self.userIdForIncomingChatRequest);
 }
 
 -(void) viewDidAppear:(BOOL) animated

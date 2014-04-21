@@ -8,6 +8,7 @@
 
 #import "UmanlyViewController.h"
 #import "ChatConfirmationController.h"
+#import "UserMenuViewController.h"
 #import "UmanlyStoryboardSegue.h"
 
 @interface UmanlyViewController ()
@@ -41,7 +42,7 @@
     [self.umanlyChatDelegate listenForIncomingChatRequestsForUser:self.user.userId
                                                withSuccessHandler:^(){
                                                    NSLog(@"Chat request received. Seguing to chat confirmation view");
-                                                   [self segueToViewControllerWithId:@"ChatConfirmationController"];
+                                                   [self segueToChatConfirmation];
                                                }
                                                withFailureHandler:^(){
                                                    [self.viewUtility showAlertMessage:@"Error connecting to chat" withTitle:@""];
@@ -52,21 +53,23 @@
 -(void) segueToUserMenu
 
 {
-    [self segueToViewControllerWithId:@"UserMenuViewController"];
+    UserMenuViewController *userMenuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UserMenuViewController"];
+    userMenuVC.user = self.user;
+    [self segueToViewController:userMenuVC];
 }
 
--(void) segueToViewControllerWithId:(NSString *) destinationViewControllerId
+-(void) segueToChatConfirmation
 {
-    UIViewController *destinationVC = [self.storyboard instantiateViewControllerWithIdentifier:destinationViewControllerId];
-    
-    UmanlyViewController *nextVC = (UmanlyViewController *) destinationVC;
-    
-    nextVC.user = self.currentController.user;
-    
-    UmanlyStoryboardSegue *segue = [[UmanlyStoryboardSegue alloc] initWithIdentifier:@"" source:self.currentController destination:destinationVC];
+    ChatConfirmationController *chatConfirmationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ChatConfirmationController"];
+    chatConfirmationVC.userIdForIncomingChatRequest = self.umanlyChatDelegate.userIdForIncomingChatRequest;
+    chatConfirmationVC.user = self.user;
+    [self segueToViewController:chatConfirmationVC];
+}
 
+-(void) segueToViewController:(UmanlyViewController *) nextVC
+{
+    UmanlyStoryboardSegue *segue = [[UmanlyStoryboardSegue alloc] initWithIdentifier:@"" source:self.currentController destination:nextVC];
     [self prepareForSegue:segue sender:self];
-    
     [segue perform];
 }
 @end

@@ -18,6 +18,8 @@ typedef void (^UmanlyChatSuccessHandler)(void);
 
 typedef void (^UmanlyChatFailureHandler)(void);
 
+@property NSString* userIdForIncomingChatRequest;
+
 -(void) sendChatRequestFromUser:(NSString *) userId
                          ToUser:(NSString *) userId
              withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
@@ -31,5 +33,6 @@ typedef void (^UmanlyChatFailureHandler)(void);
 -(void) listenForIncomingChatRequestsForUser:(NSString *) userId
           withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
           withFailureHandler: (UmanlyChatFailureHandler) failureHander;
+
 
 @end

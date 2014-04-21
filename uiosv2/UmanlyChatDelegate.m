@@ -49,6 +49,10 @@
     [chatRequestLocation appendFormat:@"/chat_requests"];
     [self.fireBaseDelegate observeLocation:chatRequestLocation
                         withSuccessHandler: ^(){
+                            //NSLog(@"%@",self.fireBaseDelegate.snapshot);
+                            self.userIdForIncomingChatRequest = [self.fireBaseDelegate.fireBaseData objectForKey:@"user_id"];
+                            NSLog(@"%@", self.userIdForIncomingChatRequest);
+                            //NSEnumerator
                             successHandler();
                         }
                         withFailureHandler:^(){}

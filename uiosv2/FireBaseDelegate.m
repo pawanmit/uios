@@ -21,6 +21,7 @@ NSString *const FireBaseURL = @"https://popping-fire-3020.firebaseIO.com/";
     Firebase *firebase = [self getFireBaseReferenceForLocation:location];
     [firebase observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
         //NSLog(@"%@", snapshot);
+        self.fireBaseData = snapshot.value;
         successHandler();
         
     }];
