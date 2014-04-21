@@ -25,6 +25,17 @@
 	// Do any additional setup after loading the view.
 }
 
+-(void) viewDidAppear:(BOOL) animated
+
+{
+    self.currentController = self;
+    
+    [self startListeningForChatRequests];
+    
+    [super viewDidAppear:animated];
+    
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
