@@ -11,6 +11,10 @@
 @interface ChatConfirmationController ()
 @property (weak, nonatomic) IBOutlet UIButton *userMenuButton;
 @property (weak, nonatomic) IBOutlet UILabel *logoLabel;
+@property (weak, nonatomic) IBOutlet UIButton *acceptChatRequestButton;
+@property (weak, nonatomic) IBOutlet UIButton *denyChatRequestButton;
+@property (weak, nonatomic) IBOutlet UILabel *chatRequestLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageOfChatRequestSender;
 
 @end
 
