@@ -7,6 +7,8 @@
 //
 
 #import "UmanlyViewController.h"
+#import "ChatConfirmationController.h"
+#import "UmanlyStoryboardSegue.h"
 
 @interface UmanlyViewController ()
 
@@ -34,4 +36,30 @@
 	// Do any additional setup after loading the view.
 }
 
+-(void) startListeningForChatRequests
+{
+    [self.umanlyChatDelegate listenForIncomingChatRequestsForUser:self.user.userId
+                                               withSuccessHandler:^(){
+                                                   NSLog(@"Chat request received. Seguing to chat confirmation view");
+                                                   [self segueToViewControllerWithId:@"ChatConfirmationController"];
+                                               }
+                                               withFailureHandler:^(){
+                                                   [self.viewUtility showAlertMessage:@"Error connecting to chat" withTitle:@""];
+                                               }];
+}
+
+-(void) segueToViewControllerWithId:(NSString *) destinationViewControllerId
+{
+    UIViewController *destinationVC = [self.storyboard instantiateViewControllerWithIdentifier:destinationViewControllerId];
+    
+    UmanlyViewController *nextVC = (UmanlyViewController *) destinationVC;
+    
+    nextVC.user = self.currentController.user;
+    
+    UmanlyStoryboardSegue *segue = [[UmanlyStoryboardSegue alloc] initWithIdentifier:@"" source:self.currentController destination:destinationVC];
+
+    [self prepareForSegue:segue sender:self];
+    
+    [segue perform];
+}
 @end

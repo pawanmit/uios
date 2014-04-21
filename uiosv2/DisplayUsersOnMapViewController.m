@@ -13,9 +13,6 @@
 #include "UserMenuViewController.h"
 #include "UserProfileViewController.h"
 
-#import "ChatConfirmationController.h"
-#import "UmanlyStoryboardSegue.h"
-
 @interface DisplayUsersOnMapViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *map;
 @property (weak, nonatomic) IBOutlet UIButton *userMenuButton;
@@ -51,32 +48,12 @@
 -(void) viewDidAppear:(BOOL) animated
 
 {
-    [self setUpChatForUser:self.user.userId];
+    self.currentController = self;
+
+    [self startListeningForChatRequests];
+    
     [super viewDidAppear:animated];
     
-}
-
--(void) setUpChatForUser:(NSString *) userId
-{
-    [self.umanlyChatDelegate listenForIncomingChatRequestsForUser:userId
-                                               withSuccessHandler:^(){
-                                                   NSLog(@"Chat request received. Seguing to chat confirmation view");
-                                                   [self displayChatConfirmationView];
-                                               }
-                                               withFailureHandler:^(){
-                                                   [self.viewUtility showAlertMessage:@"Error connecting to chat" withTitle:@""];
-                                               }];
-}
-
--(void) displayChatConfirmationView
-{
-    
-    //ChatConfirmationController *chatConfirmationVC = [[ChatConfirmationController alloc] init];
-    UIViewController *chatConfirmationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ChatConfirmationController"];
-
-    UmanlyStoryboardSegue *segue = [[UmanlyStoryboardSegue alloc] initWithIdentifier:@"" source:self destination:chatConfirmationVC];
-    [self prepareForSegue:segue sender:self];
-    [segue perform];
 }
 
 - (void)didReceiveMemoryWarning
@@ -204,11 +181,8 @@
 
 - (void)prepareView
 {
-    ViewUtility *viewUtility = [[ViewUtility alloc] init];
-    
     [self.userMenuButton setBackgroundImage:[UIImage imageNamed:@"Umanly_app_Hamburger_Button.png"] forState:UIControlStateNormal];
     self.logoLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Umanly_Logo_Top.png"]];
-
 }
 
 

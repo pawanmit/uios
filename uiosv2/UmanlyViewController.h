@@ -20,6 +20,11 @@
 @property UmanlyClientDelegate *umanlyClientDelegate;
 @property ViewUtility *viewUtility;
 @property UmanlyChatDelegate *umanlyChatDelegate;
+@property UmanlyViewController *currentController;
+
+
+-(void) startListeningForChatRequests;
+-(void) segueToViewControllerWithId:(NSString *) destinationViewControllerId;
 
 
 @end

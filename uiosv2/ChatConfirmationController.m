@@ -35,8 +35,12 @@
 {
     [self.userMenuButton setBackgroundImage:[UIImage imageNamed:@"Umanly_app_Hamburger_Button.png"] forState:UIControlStateNormal];
     self.logoLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Umanly_Logo_Top.png"]];
+    [self.userMenuButton addTarget:self
+                         action:@selector(segueToUserMenu)
+               forControlEvents:UIControlEventTouchUpInside];
     
 }
+
 
 
 @end
