@@ -23,11 +23,11 @@
 @property NSString *chatStatus;
 
 @property NSString *facebookProfileLink;
+@property UIImage *facebookProfileImage;
 @property NSString *facebookUsername;
 
 @property UserLocation *location;
-//@property NSArray *nearByUsers;
 
-@property NSDictionary *nearByUsers;
+@property NSMutableDictionary *nearByUsers;
 
 @end

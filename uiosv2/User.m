@@ -10,4 +10,16 @@
 
 @implementation User
 
+-(id) init
+{
+    self = [super init];
+    
+    if (self)
+    {
+        self.nearByUsers = [[NSMutableDictionary alloc] init];
+    }
+    
+    return self;
+}
+
 @end

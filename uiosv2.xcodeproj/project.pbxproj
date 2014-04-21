@@ -259,8 +259,6 @@
 				D4BC77D918DD005A00171C7C /* DisplayUsersOnMapViewController.m */,
 				D4BC77DB18DD00F900171C7C /* User.h */,
 				D4BC77DC18DD00F900171C7C /* User.m */,
-				D4BC77DE18DD013600171C7C /* UmanlyClientDelegate.h */,
-				D4BC77DF18DD013600171C7C /* UmanlyClientDelegate.m */,
 				D4AFDE8518E24A4800813320 /* UserAnnotation.h */,
 				D4AFDE8618E24A4800813320 /* UserAnnotation.m */,
 				D4E1049A18E4D522004CFB3A /* UserAnnotationView.h */,
@@ -371,6 +369,8 @@
 		D4FC994B19008C8000C15606 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
+				D4BC77DE18DD013600171C7C /* UmanlyClientDelegate.h */,
+				D4BC77DF18DD013600171C7C /* UmanlyClientDelegate.m */,
 				D4FC994C19008CB100C15606 /* UmanlyChatDelegate.h */,
 				D4FC994D19008CB100C15606 /* UmanlyChatDelegate.m */,
 				D4FC994F19008CDB00C15606 /* FireBaseDelegate.h */,

@@ -13,6 +13,7 @@
 @interface UmanlyClientDelegate : NSObject
 
 @property User *user;
+@property NSArray *nearByUsers;
 
 typedef void (^UmanlyRequestSuccessHandler)(void);
 

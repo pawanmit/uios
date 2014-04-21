@@ -84,12 +84,29 @@
     [self.umanlyClientDelegate getUsersNearUser:self.user
                              withSuccessHandler:^{
                                  if ([self.locateNearByUsersTimer isValid]) {
-                                        self.user = self.umanlyClientDelegate.user;
+                                     [self updateNearByUsers:self.umanlyClientDelegate.nearByUsers];
                                     }
                                  }
                              withFailureHandler:^{}
      ];
 }
+
+-(void) updateNearByUsers:(NSArray *) nearByUsers
+{
+    for (id user in nearByUsers) {
+        User *nearByUser = (User *) user;
+        User *existingNearByUser = [self.user.nearByUsers objectForKey:nearByUser.userId];
+        if ( existingNearByUser ) {
+            //update user location
+            existingNearByUser.location = nearByUser.location;
+        } else{
+            NSLog(@"Adding near by user with id %@", nearByUser.userId);
+            [self.user.nearByUsers setValue:user forKey:nearByUser.userId];
+            [self getFacebookProfileImageForUser:nearByUser];
+        }
+    }
+}
+
 
 -(void) updateNeayByUsersAnnotations
 {
@@ -123,14 +140,8 @@
                      forControlEvents:UIControlEventTouchUpInside];
     annotation.annotationButton = annotationButton;
     NSLog(@"Adding annotation with title %@", title);
-    [self setImageForAnnotation:annotation
-             withSuccessHandler:^(){
-                 [self.map addAnnotation:annotation];
-             }
-             withFailureHandler:^(){
-                 [self.map addAnnotation:annotation];
-             }
-     ];
+    annotation.annotationImage = nearByUser.facebookProfileImage;
+    [self.map addAnnotation:annotation];
 }
 
 -(void) segueToDisplayUserProfile:(id)sender
@@ -226,6 +237,25 @@
         UIImage *annotationImage = [UIImage imageNamed:@"test_annotation.png"];
         failureHander();
         annotation.annotationImage = annotationImage;
+        NSLog(@"error: %@" , error);
+    }];
+    [operation start];
+}
+
+-(void) getFacebookProfileImageForUser:(User *) user
+{
+    NSString *facebookProfileImageUrl = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture", user.facebookUsername];
+    NSURL *imageURL = [NSURL URLWithString:facebookProfileImageUrl];
+    NSURLRequest *request = [NSURLRequest requestWithURL:imageURL];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFImageResponseSerializer serializer];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"success getting facebook profile image for  %@" ,  user.facebookUsername);
+        user.facebookProfileImage = responseObject;
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error getting facebook profile image for  %@" ,  user.facebookUsername);
+        UIImage *annotationImage = [UIImage imageNamed:@"test_annotation.png"];
+        user.facebookProfileImage = annotationImage;
         NSLog(@"error: %@" , error);
     }];
     [operation start];
