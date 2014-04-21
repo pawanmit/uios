@@ -48,6 +48,13 @@
                                                }];
 }
 
+
+-(void) segueToUserMenu
+
+{
+    [self segueToViewControllerWithId:@"UserMenuViewController"];
+}
+
 -(void) segueToViewControllerWithId:(NSString *) destinationViewControllerId
 {
     UIViewController *destinationVC = [self.storyboard instantiateViewControllerWithIdentifier:destinationViewControllerId];

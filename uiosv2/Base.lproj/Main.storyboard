@@ -7,7 +7,7 @@
         <!--Facebook Login View Controller-->
         <scene sceneID="hVp-Rz-h54">
             <objects>
-                <viewController id="g4x-Sg-kLm" customClass="FacebookLoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FacebookLoginViewController" id="g4x-Sg-kLm" customClass="FacebookLoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ugt-WN-3Yv"/>
                         <viewControllerLayoutGuide type="bottom" id="DY4-VL-yGL"/>
@@ -28,7 +28,7 @@
         <!--Display Users On Map View Controller-->
         <scene sceneID="OGn-PY-h0U">
             <objects>
-                <viewController storyboardIdentifier="DisplayUsersOnMapViewControllerId" useStoryboardIdentifierAsRestorationIdentifier="YES" id="437-0U-xY6" customClass="DisplayUsersOnMapViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DisplayUsersOnMapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="437-0U-xY6" customClass="DisplayUsersOnMapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4VM-RU-EWP"/>
                         <viewControllerLayoutGuide type="bottom" id="yuz-ms-JiJ"/>
@@ -47,9 +47,6 @@
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="acW-5q-SGq" kind="modal" identifier="segueToUserMenu" modalTransitionStyle="flipHorizontal" id="o0o-7Z-MgI"/>
-                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8OQ-A4-RxJ">
                                 <rect key="frame" x="100" y="47" width="198" height="57"/>
@@ -75,7 +72,7 @@
         <!--User Menu View Controller-->
         <scene sceneID="B3a-v1-Nkg">
             <objects>
-                <viewController id="acW-5q-SGq" customClass="UserMenuViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserMenuViewController" id="acW-5q-SGq" customClass="UserMenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wo2-Gd-57O"/>
                         <viewControllerLayoutGuide type="bottom" id="PcN-h9-di9"/>
@@ -268,6 +265,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="SfI-Vo-Qa8"/>
+        <segue reference="PMZ-ij-RZv"/>
     </inferredMetricsTieBreakers>
 </document>

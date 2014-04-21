@@ -24,6 +24,7 @@
 
 
 -(void) startListeningForChatRequests;
+-(void) segueToUserMenu;
 -(void) segueToViewControllerWithId:(NSString *) destinationViewControllerId;
 
 

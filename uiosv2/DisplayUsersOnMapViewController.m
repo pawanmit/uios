@@ -141,12 +141,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"segueToUserMenu"])
-    {
-        UserMenuViewController *nextVC = [segue destinationViewController];
-        nextVC.sourceView = @"DisplayUsersOnMapView";
-        nextVC.user = self.user;
-    } else if ([[segue identifier] isEqualToString:@"segueToDisplayUserProfile"]) {
+ if ([[segue identifier] isEqualToString:@"segueToDisplayUserProfile"]) {
         UserProfileViewController *nextVC = [segue destinationViewController];
         nextVC.sourceView = @"DisplayUsersOnMapView";
         nextVC.user = self.user;
@@ -182,6 +177,9 @@
 - (void)prepareView
 {
     [self.userMenuButton setBackgroundImage:[UIImage imageNamed:@"Umanly_app_Hamburger_Button.png"] forState:UIControlStateNormal];
+    [self.userMenuButton addTarget:self
+                            action:@selector(segueToUserMenu)
+                  forControlEvents:UIControlEventTouchUpInside];
     self.logoLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Umanly_Logo_Top.png"]];
 }
 
