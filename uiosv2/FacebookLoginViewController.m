@@ -8,7 +8,6 @@
 
 #import "FacebookLoginViewController.h"
 #import "DisplayUsersOnMapViewController.h"
-#import "ChatConfirmationController.h"
 
 @interface FacebookLoginViewController ()
 
@@ -31,7 +30,7 @@
     
     [super viewDidLoad];
     NSLog(@"viewDidLoad");
-
+    
     self.objectID= nil;
     
 }
@@ -46,7 +45,7 @@
     [self updateFbLoginView:loginView];
     
     // Ask for basic permissions on login
-    [loginView setReadPermissions:@[@"basic_info", @"birthday"]];
+    [loginView setReadPermissions:@[@"basic_info"]];
     [loginView setDelegate:self];
 }
 
@@ -207,17 +206,17 @@
             user.facebookProfileLink = [result objectForKey:@"link"];
             user.facebookUsername = [result objectForKey:@"username"];
             //user.employer = [[[result objectForKey:@"work"] objectForKey:@"employer"] objectForKey:@"name"] ;
-
+            
             [self.umanlyClientDelegate saveOrUpdateUser:user
-                                    withSuccessHandler:^(){
-                                        self.user = self.umanlyClientDelegate.user;
-                                        NSLog(@"User retrived with id %@ and availability %i", self.user.userId, self.user.isAvailable );
-                                    [self performSegueWithIdentifier:@"segueToMapView" sender:self];
-                                 }
-                                withFailureHandler:^(){
-                                    [self.viewUtility showAlertMessage:@"Error connecting to umanly. Please try later."
-                                                                 withTitle:@"Umanly Connection Error"];
-                                }];
+                                     withSuccessHandler:^(){
+                                         self.user = self.umanlyClientDelegate.user;
+                                         NSLog(@"User retrived with id %@ and availability %i", self.user.userId, self.user.isAvailable );
+                                         [self performSegueWithIdentifier:@"segueToMapView" sender:self];
+                                     }
+                                     withFailureHandler:^(){
+                                         [self.viewUtility showAlertMessage:@"Error connecting to umanly. Please try later."
+                                                                  withTitle:@"Umanly Connection Error"];
+                                     }];
             //[umanlyClientDelegate getUsers];
         } else {
             // An error occurred, we need to handle the error
@@ -229,15 +228,13 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
     if ([[segue identifier] isEqualToString:@"segueToMapView"])
     {
         DisplayUsersOnMapViewController *nextVC = [segue destinationViewController];
         nextVC.user = self.user;
         nextVC.sourceView = @"FacebookLoginView";
     }
-    //[self setUpChatForUser:self.user.userId];
-
+    
 }
 
 @end
