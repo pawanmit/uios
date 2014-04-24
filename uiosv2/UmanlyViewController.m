@@ -68,7 +68,7 @@
 
 -(void) segueToViewController:(UmanlyViewController *) nextVC
 {
-    UmanlyStoryboardSegue *segue = [[UmanlyStoryboardSegue alloc] initWithIdentifier:@"" source:self.currentController destination:nextVC];
+    UmanlyStoryboardSegue *segue = [[UmanlyStoryboardSegue alloc] initWithIdentifier:@"" source:self.originViewController destination:nextVC];
     [self prepareForSegue:segue sender:self];
     [segue perform];
 }

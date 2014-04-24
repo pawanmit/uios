@@ -33,7 +33,7 @@
 -(void) viewDidAppear:(BOOL) animated
 
 {
-    self.currentController = self;
+    self.originViewController = self;
     
     [super viewDidAppear:animated];
     

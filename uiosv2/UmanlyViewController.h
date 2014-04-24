@@ -20,7 +20,7 @@
 @property UmanlyClientDelegate *umanlyClientDelegate;
 @property ViewUtility *viewUtility;
 @property UmanlyChatDelegate *umanlyChatDelegate;
-@property UmanlyViewController *currentController;
+@property UmanlyViewController *originViewController;
 
 
 -(void) startListeningForChatRequests;
