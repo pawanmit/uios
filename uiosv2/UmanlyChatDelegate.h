@@ -20,13 +20,14 @@ typedef void (^UmanlyChatFailureHandler)(void);
 
 @property NSString* userIdForIncomingChatRequest;
 
--(void) sendChatRequestFromUser:(NSString *) userId
-                         ToUser:(NSString *) userId
+-(void) sendChatRequestFromSender:(NSString *) senderUserId
+                         toReceiver:(NSString *) receiverUserId
              withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
              withFailureHandler: (UmanlyChatFailureHandler) failureHander;
 
 -(void) sendMessage:(NSString *) message
-         ToUser:(NSString *) userId
+           fromSender:(NSString *) userId
+         toReceiver:(NSString *) userId
          withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
          withFailureHandler: (UmanlyChatFailureHandler) failureHander;
 
@@ -34,5 +35,10 @@ typedef void (^UmanlyChatFailureHandler)(void);
           withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
           withFailureHandler: (UmanlyChatFailureHandler) failureHander;
 
+-(void) updateChatStatus:(NSString *) chatStatus
+        betweenSender:(NSString *) senderUserId
+        andReceiver:(NSString *) receiverUserId
+        withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
+        withFailureHandler: (UmanlyChatFailureHandler) failureHander;
 
 @end

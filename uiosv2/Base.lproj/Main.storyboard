@@ -272,9 +272,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="acceptChatRequestButton" destination="FZ3-ka-2k3" id="6kI-si-n6K"/>
+                        <outlet property="acceptChatRequestButton" destination="IAI-KE-vK2" id="qyN-0J-m3j"/>
                         <outlet property="chatRequestLabel" destination="R0k-ld-d7y" id="Bsq-2H-QKM"/>
-                        <outlet property="denyChatRequestButton" destination="IAI-KE-vK2" id="fun-ye-hFW"/>
+                        <outlet property="denyChatRequestButton" destination="FZ3-ka-2k3" id="wyM-qS-x9b"/>
                         <outlet property="imageOfChatRequestSender" destination="ZpE-2m-tDh" id="Qtg-84-QdX"/>
                         <outlet property="logoLabel" destination="WfW-0N-ZEc" id="G66-IL-tlR"/>
                         <outlet property="userMenuButton" destination="Kie-AW-b5w" id="7Mm-BE-aD1"/>

@@ -35,8 +35,6 @@
 {
     self.currentController = self;
     
-    [self startListeningForChatRequests];
-    
     [super viewDidAppear:animated];
     
 }
@@ -54,7 +52,25 @@
     [self.userMenuButton addTarget:self
                          action:@selector(segueToUserMenu)
                forControlEvents:UIControlEventTouchUpInside];
+    [self.denyChatRequestButton addTarget:self
+                                   action:@selector(denyChatRequest)
+                         forControlEvents:UIControlEventTouchUpInside];
+
+}
+
+-(void) denyChatRequest
+{
+    NSLog(@"User %@ denied chat request from user %@", self.user.userId, self.userIdForIncomingChatRequest);
     
+    [self.umanlyChatDelegate updateChatStatus:@"declined"
+                                betweenSender:self.userIdForIncomingChatRequest
+                                andReceiver:self.user.userId
+                           withSuccessHandler:^() {
+        //code
+    }
+                           withFailureHandler:^() {
+        //code
+                           }];
 }
 
 
