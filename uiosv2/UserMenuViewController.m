@@ -50,6 +50,8 @@
 {
     NSLog(@"UserMenuViewController: User loaded with id %@", self.user.userId);
     [self prepareView];
+    self.currentViewControllerIdentifier = @"UserMenuViewController";
+
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -57,7 +59,7 @@
 -(void) viewDidAppear:(BOOL) animated
 
 {
-    self.originViewController = self;
+    self.sourceViewController = self;
 
     [self startListeningForChatRequests];
     
@@ -79,17 +81,21 @@
 
     [self.profileButton setBackgroundImage:[UIImage imageNamed:@"User_Menu_Profile_Button.png"] forState:UIControlStateNormal];
     [self.mapButton setBackgroundImage:[UIImage imageNamed:@"User_Menu_Map_Button.png"] forState:UIControlStateNormal];
+    [self.mapButton addTarget:self
+                         action:@selector(segueToMapView)
+               forControlEvents:UIControlEventTouchUpInside];
     [self.messagesButton setBackgroundImage:[UIImage imageNamed:@"User_Menu_Messages_Button.png"] forState:UIControlStateNormal];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+-(void)segueToMapView
 {
-    if ([[segue identifier] isEqualToString:@"segueToMapView"])
-    {
-        DisplayUsersOnMapViewController *nextVC = [segue destinationViewController];
-        nextVC.sourceView = @"UserMenuView";
-        nextVC.user = self.user;
-    }
+    DisplayUsersOnMapViewController *userMapViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DisplayUsersOnMapViewController"];
+    [self segueToDestinationViewController:userMapViewController fromSourceViewController:self];
+    
 }
 
+-(void) prepareSegueForDestinationViewController:(UmanlyViewController *)destinationViewController
+{
+    [super prepareSegueForDestinationViewController:destinationViewController];
+}
 @end

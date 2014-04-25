@@ -50,26 +50,30 @@
 }
 
 
--(void) segueToUserMenu
-
-{
-    UserMenuViewController *userMenuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UserMenuViewController"];
-    userMenuVC.user = self.user;
-    [self segueToViewController:userMenuVC];
-}
-
 -(void) segueToChatConfirmation
 {
     ChatConfirmationController *chatConfirmationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ChatConfirmationController"];
     chatConfirmationVC.userIdForIncomingChatRequest = self.umanlyChatDelegate.userIdForIncomingChatRequest;
     chatConfirmationVC.user = self.user;
-    [self segueToViewController:chatConfirmationVC];
+    [self segueToDestinationViewController:chatConfirmationVC
+          fromSourceViewController:self];
 }
 
--(void) segueToViewController:(UmanlyViewController *) nextVC
+-(void) segueToDestinationViewController:(UmanlyViewController *) destinationViewController
+                fromSourceViewController:(UmanlyViewController *) sourceViewController
 {
-    UmanlyStoryboardSegue *segue = [[UmanlyStoryboardSegue alloc] initWithIdentifier:@"" source:self.originViewController destination:nextVC];
-    [self prepareForSegue:segue sender:self];
+    UmanlyStoryboardSegue *segue = [[UmanlyStoryboardSegue alloc] initWithIdentifier:@"" source:sourceViewController destination:destinationViewController];
+    [self prepareSegueForDestinationViewController:destinationViewController];
+    //[self prepareForSegue:segue sender:sourceViewController];
     [segue perform];
 }
+
+-(void) prepareSegueForDestinationViewController:(UmanlyViewController *) destinationViewController
+{
+    destinationViewController.user = self.user;
+    destinationViewController.sourceViewControllerIdentifier = self.currentViewControllerIdentifier;
+
+}
+
+
 @end

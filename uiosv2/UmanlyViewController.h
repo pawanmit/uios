@@ -20,12 +20,18 @@
 @property UmanlyClientDelegate *umanlyClientDelegate;
 @property ViewUtility *viewUtility;
 @property UmanlyChatDelegate *umanlyChatDelegate;
-@property UmanlyViewController *originViewController;
+@property UmanlyViewController *sourceViewController;
+@property NSString *sourceViewControllerIdentifier;
+@property NSString *currentViewControllerIdentifier;
 
 
 -(void) startListeningForChatRequests;
--(void) segueToUserMenu;
--(void) segueToViewControllerWithId:(NSString *) destinationViewControllerId;
 
+-(void) segueToDestinationViewController:(UmanlyViewController *) destinationViewController
+                fromSourceViewController:(UmanlyViewController *) sourceViewController;
+
+-(void) prepareSegueForDestinationViewController:(UmanlyViewController *) destinationViewController;
+
+-(void) prepareView;
 
 @end

@@ -7,9 +7,11 @@
 //
 
 #import "UserProfileViewController.h"
+#import "UserMenuViewController.h"
 
 @interface UserProfileViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (weak, nonatomic) IBOutlet UIButton *userMenuButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelForBasicInfo;
 
@@ -44,6 +46,11 @@
     UIImage *backgroundImage = [UIImage imageNamed: @"User_Profile_Background.png"];
     self.backgroundImageView.image =  backgroundImage;
     
+    [self.userMenuButton setBackgroundImage:[UIImage imageNamed:@"Umanly_app_Hamburger_Button.png"] forState:UIControlStateNormal];
+    [self.userMenuButton addTarget:self
+                            action:@selector(segueToUserMenu)
+                  forControlEvents:UIControlEventTouchUpInside];
+    
     self.labelForBasicInfo.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"User_Profile_Basic_Info_Icon.png"]];
     self.labelForGeneralInterests.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"User_Profile_General_Interests_Icon.png"]];
     self.labelForChatInterests.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"User_Profile_Chat_Interests_Icon.png"]];
@@ -61,8 +68,16 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"LL/d/yyyy"];
     NSDate *dateOfBirth = [dateFormat dateFromString:profiledUser.birthday];
-    int age = [self calculateAge:dateOfBirth];
-    self.labelForBasicInfoData.text = [NSString stringWithFormat:@"AGE: %d\rGENDER: %@", age, profiledUser.gender];
+    if (dateOfBirth != nil) {
+        int age = [self calculateAge:dateOfBirth];
+        self.labelForBasicInfoData.text = [NSString stringWithFormat:@"AGE: %d\rGENDER: %@", age, profiledUser.gender];
+    }
+}
+
+-(void) segueToUserMenu
+{
+    UserMenuViewController *userMenuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UserMenuViewController"];
+    [self segueToDestinationViewController:userMenuVC fromSourceViewController:self];
 }
 
 -(void) greetUser

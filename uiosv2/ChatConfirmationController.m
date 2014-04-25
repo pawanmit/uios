@@ -26,6 +26,7 @@
     //NSLog(@"Received chat request from %@", self.chatRequestSenderId );
     [self prepareView];
     [super viewDidLoad];
+    self.currentViewControllerIdentifier = @"ChatConfirmationController";
 	// Do any additional setup after loading the view.
     NSLog(@"Chat request received for user %@ from user %@", self.user.userId, self.userIdForIncomingChatRequest);
 }
@@ -33,10 +34,7 @@
 -(void) viewDidAppear:(BOOL) animated
 
 {
-    self.originViewController = self;
-    
-    [super viewDidAppear:animated];
-    
+    [super viewDidAppear:animated];    
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,7 +69,11 @@
                            withFailureHandler:^() {
         //code
                            }];
+    UmanlyViewController *destinationViewController = [self.storyboard instantiateViewControllerWithIdentifier:self.sourceViewControllerIdentifier];
+    destinationViewController.user = self.user;
+    [self segueToDestinationViewController:destinationViewController fromSourceViewController:self];
 }
+
 
 
 

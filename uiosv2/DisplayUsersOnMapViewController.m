@@ -38,17 +38,19 @@
     
     [self scheduleTimers];
     
-    if ([self.sourceView isEqualToString:@"UserMenuView"]) {
-        [self showUserOnMap:self.user.location];
-        [self updateNeayByUsersAnnotations];
-    }
+//    if ([self.sourceView isEqualToString:@"UserMenuView"]) {
+//        [self showUserOnMap:self.user.location];
+//        [self updateNeayByUsersAnnotations];
+//    }
+    [self showUserOnMap:self.user.location];
+    self.currentViewControllerIdentifier = @"DisplayUsersOnMapViewController";
+
     [super viewDidLoad];
 }
 
 -(void) viewDidAppear:(BOOL) animated
 
 {
-    self.originViewController = self;
 
     [self startListeningForChatRequests];
     
@@ -146,22 +148,22 @@
 
 -(void) segueToDisplayUserProfile:(id)sender
 {
-    [self performSegueWithIdentifier:@"segueToDisplayUserProfile" sender:sender];
+    UserProfileViewController *userProfileViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UserProfileViewController"];
+    UIButton *buttonClicked = (UIButton*) sender;
+    userProfileViewController.userIdOfProfiledUser = [NSString stringWithFormat:@"%d",(int)buttonClicked.tag];
+    [self segueToDestinationViewController:userProfileViewController fromSourceViewController:self];
 }
 
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+-(void) segueToUserMenu
 {
- if ([[segue identifier] isEqualToString:@"segueToDisplayUserProfile"]) {
-        UserProfileViewController *nextVC = [segue destinationViewController];
-        nextVC.sourceView = @"DisplayUsersOnMapView";
-        nextVC.user = self.user;
-        UIButton *buttonClicked = (UIButton*) sender;
-        nextVC.userIdOfProfiledUser = [NSString stringWithFormat:@"%d",(int)buttonClicked.tag];
-        NSLog(@"Loading profile for near by user %@",  nextVC.userIdOfProfiledUser );
-    }
-    
+    UserMenuViewController *userMenuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UserMenuViewController"];
+    [self segueToDestinationViewController:userMenuVC fromSourceViewController:self];
+}
+
+-(void) prepareSegueForDestinationViewController:(UmanlyViewController *) destinationViewController
+{
     [self unscheduleTimers];
+    [super prepareSegueForDestinationViewController:destinationViewController];
 }
 
 -(void) scheduleTimers

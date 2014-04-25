@@ -17,9 +17,6 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <segue destination="437-0U-xY6" kind="modal" identifier="segueToMapView" id="PMZ-ij-RZv"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gJZ-hh-l7o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -62,7 +59,6 @@
                         <outlet property="logoLabel" destination="8OQ-A4-RxJ" id="XMI-Yx-bqY"/>
                         <outlet property="map" destination="ub3-Dh-0sh" id="JxB-NG-PaX"/>
                         <outlet property="userMenuButton" destination="flo-KI-64R" id="LHO-kw-fUX"/>
-                        <segue destination="FVi-lx-zNs" kind="modal" identifier="segueToDisplayUserProfile" id="xrW-Er-1tq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tee-kQ-IDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -99,9 +95,6 @@
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="437-0U-xY6" kind="modal" identifier="segueToMapView" id="SfI-Vo-Qa8"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysw-Rq-u8k">
                                 <rect key="frame" x="20" y="337" width="156" height="35"/>
@@ -138,7 +131,7 @@
         <!--User Profile View Controller-->
         <scene sceneID="PiQ-Sh-Aw3">
             <objects>
-                <viewController id="FVi-lx-zNs" customClass="UserProfileViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserProfileViewController" id="FVi-lx-zNs" customClass="UserProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JgE-Wh-xRH"/>
                         <viewControllerLayoutGuide type="bottom" id="EG3-Jc-eMO"/>
@@ -151,6 +144,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXK-Z4-gVi">
+                                <rect key="frame" x="10" y="10" width="50" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omj-i7-VWl">
                                 <rect key="frame" x="25" y="221" width="30" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -207,6 +207,7 @@
                         <outlet property="labelForGeneralInterests" destination="RuS-xa-Lah" id="LvU-no-nAD"/>
                         <outlet property="labelForHeadingData" destination="0C4-68-jWI" id="0Or-cy-PLu"/>
                         <outlet property="labelForTopBar" destination="YRv-GA-ltB" id="1l7-wU-HvO"/>
+                        <outlet property="userMenuButton" destination="fXK-Z4-gVi" id="2EE-kH-E8O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GT5-3C-wWH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -290,7 +291,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="PMZ-ij-RZv"/>
-    </inferredMetricsTieBreakers>
 </document>

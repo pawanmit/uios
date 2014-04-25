@@ -27,7 +27,7 @@
     [self.view addSubview: imageView];
     
     [self setupFbLoginViewToUIView];
-    
+    self.currentViewControllerIdentifier = @"FacebookLoginViewController";
     [super viewDidLoad];
     NSLog(@"viewDidLoad");
     
@@ -211,7 +211,7 @@
                                      withSuccessHandler:^(){
                                          self.user = self.umanlyClientDelegate.user;
                                          NSLog(@"User retrived with id %@ and availability %i", self.user.userId, self.user.isAvailable );
-                                         [self performSegueWithIdentifier:@"segueToMapView" sender:self];
+                                         [self segueToMapView];
                                      }
                                      withFailureHandler:^(){
                                          [self.viewUtility showAlertMessage:@"Error connecting to umanly. Please try later."
@@ -226,14 +226,11 @@
     }];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+
+-(void)segueToMapView
 {
-    if ([[segue identifier] isEqualToString:@"segueToMapView"])
-    {
-        DisplayUsersOnMapViewController *nextVC = [segue destinationViewController];
-        nextVC.user = self.user;
-        nextVC.sourceView = @"FacebookLoginView";
-    }
+        DisplayUsersOnMapViewController *userMapViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DisplayUsersOnMapViewController"];
+    [self segueToDestinationViewController:userMapViewController fromSourceViewController:self];
     
 }
 
