@@ -10,7 +10,8 @@
 
 @implementation UmanlyClientDelegate
 
-NSString *const BaseURLString = @"http://api.umanly.com/user/";
+NSString *const BaseURLString = @"http://mydublin.us/umanlyapi/user/";
+//NSString *const BaseURLString = @"http://api.umanly.com/user/";
 
 -(void) saveOrUpdateUser:(User *) user
       withSuccessHandler: (UmanlyRequestSuccessHandler) successHandler
@@ -20,7 +21,7 @@ NSString *const BaseURLString = @"http://api.umanly.com/user/";
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *params = [self getParamsFromUser:user];
     [manager POST:BaseURLString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        id userJson = [responseObject objectForKey:@"User"];
+        id userJson = [responseObject objectForKey:@"user"];
         User *user = [self getUserFromJson:userJson];
         self.user = user;
         successHandler();
@@ -135,7 +136,7 @@ NSString *const BaseURLString = @"http://api.umanly.com/user/";
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        id userJson = [responseObject objectForKey:@"User"];
+        id userJson = [responseObject objectForKey:@"user"];
         self.user = [self getUserFromJson:userJson];
         successHandler();
         //NSLog(@"Response %@", (NSDictionary *)responseObject);
