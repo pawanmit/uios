@@ -426,6 +426,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = umanly;
 				TargetAttributes = {
+					D48A748D18DCED13008D1C9A = {
+						DevelopmentTeam = 8VRUUT5FSK;
+					};
 					D48A74AE18DCED13008D1C9A = {
 						TestTargetID = D48A748D18DCED13008D1C9A;
 					};
@@ -636,6 +639,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/pmittal/workspace/uiosv2,
@@ -647,6 +652,7 @@
 				INFOPLIST_FILE = "uiosv2/uiosv2-Info.plist";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -656,6 +662,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/pmittal/workspace/uiosv2,
@@ -667,6 +675,7 @@
 				INFOPLIST_FILE = "uiosv2/uiosv2-Info.plist";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

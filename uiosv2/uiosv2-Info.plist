@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>umanly.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>umanly.uios</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -37,7 +37,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>FacebookAppID</key>
-	<string>625893600789351</string>
+	<string>276436715857832</string>
 	<key>FacebookDisplayName</key>
 	<string>umanly</string>
 	<key>CFBundleURLTypes</key>
@@ -45,7 +45,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb625893600789351</string>
+				<string>fb276436715857832</string>
 			</array>
 		</dict>
 	</array>
