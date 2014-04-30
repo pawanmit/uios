@@ -59,6 +59,35 @@
      ];
 }
 
+-(void) declineChatRequestFromSender:(NSString *) senderUserId
+                          toReceiver: (NSString *) receiverUserId
+                  withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
+                  withFailureHandler: (UmanlyChatFailureHandler) failureHander;
+{
+    //Remove chat request from receiver
+
+    NSMutableString *receiversChatRequestLocation = [self getChatRequestLocationForUser:receiverUserId];
+    [self.fireBaseDelegate removeValueFromLocation:receiversChatRequestLocation
+                                withSuccessHandler:^{
+                                }
+                                withFailureHandler:^{
+                                    
+                                }];
+    
+    NSMutableString *sendersChatRequestLocation = [self getChatRequestLocationForUser:senderUserId];
+    [sendersChatRequestLocation appendFormat:@"/%@", receiverUserId];
+    NSMutableDictionary *requestChatParams = [[NSMutableDictionary alloc] init];
+    [requestChatParams setObject:receiverUserId forKey:@"user_id"];
+    [requestChatParams setObject:@"declined" forKey:@"status"];
+    [self.fireBaseDelegate appendValue:requestChatParams
+                            ToLocation:sendersChatRequestLocation
+                    withSuccessHandler: ^(){
+                    }
+                    withFailureHandler:^(){
+                    }
+     ];
+}
+
 -(void) updateChatStatus:(NSString *) chatStatus
            betweenSender:(NSString *) senderUserId
              andReceiver:(NSString *) receiverUserId

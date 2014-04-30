@@ -41,4 +41,9 @@ typedef void (^UmanlyChatFailureHandler)(void);
         withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
         withFailureHandler: (UmanlyChatFailureHandler) failureHander;
 
+-(void) declineChatRequestFromSender:(NSString *) senderUserId
+                          toReceiver: (NSString *) receiverUserId
+                  withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
+                  withFailureHandler: (UmanlyChatFailureHandler) failureHander;
+
 @end

@@ -19,7 +19,7 @@ NSString *const FireBaseURL = @"https://popping-fire-3020.firebaseIO.com/";
 
     NSLog(@"Observing firebase location %@", location);
     Firebase *firebase = [self getFireBaseReferenceForLocation:location];
-    [firebase observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
+    [firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         //NSLog(@"%@", snapshot);
         self.fireBaseData = snapshot.value;
         successHandler();
@@ -45,6 +45,16 @@ NSString *const FireBaseURL = @"https://popping-fire-3020.firebaseIO.com/";
     NSLog(@"Firebase Ref created for URL %@", fireBaseUrl);
     Firebase *firebase = [[Firebase alloc] initWithUrl:fireBaseUrl];
     return firebase;
+}
+
+
+-(void) removeValueFromLocation:(NSString *) location
+             withSuccessHandler: (FireBaseSuccessHandler) successHandler
+             withFailureHandler: (FireBaseFailureHandler) failureHandler
+{
+    NSLog(@"Removing values from location %@", location );
+    Firebase *firebase = [self getFireBaseReferenceForLocation:location];
+    [firebase removeValue];
 }
 
 @end

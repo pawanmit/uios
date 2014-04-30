@@ -25,4 +25,8 @@ typedef void (^FireBaseFailureHandler)(void);
            withSuccessHandler: (FireBaseSuccessHandler) successHandler
            withFailureHandler: (FireBaseFailureHandler) failureHandler;
 
+-(void) removeValueFromLocation:(NSString *) location
+             withSuccessHandler: (FireBaseSuccessHandler) successHandler
+             withFailureHandler: (FireBaseFailureHandler) failureHandler;
+
 @end
