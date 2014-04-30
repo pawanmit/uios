@@ -32,6 +32,13 @@
 //    
 //    self.window.backgroundColor = [UIColor whiteColor];
 //    [self.window makeKeyAndVisible];
+    NSString *facebookAppId = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"FacebookAppID"];
+    NSLog(@"Facebook App Id: %@", facebookAppId);
+    NSString *appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
+    NSLog(@"App Version: %@", appVersion);
+    NSString *appIdentifier = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"];
+    NSLog(@"Bundel Identifier: %@", appIdentifier);
+    
     return YES;
 }
 							
