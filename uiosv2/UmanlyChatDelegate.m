@@ -26,9 +26,12 @@
          withFailureHandler: (UmanlyChatFailureHandler) failureHander
 {
 
-    NSString *chatRequestLocation = [self getChatRequestLocationForUser:receiverUserId];;
+    NSMutableString *chatRequestLocation = [self getChatRequestLocationForUser:receiverUserId];
+    [chatRequestLocation appendString:@"/"];
+    [chatRequestLocation appendString:senderUserId];
     NSMutableDictionary *requestChatParams = [[NSMutableDictionary alloc] init];
     [requestChatParams setObject:senderUserId forKey:@"user_id"];
+    [requestChatParams setObject:@"sent" forKey:@"status"];
     [self.fireBaseDelegate appendValue:requestChatParams
                             ToLocation:chatRequestLocation
                             withSuccessHandler: ^(){
@@ -78,7 +81,7 @@
     
 }
 
--(NSString *) getChatRequestLocationForUser:(NSString *) userId
+-(NSMutableString *) getChatRequestLocationForUser:(NSString *) userId
 {
  
     NSMutableString *chatRequestLocation = [NSMutableString stringWithCapacity:20];
