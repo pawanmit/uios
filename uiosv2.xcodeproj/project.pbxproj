@@ -58,6 +58,7 @@
 		D4D8F60218FDA54000A33BEC /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D8F60118FDA54000A33BEC /* libc++.dylib */; };
 		D4D8F60418FDA54F00A33BEC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D8F60318FDA54F00A33BEC /* CFNetwork.framework */; };
 		D4E1049C18E4D522004CFB3A /* UserAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E1049B18E4D522004CFB3A /* UserAnnotationView.m */; };
+		D4E3BCBE1912E7170032A215 /* ChatMessagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E3BCBD1912E7170032A215 /* ChatMessagingViewController.m */; };
 		D4E46C5218EE0B0C009B6306 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E46C5118EE0B0C009B6306 /* UserProfileViewController.m */; };
 		D4FC994E19008CB100C15606 /* UmanlyChatDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FC994D19008CB100C15606 /* UmanlyChatDelegate.m */; };
 		D4FC995119008CDB00C15606 /* FireBaseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FC995019008CDB00C15606 /* FireBaseDelegate.m */; };
@@ -160,6 +161,8 @@
 		D4D8F60318FDA54F00A33BEC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D4E1049A18E4D522004CFB3A /* UserAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAnnotationView.h; sourceTree = "<group>"; };
 		D4E1049B18E4D522004CFB3A /* UserAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAnnotationView.m; sourceTree = "<group>"; };
+		D4E3BCBC1912E7170032A215 /* ChatMessagingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessagingViewController.h; sourceTree = "<group>"; };
+		D4E3BCBD1912E7170032A215 /* ChatMessagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessagingViewController.m; sourceTree = "<group>"; };
 		D4E46C5018EE0B0C009B6306 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
 		D4E46C5118EE0B0C009B6306 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		D4FC994C19008CB100C15606 /* UmanlyChatDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UmanlyChatDelegate.h; sourceTree = "<group>"; };
@@ -274,6 +277,8 @@
 				D4E46C5118EE0B0C009B6306 /* UserProfileViewController.m */,
 				D4B9DE5C1901B1A000819F8F /* ChatConfirmationController.h */,
 				D4B9DE5D1901B1A000819F8F /* ChatConfirmationController.m */,
+				D4E3BCBC1912E7170032A215 /* ChatMessagingViewController.h */,
+				D4E3BCBD1912E7170032A215 /* ChatMessagingViewController.m */,
 			);
 			path = uiosv2;
 			sourceTree = "<group>";
@@ -484,6 +489,7 @@
 				D48A750818DCEFE7008D1C9A /* UIImageView+AFNetworking.m in Sources */,
 				D48A74C818DCED50008D1C9A /* FacebookLoginViewController.m in Sources */,
 				D4E1049C18E4D522004CFB3A /* UserAnnotationView.m in Sources */,
+				D4E3BCBE1912E7170032A215 /* ChatMessagingViewController.m in Sources */,
 				D43FC18718E6192C0059EC05 /* ViewUtility.m in Sources */,
 				D45D64B818E6405500EA87D0 /* UserMenuViewController.m in Sources */,
 				D48A74EA18DCEFDC008D1C9A /* AFHTTPRequestOperationManager.m in Sources */,
