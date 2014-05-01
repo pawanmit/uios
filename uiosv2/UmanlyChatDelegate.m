@@ -51,7 +51,8 @@
                         withSuccessHandler: ^(){
                             NSLog(@"%@",self.fireBaseDelegate.fireBaseData);
                             self.userIdForIncomingChatRequest = [self.fireBaseDelegate.fireBaseData objectForKey:@"user_id"];
-                            NSLog(@"user Id of chat request sender%@", self.userIdForIncomingChatRequest);
+                            self.chatStatus = [self.fireBaseDelegate.fireBaseData objectForKey:@"status"];
+                            NSLog(@"Chat request received from %@ with status %@", self.userIdForIncomingChatRequest, self.chatStatus);
                             //NSEnumerator
                             successHandler();
                         }

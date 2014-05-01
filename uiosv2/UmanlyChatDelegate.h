@@ -19,6 +19,7 @@ typedef void (^UmanlyChatSuccessHandler)(void);
 typedef void (^UmanlyChatFailureHandler)(void);
 
 @property NSString* userIdForIncomingChatRequest;
+@property NSString* chatStatus;
 
 -(void) sendChatRequestFromSender:(NSString *) senderUserId
                          toReceiver:(NSString *) receiverUserId
