@@ -16,7 +16,6 @@
 @interface UmanlyViewController : UIViewController
 
 @property NSString *sourceView;
-@property User *user;
 @property UmanlyClientDelegate *umanlyClientDelegate;
 @property ViewUtility *viewUtility;
 @property UmanlyChatDelegate *umanlyChatDelegate;

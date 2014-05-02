@@ -28,7 +28,7 @@
     [super viewDidLoad];
     self.currentViewControllerIdentifier = @"ChatConfirmationController";
 	// Do any additional setup after loading the view.
-    NSLog(@"Chat request received for user %@ from user %@", self.user.userId, self.userIdForIncomingChatRequest);
+    //NSLog(@"Chat request received for user %@ from user %@", self.user.userId, self.userIdForIncomingChatRequest);
 }
 
 -(void) viewDidAppear:(BOOL) animated
@@ -58,10 +58,11 @@
 
 -(void) denyChatRequest
 {
-    NSLog(@"User %@ denied chat request from user %@", self.user.userId, self.userIdForIncomingChatRequest);
+    User *user = [User sharedUser];
+    NSLog(@"User %@ denied chat request from user %@", user.userId, self.userIdForIncomingChatRequest);
     
     [self.umanlyChatDelegate declineChatRequestFromSender:self.userIdForIncomingChatRequest
-                                toReceiver:self.user.userId
+                                toReceiver:user.userId
                            withSuccessHandler:^() {
         //code
     }
@@ -70,7 +71,6 @@
                            }];
     NSLog(@"Seguing to controller: %@", self.sourceViewControllerIdentifier);
     UmanlyViewController *destinationViewController = [self.storyboard instantiateViewControllerWithIdentifier:self.sourceViewControllerIdentifier];
-    destinationViewController.user = self.user;
     [self segueToDestinationViewController:destinationViewController fromSourceViewController:self];
 }
 

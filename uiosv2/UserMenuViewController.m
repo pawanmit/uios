@@ -25,17 +25,19 @@
 
 - (IBAction)availabilitySwiched:(id)sender {
     BOOL isAvailable;
+    User *user = [User sharedUser];
     if(self.availabilitySwitch.on) {
-        NSLog(@"User id %@ Availability On.", self.user.userId);
+        NSLog(@"User id %@ Availability On.", user.userId);
         isAvailable = YES;
     }
     else {
-        NSLog(@"User id %@ Availability Off.", self.user.userId);
+        NSLog(@"User id %@ Availability Off.", user.userId);
         isAvailable = NO;
     }
-    self.umanlyClientDelegate.user = self.user;
     [self.umanlyClientDelegate updateUserAvailability:isAvailable
-                                   withSuccessHandler:^() {self.user.isAvailable = isAvailable;}
+                                   withSuccessHandler:^() {
+                                       user.isAvailable = isAvailable;
+                                   }
                                    withFailureHandler:^() {
                                        [self.availabilitySwitch setOn:!isAvailable];
                                        [ self.viewUtility showAlertMessage:@"Unable to change your availabilty status. Plese try again"
@@ -48,7 +50,7 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"UserMenuViewController: User loaded with id %@", self.user.userId);
+    //NSLog(@"UserMenuViewController: User loaded with id %@", self.user.userId);
     [self prepareView];
     self.currentViewControllerIdentifier = @"UserMenuViewController";
 

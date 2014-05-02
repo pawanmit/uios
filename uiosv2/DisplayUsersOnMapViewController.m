@@ -33,7 +33,7 @@
     [self.map setDelegate: self];
     self.map.showsUserLocation=YES;
         
-    NSLog(@"User Loaded from DisplayUsersOnMapViewController with id %@", self.user.userId );
+    //NSLog(@"User Loaded from DisplayUsersOnMapViewController with id %@", self.user.userId );
     
     
     [self scheduleTimers];
@@ -42,7 +42,8 @@
 //        [self showUserOnMap:self.user.location];
 //        [self updateNeayByUsersAnnotations];
 //    }
-    [self showUserOnMap:self.user.location];
+    User *user = [User sharedUser];
+    [self showUserOnMap:user.location];
     self.currentViewControllerIdentifier = @"DisplayUsersOnMapViewController";
 
     [super viewDidLoad];
@@ -70,12 +71,12 @@
     UserLocation *currentLocation = [[UserLocation alloc] init];
     currentLocation.longitude = userLocation.location.coordinate.longitude;
     currentLocation.latitude = userLocation.location.coordinate.latitude;
-    [self.umanlyClientDelegate updateUser:self.user
+    User *user = [User sharedUser];
+    [self.umanlyClientDelegate updateUser:user
                                 withLocation:currentLocation
                                 withSuccessHandler: ^()
                                 {
-                                    self.user.location = self.umanlyClientDelegate.user.location;
-                                    [self showUserOnMap:self.user.location];
+                                    [self showUserOnMap:user.location];
                                 }
                        withFailureHandler:^() {}];
 }
@@ -83,7 +84,8 @@
 -(void) locateNearByUsers
 {
     NSLog(@"Finding nearby Users");
-    [self.umanlyClientDelegate getUsersNearUser:self.user
+    User *user = [User sharedUser];
+    [self.umanlyClientDelegate getUsersNearUser:user
                              withSuccessHandler:^{
                                  if ([self.locateNearByUsersTimer isValid]) {
                                      [self updateNearByUsers:self.umanlyClientDelegate.nearByUsers];
@@ -95,15 +97,16 @@
 
 -(void) updateNearByUsers:(NSArray *) nearByUsers
 {
+    User *currentUser = [User sharedUser];
     for (id user in nearByUsers) {
         User *nearByUser = (User *) user;
-        User *existingNearByUser = [self.user.nearByUsers objectForKey:nearByUser.userId];
+        User *existingNearByUser = [currentUser.nearByUsers objectForKey:nearByUser.userId];
         if ( existingNearByUser ) {
             //update user location
             existingNearByUser.location = nearByUser.location;
         } else{
-            NSLog(@"Adding near by user with id %@", nearByUser.userId);
-            [self.user.nearByUsers setValue:user forKey:nearByUser.userId];
+            NSLog(@"Adding near by user with id %@", currentUser.userId);
+            [currentUser.nearByUsers setValue:user forKey:nearByUser.userId];
             [self getFacebookProfileImageForUser:nearByUser];
         }
     }
@@ -114,10 +117,11 @@
 {
     NSLog(@"updating annotations");
     [self.map removeAnnotations:[self.map annotations]];
-    for (id userId in self.user.nearByUsers) {
-        User *nearByUser = [self.user.nearByUsers objectForKey:userId];
+    User *user = [User sharedUser];
+    for (id userId in user.nearByUsers) {
+        User *nearByUser = [user.nearByUsers objectForKey:userId];
         //Don't add annoatation for current user and users with availabilty off
-        if ( (![nearByUser.userId isEqualToString:self.user.userId]) && nearByUser.isAvailable) {
+        if ( (![nearByUser.userId isEqualToString:user.userId]) && nearByUser.isAvailable) {
             [self addNearByUserAnnotation:nearByUser];
         }
     }
@@ -199,7 +203,8 @@
 
 - (void) showUserOnMap: (UserLocation *) location
 {
-    NSLog(@"User location: Longitude %f and Latitude %f ",  self.user.location.longitude, self.user.location.latitude);
+    User *user = [User sharedUser];
+    NSLog(@"User location: Longitude %f and Latitude %f ",  user.location.longitude, user.location.latitude);
     //self.map.centerCoordinate = userLocation.location.coordinate;
     CLLocationCoordinate2D clLocation;
     clLocation.latitude = location.latitude;

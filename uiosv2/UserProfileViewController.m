@@ -29,7 +29,8 @@
 
 - (void)viewDidLoad
 {
-    User *profiledUser = [self.user.nearByUsers objectForKey:self.userIdOfProfiledUser];
+    User *currentUser = [User sharedUser];
+    User *profiledUser = [currentUser.nearByUsers objectForKey:self.userIdOfProfiledUser];
     NSLog(@"DisplayUserProfileViewController: Loading user %@", profiledUser.firstName);
     [self prepareView];
     [super viewDidLoad];
@@ -61,8 +62,8 @@
     [self.greetUserButton addTarget:self
                          action:@selector(greetUser)
                         forControlEvents:UIControlEventTouchUpInside];
-    
-    User *profiledUser = [self.user.nearByUsers objectForKey:self.userIdOfProfiledUser];
+    User *currentUser = [User sharedUser];
+    User *profiledUser = [currentUser.nearByUsers objectForKey:self.userIdOfProfiledUser];
     self.labelForHeadingData.text = [NSString stringWithFormat:@"%@ %@\r%@", profiledUser.firstName, profiledUser.lastName, profiledUser.hometown];
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -89,7 +90,8 @@
                             User *profiledUser = self.umanlyClientDelegate.user;
                             NSLog(@"User chat status %@", profiledUser.chatStatus );
                             if ( [profiledUser.chatStatus isEqualToString:@"available"] ) {
-                                [self.umanlyChatDelegate sendChatRequestFromSender:self.user.userId
+                                User *currentUser = [User sharedUser];
+                                [self.umanlyChatDelegate sendChatRequestFromSender:currentUser.userId
                                      toReceiver:profiledUser.userId withSuccessHandler:^(){
                                     }
                                      withFailureHandler:^{

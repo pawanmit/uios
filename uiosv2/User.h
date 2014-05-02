@@ -30,4 +30,6 @@
 
 @property NSMutableDictionary *nearByUsers;
 
++ (id)sharedUser;
+
 @end

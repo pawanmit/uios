@@ -39,7 +39,8 @@
 
 -(void) startListeningForChatRequests
 {
-    [self.umanlyChatDelegate listenForIncomingChatRequestsForUser:self.user.userId
+    User *user = [User sharedUser];
+    [self.umanlyChatDelegate listenForIncomingChatRequestsForUser:user.userId
                                                withSuccessHandler:^(){
                                                    NSLog(@"Chat request received. Seguing to chat confirmation view");
                                                    [self segueToChatConfirmation];
@@ -54,7 +55,6 @@
 {
     ChatConfirmationController *chatConfirmationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ChatConfirmationController"];
     chatConfirmationVC.userIdForIncomingChatRequest = self.umanlyChatDelegate.userIdForIncomingChatRequest;
-    chatConfirmationVC.user = self.user;
     [self segueToDestinationViewController:chatConfirmationVC
           fromSourceViewController:self];
 }
@@ -70,7 +70,6 @@
 
 -(void) prepareSegueForDestinationViewController:(UmanlyViewController *) destinationViewController
 {
-    destinationViewController.user = self.user;
     destinationViewController.sourceViewControllerIdentifier = self.currentViewControllerIdentifier;
 
 }

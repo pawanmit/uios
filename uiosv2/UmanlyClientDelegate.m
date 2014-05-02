@@ -22,8 +22,7 @@ NSString *const BaseURLString = @"http://mydublin.us/umanlyapi/user/";
     NSDictionary *params = [self getParamsFromUser:user];
     [manager POST:BaseURLString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         id userJson = [responseObject objectForKey:@"user"];
-        User *user = [self getUserFromJson:userJson];
-        self.user = user;
+        [self updateUser:user fromJson:userJson];
         successHandler();
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -78,8 +77,7 @@ NSString *const BaseURLString = @"http://mydublin.us/umanlyapi/user/";
                              };
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager POST:updateLocationUrl parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        self.user = user;
-        self.user.location = location;
+        user.location = location;
         successHandler();
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -99,7 +97,6 @@ NSString *const BaseURLString = @"http://mydublin.us/umanlyapi/user/";
     NSDictionary *params = @{@"availability": availability};
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager POST:updateAvailabilityUrl parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        self.user.isAvailable = isAvailable;
         successHandler();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
@@ -210,6 +207,28 @@ NSString *const BaseURLString = @"http://mydublin.us/umanlyapi/user/";
     user.isAvailable = [availability boolValue];
     user.chatStatus = [userJson objectForKey:@"chat_status"];
     return user;
+}
+
+-(void) updateUser:(User *) user
+            fromJson: (id) userJson
+{
+    user.userId = [userJson objectForKey:@"id"];
+    user.firstName = [userJson objectForKey:@"first_name"];
+    user.lastName = [userJson objectForKey:@"last_name"];
+    user.facebookUsername = [userJson objectForKey:@"facebook_username"];
+    user.birthday = [userJson objectForKey:@"birthday"];
+    user.hometown = [userJson objectForKey:@"hometown"];
+    user.gender = [userJson objectForKey:@"gender"];
+    id location = [userJson objectForKey:@"location"];
+    if (location != nil) {
+        UserLocation *userLocation = [[UserLocation alloc] init];
+        userLocation.latitude = [[location objectForKey:@"latitude"] floatValue];
+        userLocation.longitude = [[location objectForKey:@"longitude"] floatValue];
+        user.location = userLocation;
+    }
+    NSString *availability = [userJson objectForKey:@"availability"];
+    user.isAvailable = [availability boolValue];
+    user.chatStatus = [userJson objectForKey:@"chat_status"];
 }
 
 -(NSString *) convertNilToEmptyString:(NSString *) text

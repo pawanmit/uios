@@ -196,7 +196,7 @@
         if (!error) {
             // Success! Include your code to handle the results here
             //NSLog([NSString stringWithFormat:@"user info: %@", result]);
-            User *user = [[User alloc] init];
+            User *user = [User sharedUser];
             user.birthday = [result objectForKey:@"birthday"];
             user.firstName = [result objectForKey:@"first_name"];
             user.lastName = [result objectForKey:@"last_name"];
@@ -209,8 +209,7 @@
             
             [self.umanlyClientDelegate saveOrUpdateUser:user
                                      withSuccessHandler:^(){
-                                         self.user = self.umanlyClientDelegate.user;
-                                         NSLog(@"User retrived with id %@ and availability %i", self.user.userId, self.user.isAvailable );
+                                         NSLog(@"User retrived with id %@ and availability %i", user.userId, user.isAvailable );
                                          [self segueToMapView];
                                      }
                                      withFailureHandler:^(){

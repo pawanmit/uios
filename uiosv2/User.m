@@ -13,13 +13,20 @@
 -(id) init
 {
     self = [super init];
-    
     if (self)
     {
         self.nearByUsers = [[NSMutableDictionary alloc] init];
     }
-    
     return self;
+}
+
++ (id)sharedUser {
+    static User *user = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        user = [[self alloc] init];
+    });
+    return user;
 }
 
 @end
