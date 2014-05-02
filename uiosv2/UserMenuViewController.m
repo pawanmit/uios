@@ -62,8 +62,6 @@
 
 {
     self.sourceViewController = self;
-
-    [self startListeningForChatRequests];
     
     [super viewDidAppear:animated];
     

@@ -43,7 +43,12 @@
     [self.umanlyChatDelegate listenForIncomingChatRequestsForUser:user.userId
                                                withSuccessHandler:^(){
                                                    NSLog(@"Chat request received. Seguing to chat confirmation view");
-                                                   [self segueToChatConfirmation];
+                                                   if ([self.umanlyChatDelegate.chatStatus isEqualToString:@"sent"]) {
+                                                       [self segueToChatConfirmation];
+                                                   } else if ([self.umanlyChatDelegate.chatStatus isEqualToString:@"declined"]) {
+                                                        [self.viewUtility showAlertMessage:@"Chat Request Declined" withTitle:@""];
+                                                       
+                                                   }
                                                }
                                                withFailureHandler:^(){
                                                    [self.viewUtility showAlertMessage:@"Error connecting to chat" withTitle:@""];
