@@ -47,4 +47,6 @@ typedef void (^UmanlyChatFailureHandler)(void);
                   withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
                   withFailureHandler: (UmanlyChatFailureHandler) failureHander;
 
+-(void) clearChatRequestLocation:(NSString *) userId;
+
 @end

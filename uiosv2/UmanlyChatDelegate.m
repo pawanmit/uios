@@ -65,28 +65,11 @@
                   withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
                   withFailureHandler: (UmanlyChatFailureHandler) failureHander;
 {
-    //Remove chat request from receiver
-
-    NSMutableString *receiversChatRequestLocation = [self getChatRequestLocationForUser:receiverUserId];
-    [self.fireBaseDelegate removeValueFromLocation:receiversChatRequestLocation
-                                withSuccessHandler:^{
-                                }
-                                withFailureHandler:^{
-                                    
-                                }];
-    
-    NSMutableString *sendersChatRequestLocation = [self getChatRequestLocationForUser:senderUserId];
-    [sendersChatRequestLocation appendFormat:@"/%@", receiverUserId];
-    NSMutableDictionary *requestChatParams = [[NSMutableDictionary alloc] init];
-    [requestChatParams setObject:receiverUserId forKey:@"user_id"];
-    [requestChatParams setObject:@"declined" forKey:@"status"];
-    [self.fireBaseDelegate appendValue:requestChatParams
-                            ToLocation:sendersChatRequestLocation
-                    withSuccessHandler: ^(){
-                    }
-                    withFailureHandler:^(){
-                    }
-     ];
+    [self updateChatStatus:@"declined" betweenSender:senderUserId andReceiver:receiverUserId withSuccessHandler:^{
+        successHandler();
+    } withFailureHandler:^{
+        //
+    }];
 }
 
 -(void) updateChatStatus:(NSString *) chatStatus
@@ -103,6 +86,7 @@
     [self.fireBaseDelegate appendValue:requestChatParams
                             ToLocation:chatRequestLocation
                     withSuccessHandler: ^(){
+                        successHandler();
                     }
                     withFailureHandler:^(){
                     }
@@ -135,6 +119,17 @@
         NSLog(@"Requesting chat: %@",  jsonData);
     }
     return jsonString;
+}
+
+-(void) clearChatRequestLocation:(NSString *) userId
+{
+    NSString *chatRequestLocation = [self getChatRequestLocationForUser:userId];
+    [self.fireBaseDelegate removeValueFromLocation:chatRequestLocation
+                                withSuccessHandler:^{
+                                }
+                                withFailureHandler:^{
+                                    
+                                }];
 }
 
 @end

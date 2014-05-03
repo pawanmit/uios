@@ -35,6 +35,7 @@ NSString *const FireBaseURL = @"https://popping-fire-3020.firebaseIO.com/";
  
     Firebase *firebase = [self getFireBaseReferenceForLocation:location];
     [firebase setValue:message];
+    successHandler();
 }
 
 -(Firebase *) getFireBaseReferenceForLocation:(NSString *) location

@@ -42,11 +42,13 @@
     User *user = [User sharedUser];
     [self.umanlyChatDelegate listenForIncomingChatRequestsForUser:user.userId
                                                withSuccessHandler:^(){
+                                                   //[self sendNotification];
                                                    NSLog(@"Chat request received. Seguing to chat confirmation view");
                                                    if ([self.umanlyChatDelegate.chatStatus isEqualToString:@"sent"]) {
                                                        [self segueToChatConfirmation];
                                                    } else if ([self.umanlyChatDelegate.chatStatus isEqualToString:@"declined"]) {
-                                                        [self.viewUtility showAlertMessage:@"Chat Request Declined" withTitle:@""];
+                                                       [self.viewUtility showAlertMessage:@"Chat Request Declined" withTitle:@""];
+                                                       [self.umanlyChatDelegate clearChatRequestLocation:user.userId];
                                                        
                                                    }
                                                }
@@ -55,6 +57,18 @@
                                                }];
 }
 
+
+-(void) sendNotification
+{
+    UILocalNotification *chatNotification = [[UILocalNotification alloc] init];
+     chatNotification.fireDate = [NSDate date];
+    chatNotification.timeZone = [NSTimeZone defaultTimeZone];
+    chatNotification.alertBody = @"hello";
+    chatNotification.soundName = UILocalNotificationDefaultSoundName;
+    chatNotification.applicationIconBadgeNumber = 1;
+    chatNotification.alertAction = @"View";
+    [[UIApplication sharedApplication] scheduleLocalNotification:chatNotification];
+}
 
 -(void) segueToChatConfirmation
 {
@@ -76,7 +90,6 @@
 -(void) prepareSegueForDestinationViewController:(UmanlyViewController *) destinationViewController
 {
     destinationViewController.sourceViewControllerIdentifier = self.currentViewControllerIdentifier;
-
 }
 
 

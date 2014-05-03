@@ -38,10 +38,6 @@
     
     [self scheduleTimers];
     
-//    if ([self.sourceView isEqualToString:@"UserMenuView"]) {
-//        [self showUserOnMap:self.user.location];
-//        [self updateNeayByUsersAnnotations];
-//    }
     User *user = [User sharedUser];
     [self showUserOnMap:user.location];
     self.currentViewControllerIdentifier = @"DisplayUsersOnMapViewController";
@@ -68,17 +64,21 @@
 - (void)mapView:(MKMapView *)mapView
     didUpdateUserLocation: (MKUserLocation *)userLocation
 {
-    UserLocation *currentLocation = [[UserLocation alloc] init];
-    currentLocation.longitude = userLocation.location.coordinate.longitude;
-    currentLocation.latitude = userLocation.location.coordinate.latitude;
-    User *user = [User sharedUser];
-    [self.umanlyClientDelegate updateUser:user
-                                withLocation:currentLocation
-                                withSuccessHandler: ^()
-                                {
-                                    [self showUserOnMap:user.location];
-                                }
-                       withFailureHandler:^() {}];
+    if (userLocation.location.horizontalAccuracy > 1) {
+        UserLocation *currentLocation = [[UserLocation alloc] init];
+        currentLocation.longitude = userLocation.location.coordinate.longitude;
+        currentLocation.latitude = userLocation.location.coordinate.latitude;
+        User *user = [User sharedUser];
+        [self.umanlyClientDelegate updateUser:user
+                                    withLocation:currentLocation
+                                    withSuccessHandler: ^()
+                                    {
+                                        [self showUserOnMap:user.location];
+                                    }
+                           withFailureHandler:^() {}];
+    } else {
+        NSLog(@"skipping location update. horizontalAccuracy < 1");
+    }
 }
 
 -(void) locateNearByUsers

@@ -252,8 +252,6 @@
 				D4FC994B19008C8000C15606 /* Delegates */,
 				D4C6783018E0ED63006847FF /* UserLocation.h */,
 				D4C6783118E0ED63006847FF /* UserLocation.m */,
-				D48A74A018DCED13008D1C9A /* AppDelegate.h */,
-				D48A74A118DCED13008D1C9A /* AppDelegate.m */,
 				D48A74A318DCED13008D1C9A /* Main.storyboard */,
 				D48A74C618DCED50008D1C9A /* FacebookLoginViewController.h */,
 				D48A74C718DCED50008D1C9A /* FacebookLoginViewController.m */,
@@ -374,6 +372,8 @@
 		D4FC994B19008C8000C15606 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
+				D48A74A018DCED13008D1C9A /* AppDelegate.h */,
+				D48A74A118DCED13008D1C9A /* AppDelegate.m */,
 				D4BC77DE18DD013600171C7C /* UmanlyClientDelegate.h */,
 				D4BC77DF18DD013600171C7C /* UmanlyClientDelegate.m */,
 				D4FC994C19008CB100C15606 /* UmanlyChatDelegate.h */,

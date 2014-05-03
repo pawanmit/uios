@@ -81,4 +81,9 @@
     return [FBSession.activeSession handleOpenURL:url];
 }
 
+- (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)notif {
+    // Handle the notificaton when the app is running
+    NSLog(@"Recieved Notification %@",notif);
+}
+
 @end
