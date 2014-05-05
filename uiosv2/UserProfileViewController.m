@@ -31,7 +31,7 @@
 {
     User *currentUser = [User sharedUser];
     User *profiledUser = [currentUser.nearByUsers objectForKey:self.userIdOfProfiledUser];
-    NSLog(@"DisplayUserProfileViewController: Loading user %@", profiledUser.firstName);
+    NSLog(@"UserProfileViewController: Loading user %@", profiledUser.firstName);
     [self prepareView];
     [super viewDidLoad];
 }
@@ -66,11 +66,8 @@
     User *profiledUser = [currentUser.nearByUsers objectForKey:self.userIdOfProfiledUser];
     self.labelForHeadingData.text = [NSString stringWithFormat:@"%@ %@\r%@", profiledUser.firstName, profiledUser.lastName, profiledUser.hometown];
     
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"LL/d/yyyy"];
-    NSDate *dateOfBirth = [dateFormat dateFromString:profiledUser.birthday];
-    if (dateOfBirth != nil) {
-        int age = [self calculateAge:dateOfBirth];
+    if ( (profiledUser.birthday != nil) && (profiledUser.birthday != [NSNull null]) ) {
+        int age = [self calculateAge:profiledUser.birthday];
         self.labelForBasicInfoData.text = [NSString stringWithFormat:@"AGE: %d\rGENDER: %@", age, profiledUser.gender];
     }
 }
@@ -113,11 +110,14 @@
     
 }
 
-- (NSInteger)calculateAge:(NSDate *)birthday {
+- (NSInteger)calculateAge:(NSString *)birthday {
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"LL/d/yyyy"];
+    NSDate *dateOfBirth = [dateFormat dateFromString:birthday];
     NSDate *today = [NSDate date];
     NSDateComponents *ageComponents = [[NSCalendar currentCalendar]
                                        components:NSYearCalendarUnit
-                                       fromDate:birthday
+                                       fromDate:dateOfBirth
                                        toDate:today
                                        options:0];
     return ageComponents.year;
