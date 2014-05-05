@@ -34,6 +34,7 @@
         NSLog(@"User id %@ Availability Off.", user.userId);
         isAvailable = NO;
     }
+    self.umanlyClientDelegate.user = user;
     [self.umanlyClientDelegate updateUserAvailability:isAvailable
                                    withSuccessHandler:^() {
                                        user.isAvailable = isAvailable;
