@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "FireBaseService.h"
 #import "User.h"
+#import "UmanlyChatDelegate.h"
 
 @interface UmanlyChatService : NSObject
 
 @property FireBaseService *fireBaseService;
 
+@property id<UmanlyChatDelegate> delegate;
 
 typedef void (^UmanlyChatSuccessHandler)(void);
 

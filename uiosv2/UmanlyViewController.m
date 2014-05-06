@@ -28,6 +28,7 @@
     
     if (self.umanlyChatService == nil) {
         self.umanlyChatService = [[UmanlyChatService alloc] init];
+        self.umanlyChatService.delegate = self;
     }
     if (self.viewUtility == nil) {
         self.viewUtility = [[ViewUtility alloc] init];
@@ -41,22 +42,22 @@
 {
     User *user = [User sharedUser];
     [self.umanlyChatService listenForIncomingChatRequests:nil
-                                               withSuccessHandler:^(){
-                                                   //[self sendNotification];
-                                                   NSLog(@"Chat request received. Seguing to chat confirmation view");
-                                                   if ([self.umanlyChatService.chatStatus isEqualToString:@"request"]) {
-                                                       [self segueToChatConfirmation];
-                                                   } else if ([self.umanlyChatService.chatStatus isEqualToString:@"declined"]) {
-                                                       [self.viewUtility showAlertMessage:@"Chat Request Declined" withTitle:@""];
-                                                       
-                                                   }
-                                               }
+                                               withSuccessHandler:^(){}
                                                withFailureHandler:^(){
                                                    [self.viewUtility showAlertMessage:@"Error connecting to chat" withTitle:@""];
                                                }];
 }
 
+-(void) chatRequestReceived
+{
+  NSLog(@"Chat request received. Seguing to chat confirmation view");
+  [self segueToChatConfirmation];
+}
 
+-(void) chatRequestDeclined
+{
+    [self.viewUtility showAlertMessage:@"Chat Request Declined" withTitle:@""];
+}
 -(void) sendNotification
 {
     UILocalNotification *chatNotification = [[UILocalNotification alloc] init];

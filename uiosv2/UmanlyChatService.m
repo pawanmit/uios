@@ -55,10 +55,20 @@
                             self.chatStatus = [self.fireBaseService.fireBaseData objectForKey:@"status"];
                             NSLog(@"Chat request received from %@ with status %@", self.userIdForIncomingChatRequest, self.chatStatus);
                             //NSEnumerator
-                            successHandler();
+                            [self handleChatRequests];
                         }
                         withFailureHandler:^(){}
      ];
+}
+
+-(void) handleChatRequests
+{
+    if ([self.chatStatus isEqualToString:@"request"]) {
+        [self.delegate chatRequestReceived];
+    } else if( [self.chatStatus isEqualToString:@"declined"] ) {
+        [self.delegate chatRequestDeclined];
+        [self clearChatRequestLocation];
+    }
 }
 
 -(void) declineChatRequestFromUser:(NSString *) userId

@@ -80,6 +80,7 @@
 		D441536B18E6302E00108730 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D45D64B618E6405500EA87D0 /* UserMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserMenuViewController.h; sourceTree = "<group>"; };
 		D45D64B718E6405500EA87D0 /* UserMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserMenuViewController.m; sourceTree = "<group>"; };
+		D465C7DD1919587100F28E50 /* UmanlyChatDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UmanlyChatDelegate.h; sourceTree = "<group>"; };
 		D48A748E18DCED13008D1C9A /* uiosv2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uiosv2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D48A749118DCED13008D1C9A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D48A749318DCED13008D1C9A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -215,6 +216,13 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
+		D465C7E019195A6E00F28E50 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		D48A748518DCED13008D1C9A = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +267,7 @@
 		D48A749718DCED13008D1C9A /* uiosv2 */ = {
 			isa = PBXGroup;
 			children = (
+				D465C7E019195A6E00F28E50 /* Controllers */,
 				D465C7DC1919565600F28E50 /* Services */,
 				D4B9DE621901D31000819F8F /* Custom */,
 				D4FC994B19008C8000C15606 /* Delegates */,
@@ -388,6 +397,7 @@
 				D48A74A118DCED13008D1C9A /* AppDelegate.m */,
 				D4BC77DE18DD013600171C7C /* UmanlyClientDelegate.h */,
 				D4BC77DF18DD013600171C7C /* UmanlyClientDelegate.m */,
+				D465C7DD1919587100F28E50 /* UmanlyChatDelegate.h */,
 			);
 			name = Delegates;
 			sourceTree = "<group>";
