@@ -11,14 +11,14 @@
 #import "UserLocation.h"
 #import "ViewUtility.h"
 #import "UmanlyClientDelegate.h"
-#import "UmanlyChatDelegate.h"
+#import "UmanlyChatService.h"
 
 @interface UmanlyViewController : UIViewController
 
 @property NSString *sourceView;
 @property UmanlyClientDelegate *umanlyClientDelegate;
 @property ViewUtility *viewUtility;
-@property UmanlyChatDelegate *umanlyChatDelegate;
+@property UmanlyChatService *umanlyChatService;
 @property UmanlyViewController *sourceViewController;
 @property NSString *sourceViewControllerIdentifier;
 @property NSString *currentViewControllerIdentifier;

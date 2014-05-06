@@ -26,8 +26,8 @@
         self.umanlyClientDelegate = umanlyClientDelegate;
     }
     
-    if (self.umanlyChatDelegate == nil) {
-        self.umanlyChatDelegate = [[UmanlyChatDelegate alloc] init];
+    if (self.umanlyChatService == nil) {
+        self.umanlyChatService = [[UmanlyChatService alloc] init];
     }
     if (self.viewUtility == nil) {
         self.viewUtility = [[ViewUtility alloc] init];
@@ -40,13 +40,13 @@
 -(void) startListeningForChatRequests
 {
     User *user = [User sharedUser];
-    [self.umanlyChatDelegate listenForIncomingChatRequests:nil
+    [self.umanlyChatService listenForIncomingChatRequests:nil
                                                withSuccessHandler:^(){
                                                    //[self sendNotification];
                                                    NSLog(@"Chat request received. Seguing to chat confirmation view");
-                                                   if ([self.umanlyChatDelegate.chatStatus isEqualToString:@"request"]) {
+                                                   if ([self.umanlyChatService.chatStatus isEqualToString:@"request"]) {
                                                        [self segueToChatConfirmation];
-                                                   } else if ([self.umanlyChatDelegate.chatStatus isEqualToString:@"declined"]) {
+                                                   } else if ([self.umanlyChatService.chatStatus isEqualToString:@"declined"]) {
                                                        [self.viewUtility showAlertMessage:@"Chat Request Declined" withTitle:@""];
                                                        
                                                    }
@@ -72,7 +72,7 @@
 -(void) segueToChatConfirmation
 {
     ChatConfirmationController *chatConfirmationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ChatConfirmationController"];
-    chatConfirmationVC.userIdForIncomingChatRequest = self.umanlyChatDelegate.userIdForIncomingChatRequest;
+    chatConfirmationVC.userIdForIncomingChatRequest = self.umanlyChatService.userIdForIncomingChatRequest;
     [self segueToDestinationViewController:chatConfirmationVC
           fromSourceViewController:self];
 }

@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 umanly. All rights reserved.
 //
 
-#import "UmanlyChatDelegate.h"
+#import "UmanlyChatService.h"
 #import "ChatConfirmationController.h"
 #import "UmanlyStoryboardSegue.h"
 
-@implementation UmanlyChatDelegate
+@implementation UmanlyChatService
 
 -(id) init {
     self = [super init];

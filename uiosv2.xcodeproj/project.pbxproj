@@ -60,7 +60,7 @@
 		D4E1049C18E4D522004CFB3A /* UserAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E1049B18E4D522004CFB3A /* UserAnnotationView.m */; };
 		D4E3BCBE1912E7170032A215 /* ChatMessagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E3BCBD1912E7170032A215 /* ChatMessagingViewController.m */; };
 		D4E46C5218EE0B0C009B6306 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E46C5118EE0B0C009B6306 /* UserProfileViewController.m */; };
-		D4FC994E19008CB100C15606 /* UmanlyChatDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FC994D19008CB100C15606 /* UmanlyChatDelegate.m */; };
+		D4FC994E19008CB100C15606 /* UmanlyChatService.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FC994D19008CB100C15606 /* UmanlyChatService.m */; };
 		D4FC995119008CDB00C15606 /* FireBaseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FC995019008CDB00C15606 /* FireBaseDelegate.m */; };
 /* End PBXBuildFile section */
 
@@ -165,8 +165,8 @@
 		D4E3BCBD1912E7170032A215 /* ChatMessagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessagingViewController.m; sourceTree = "<group>"; };
 		D4E46C5018EE0B0C009B6306 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
 		D4E46C5118EE0B0C009B6306 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
-		D4FC994C19008CB100C15606 /* UmanlyChatDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UmanlyChatDelegate.h; sourceTree = "<group>"; };
-		D4FC994D19008CB100C15606 /* UmanlyChatDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UmanlyChatDelegate.m; sourceTree = "<group>"; };
+		D4FC994C19008CB100C15606 /* UmanlyChatService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UmanlyChatService.h; sourceTree = "<group>"; };
+		D4FC994D19008CB100C15606 /* UmanlyChatService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UmanlyChatService.m; sourceTree = "<group>"; };
 		D4FC994F19008CDB00C15606 /* FireBaseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FireBaseDelegate.h; sourceTree = "<group>"; };
 		D4FC995019008CDB00C15606 /* FireBaseDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FireBaseDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -376,8 +376,8 @@
 				D48A74A118DCED13008D1C9A /* AppDelegate.m */,
 				D4BC77DE18DD013600171C7C /* UmanlyClientDelegate.h */,
 				D4BC77DF18DD013600171C7C /* UmanlyClientDelegate.m */,
-				D4FC994C19008CB100C15606 /* UmanlyChatDelegate.h */,
-				D4FC994D19008CB100C15606 /* UmanlyChatDelegate.m */,
+				D4FC994C19008CB100C15606 /* UmanlyChatService.h */,
+				D4FC994D19008CB100C15606 /* UmanlyChatService.m */,
 				D4FC994F19008CDB00C15606 /* FireBaseDelegate.h */,
 				D4FC995019008CDB00C15606 /* FireBaseDelegate.m */,
 			);
@@ -500,7 +500,7 @@
 				D4BC77DD18DD00F900171C7C /* User.m in Sources */,
 				D48A74EC18DCEFDC008D1C9A /* AFNetworkReachabilityManager.m in Sources */,
 				D48A74F018DCEFDC008D1C9A /* AFURLResponseSerialization.m in Sources */,
-				D4FC994E19008CB100C15606 /* UmanlyChatDelegate.m in Sources */,
+				D4FC994E19008CB100C15606 /* UmanlyChatService.m in Sources */,
 				D4AEF28818EB6D620078F291 /* UmanlyViewController.m in Sources */,
 				D48A74EE18DCEFDC008D1C9A /* AFURLConnectionOperation.m in Sources */,
 				D48A750718DCEFE7008D1C9A /* UIButton+AFNetworking.m in Sources */,

@@ -61,7 +61,7 @@
     User *user = [User sharedUser];
     NSLog(@"User %@ denied chat request from user %@", user.userId, self.userIdForIncomingChatRequest);
     
-    [self.umanlyChatDelegate declineChatRequestFromUser:self.userIdForIncomingChatRequest
+    [self.umanlyChatService declineChatRequestFromUser:self.userIdForIncomingChatRequest
                            withSuccessHandler:^() {}
                            withFailureHandler:^() {}
      ];

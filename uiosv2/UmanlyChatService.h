@@ -10,7 +10,7 @@
 #import "FireBaseDelegate.h"
 #import "User.h"
 
-@interface UmanlyChatDelegate : NSObject
+@interface UmanlyChatService : NSObject
 
 @property FireBaseDelegate *fireBaseDelegate;
 

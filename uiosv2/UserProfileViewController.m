@@ -88,7 +88,7 @@
                             NSLog(@"User chat status %@", profiledUser.chatStatus );
                             if ( [profiledUser.chatStatus isEqualToString:@"available"] ) {
                                 User *currentUser = [User sharedUser];
-                                [self.umanlyChatDelegate sendChatRequestToUser:profiledUser.userId
+                                [self.umanlyChatService sendChatRequestToUser:profiledUser.userId
                                       withSuccessHandler:^(){
                                     }
                                      withFailureHandler:^{
