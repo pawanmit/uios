@@ -20,18 +20,18 @@
     return(self);
 }
 
--(void) sendChatRequestFromSender:(NSString *) senderUserId
-        toReceiver:(NSString *) receiverUserId
+-(void) sendChatRequestToUser:(NSString *) userId
          withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
          withFailureHandler: (UmanlyChatFailureHandler) failureHander
 {
 
-    NSMutableString *chatRequestLocation = [self getChatRequestLocationForUser:receiverUserId];
+    NSMutableString *chatRequestLocation = [self getChatRequestLocationForUser:userId];
     [chatRequestLocation appendString:@"/"];
-    [chatRequestLocation appendString:senderUserId];
+    User *thisUser = [User sharedUser];
+    [chatRequestLocation appendString:thisUser.userId];
     NSMutableDictionary *requestChatParams = [[NSMutableDictionary alloc] init];
-    [requestChatParams setObject:senderUserId forKey:@"user_id"];
-    [requestChatParams setObject:@"sent" forKey:@"status"];
+    [requestChatParams setObject:thisUser.userId forKey:@"user_id"];
+    [requestChatParams setObject:@"request" forKey:@"status"];
     [self.fireBaseDelegate appendValue:requestChatParams
                             ToLocation:chatRequestLocation
                             withSuccessHandler: ^(){
@@ -42,11 +42,12 @@
     
 }
 
-- (void) listenForIncomingChatRequestsForUser:(NSString *) userId
+- (void) listenForIncomingChatRequests:(User *) user
            withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
            withFailureHandler: (UmanlyChatFailureHandler) failureHander;
 {
-    NSString *chatRequestLocation = [self getChatRequestLocationForUser:userId];
+    User *thisUser = [User sharedUser];
+    NSString *chatRequestLocation = [self getChatRequestLocationForUser:thisUser.userId];
     [self.fireBaseDelegate observeLocation:chatRequestLocation
                         withSuccessHandler: ^(){
                             NSLog(@"%@",self.fireBaseDelegate.fireBaseData);
@@ -60,28 +61,29 @@
      ];
 }
 
--(void) declineChatRequestFromSender:(NSString *) senderUserId
-                          toReceiver: (NSString *) receiverUserId
-                  withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
-                  withFailureHandler: (UmanlyChatFailureHandler) failureHander;
+-(void) declineChatRequestFromUser:(NSString *) userId
+                withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
+                withFailureHandler: (UmanlyChatFailureHandler) failureHander
 {
-    [self updateChatStatus:@"declined" betweenSender:senderUserId andReceiver:receiverUserId withSuccessHandler:^{
-        successHandler();
-    } withFailureHandler:^{
-        //
-    }];
+    [self updateChatStatusTo:@"declined" ofUser:userId
+          withSuccessHandler:^{
+              successHandler();
+              [self clearChatRequestLocation];
+          }
+          withFailureHandler:^{}
+     ];
 }
 
--(void) updateChatStatus:(NSString *) chatStatus
-           betweenSender:(NSString *) senderUserId
-             andReceiver:(NSString *) receiverUserId
+-(void) updateChatStatusTo:(NSString *) chatStatus
+           ofUser:(NSString *) userId
       withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
       withFailureHandler: (UmanlyChatFailureHandler) failureHander
 {
-    NSMutableString *chatRequestLocation = [self getChatRequestLocationForUser:receiverUserId];
-    [chatRequestLocation appendFormat:@"/%@", senderUserId];
+    NSMutableString *chatRequestLocation = [self getChatRequestLocationForUser:userId];
+    User *thisUser = [User sharedUser];
+    [chatRequestLocation appendFormat:@"/%@", thisUser.userId];
     NSMutableDictionary *requestChatParams = [[NSMutableDictionary alloc] init];
-    [requestChatParams setObject:senderUserId forKey:@"user_id"];
+    [requestChatParams setObject:thisUser.userId forKey:@"user_id"];
     [requestChatParams setObject:chatStatus forKey:@"status"];
     [self.fireBaseDelegate appendValue:requestChatParams
                             ToLocation:chatRequestLocation
@@ -95,13 +97,16 @@
     
 }
 
--(NSMutableString *) getChatRequestLocationForUser:(NSString *) userId
+-(void) clearChatRequestLocation
 {
- 
-    NSMutableString *chatRequestLocation = [NSMutableString stringWithCapacity:20];
-    [chatRequestLocation appendString:userId];
-    [chatRequestLocation appendFormat:@"/chat_requests"];
-    return chatRequestLocation;
+    User *thisUser = [User sharedUser];
+    NSString *chatRequestLocation = [self getChatRequestLocationForUser:thisUser.userId];
+    [self.fireBaseDelegate removeValueFromLocation:chatRequestLocation
+                                withSuccessHandler:^{
+                                }
+                                withFailureHandler:^{
+                                    
+                                }];
 }
 
 -(NSString *) getJsonFromChatParams:(NSDictionary *) chatParams
@@ -110,7 +115,7 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:chatParams
                                                        options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
                         
-    error:&error];
+                                                         error:&error];
     NSString *jsonString = @"";
     if (! jsonData) {
         NSLog(@"Got an error: %@", error);
@@ -121,15 +126,14 @@
     return jsonString;
 }
 
--(void) clearChatRequestLocation:(NSString *) userId
+
+-(NSMutableString *) getChatRequestLocationForUser:(NSString *) userId
 {
-    NSString *chatRequestLocation = [self getChatRequestLocationForUser:userId];
-    [self.fireBaseDelegate removeValueFromLocation:chatRequestLocation
-                                withSuccessHandler:^{
-                                }
-                                withFailureHandler:^{
-                                    
-                                }];
+    
+    NSMutableString *chatRequestLocation = [NSMutableString stringWithCapacity:20];
+    [chatRequestLocation appendString:userId];
+    [chatRequestLocation appendFormat:@"/chat_requests"];
+    return chatRequestLocation;
 }
 
 @end

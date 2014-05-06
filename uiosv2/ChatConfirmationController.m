@@ -61,14 +61,10 @@
     User *user = [User sharedUser];
     NSLog(@"User %@ denied chat request from user %@", user.userId, self.userIdForIncomingChatRequest);
     
-    [self.umanlyChatDelegate declineChatRequestFromSender:user.userId
-                                toReceiver:self.userIdForIncomingChatRequest
-                           withSuccessHandler:^() {
-                               [self.umanlyChatDelegate clearChatRequestLocation:user.userId];
-    }
-                           withFailureHandler:^() {
-        //code
-                           }];
+    [self.umanlyChatDelegate declineChatRequestFromUser:self.userIdForIncomingChatRequest
+                           withSuccessHandler:^() {}
+                           withFailureHandler:^() {}
+     ];
     NSLog(@"Seguing to controller: %@", self.sourceViewControllerIdentifier);
     UmanlyViewController *destinationViewController = [self.storyboard instantiateViewControllerWithIdentifier:self.sourceViewControllerIdentifier];
     [self segueToDestinationViewController:destinationViewController fromSourceViewController:self];

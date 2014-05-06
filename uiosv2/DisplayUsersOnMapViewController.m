@@ -39,7 +39,7 @@
     [self scheduleTimers];
     
     User *user = [User sharedUser];
-    //[self showUserOnMap:user.location];
+    [self showUserOnMap:user.location];
     self.currentViewControllerIdentifier = @"DisplayUsersOnMapViewController";
 
     [super viewDidLoad];

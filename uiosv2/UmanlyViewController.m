@@ -40,15 +40,14 @@
 -(void) startListeningForChatRequests
 {
     User *user = [User sharedUser];
-    [self.umanlyChatDelegate listenForIncomingChatRequestsForUser:user.userId
+    [self.umanlyChatDelegate listenForIncomingChatRequests:nil
                                                withSuccessHandler:^(){
                                                    //[self sendNotification];
                                                    NSLog(@"Chat request received. Seguing to chat confirmation view");
-                                                   if ([self.umanlyChatDelegate.chatStatus isEqualToString:@"sent"]) {
+                                                   if ([self.umanlyChatDelegate.chatStatus isEqualToString:@"request"]) {
                                                        [self segueToChatConfirmation];
                                                    } else if ([self.umanlyChatDelegate.chatStatus isEqualToString:@"declined"]) {
                                                        [self.viewUtility showAlertMessage:@"Chat Request Declined" withTitle:@""];
-                                                       [self.umanlyChatDelegate clearChatRequestLocation:user.userId];
                                                        
                                                    }
                                                }

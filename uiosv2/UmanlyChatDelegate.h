@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FireBaseDelegate.h"
+#import "User.h"
 
 @interface UmanlyChatDelegate : NSObject
 
@@ -21,32 +22,27 @@ typedef void (^UmanlyChatFailureHandler)(void);
 @property NSString* userIdForIncomingChatRequest;
 @property NSString* chatStatus;
 
--(void) sendChatRequestFromSender:(NSString *) senderUserId
-                         toReceiver:(NSString *) receiverUserId
+-(void) sendChatRequestToUser:(NSString *) userId
              withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
              withFailureHandler: (UmanlyChatFailureHandler) failureHander;
 
--(void) sendMessage:(NSString *) message
-           fromSender:(NSString *) userId
-         toReceiver:(NSString *) userId
+-(void) sendChatMessage:(NSString *) message
+           toUser:(NSString *) userId
          withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
          withFailureHandler: (UmanlyChatFailureHandler) failureHander;
 
--(void) listenForIncomingChatRequestsForUser:(NSString *) userId
+-(void) listenForIncomingChatRequests:(User *) test
           withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
           withFailureHandler: (UmanlyChatFailureHandler) failureHander;
 
--(void) updateChatStatus:(NSString *) chatStatus
-        betweenSender:(NSString *) senderUserId
-        andReceiver:(NSString *) receiverUserId
-        withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
-        withFailureHandler: (UmanlyChatFailureHandler) failureHander;
-
--(void) declineChatRequestFromSender:(NSString *) senderUserId
-                          toReceiver: (NSString *) receiverUserId
+-(void) declineChatRequestFromUser:(NSString *) userId
                   withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
                   withFailureHandler: (UmanlyChatFailureHandler) failureHander;
 
--(void) clearChatRequestLocation:(NSString *) userId;
+-(void) acceptChatRequestFromUser:(NSString *) userId
+                withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
+                withFailureHandler: (UmanlyChatFailureHandler) failureHander;
+
+-(void) handleDeclinedChatRequest;
 
 @end
