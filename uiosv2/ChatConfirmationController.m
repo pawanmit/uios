@@ -53,7 +53,16 @@
     [self.denyChatRequestButton addTarget:self
                                    action:@selector(denyChatRequest)
                          forControlEvents:UIControlEventTouchUpInside];
+    [self.acceptChatRequestButton addTarget:self
+                                   action:@selector(acceptChatRequest)
+                         forControlEvents:UIControlEventTouchUpInside];
 
+}
+
+-(void) acceptChatRequest
+{
+    [self.umanlyChatService acceptChatRequestFromUser:self.userIdForIncomingChatRequest withSuccessHandler:^{} withFailureHandler:^{}];
+    [self segueToChatWindow];
 }
 
 -(void) denyChatRequest

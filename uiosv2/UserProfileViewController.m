@@ -32,6 +32,7 @@
     User *currentUser = [User sharedUser];
     User *profiledUser = [currentUser.nearByUsers objectForKey:self.userIdOfProfiledUser];
     NSLog(@"UserProfileViewController: Loading user %@", profiledUser.firstName);
+    self.currentViewControllerIdentifier = @"UserProfileViewController";
     [self prepareView];
     [super viewDidLoad];
 }

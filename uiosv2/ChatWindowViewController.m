@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 umanly. All rights reserved.
 //
 
-#import "ChatMessagingViewController.h"
+#import "ChatWindowViewController.h"
 
-@interface ChatMessagingViewController ()
+@interface ChatWindowViewController ()
 
 @end
 
-@implementation ChatMessagingViewController
+@implementation ChatWindowViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

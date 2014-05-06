@@ -33,4 +33,6 @@
 
 -(void) prepareView;
 
+-(void) segueToChatWindow;
+
 @end

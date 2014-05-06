@@ -8,6 +8,7 @@
 
 #import "UmanlyViewController.h"
 #import "ChatConfirmationController.h"
+#import "ChatWindowViewController.h"
 #import "UserMenuViewController.h"
 #import "UmanlyStoryboardSegue.h"
 
@@ -58,6 +59,13 @@
 {
     [self.viewUtility showAlertMessage:@"Chat Request Declined" withTitle:@""];
 }
+
+-(void) chatRequestAccepted
+{
+    NSLog(@"Chat request accepted. Seguing to chat window view");
+    [self segueToChatWindow];
+}
+
 -(void) sendNotification
 {
     UILocalNotification *chatNotification = [[UILocalNotification alloc] init];
@@ -69,6 +77,15 @@
     chatNotification.alertAction = @"View";
     [[UIApplication sharedApplication] scheduleLocalNotification:chatNotification];
 }
+
+-(void) segueToChatWindow
+{
+    ChatWindowViewController *chatWindowVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ChatWindowViewController"];
+    chatWindowVC.userIdForIncomingChatRequest = self.umanlyChatService.userIdForIncomingChatRequest;
+    [self segueToDestinationViewController:chatWindowVC
+                  fromSourceViewController:self];
+}
+
 
 -(void) segueToChatConfirmation
 {

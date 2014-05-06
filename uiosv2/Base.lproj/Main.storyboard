@@ -285,10 +285,10 @@
             </objects>
             <point key="canvasLocation" x="1279" y="-306"/>
         </scene>
-        <!--Chat Messaging View Controller-->
+        <!--Chat Window View Controller-->
         <scene sceneID="jf5-QU-QVU">
             <objects>
-                <viewController id="eXo-07-Cfx" customClass="ChatMessagingViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatWindowViewController" id="eXo-07-Cfx" customClass="ChatWindowViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qY8-Qx-Oh0"/>
                         <viewControllerLayoutGuide type="bottom" id="i8Q-LI-nKF"/>

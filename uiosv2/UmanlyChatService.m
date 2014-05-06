@@ -68,7 +68,29 @@
     } else if( [self.chatStatus isEqualToString:@"declined"] ) {
         [self.delegate chatRequestDeclined];
         [self clearChatRequestLocation];
+    } else if ( [self.chatStatus isEqualToString:@"accepted"]) {
+        [self.delegate chatRequestAccepted];
     }
+}
+
+-(void) acceptChatRequestFromUser:(NSString *) userId
+                withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
+                withFailureHandler: (UmanlyChatFailureHandler) failureHander
+{
+    [self updateChatStatusTo:@"accepted" ofUser:userId
+          withSuccessHandler:^{
+              successHandler();
+          }
+          withFailureHandler:^{}
+     ];
+    [self clearChatRequestLocation];
+    User *thisUser = [User sharedUser];
+   [self updateChatStatusOfUser:thisUser.userId fromUser:userId toStatus: @"accepted"
+          withSuccessHandler:^{
+              successHandler();
+          }
+          withFailureHandler:^{}
+     ];
 }
 
 -(void) declineChatRequestFromUser:(NSString *) userId
@@ -81,6 +103,27 @@
               [self clearChatRequestLocation];
           }
           withFailureHandler:^{}
+     ];
+}
+
+-(void) updateChatStatusOfUser:(NSString *) userId1
+                      fromUser:(NSString *) userId2
+                      toStatus:(NSString *) chatStatus
+                    withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
+                    withFailureHandler: (UmanlyChatFailureHandler) failureHander
+{
+    NSMutableString *chatRequestLocation = [self getChatRequestLocationForUser:userId1];
+    [chatRequestLocation appendFormat:@"/%@", userId2];
+    NSMutableDictionary *requestChatParams = [[NSMutableDictionary alloc] init];
+    [requestChatParams setObject:userId2 forKey:@"user_id"];
+    [requestChatParams setObject:chatStatus forKey:@"status"];
+    [self.fireBaseService appendValue:requestChatParams
+                           ToLocation:chatRequestLocation
+                   withSuccessHandler: ^(){
+                       successHandler();
+                   }
+                   withFailureHandler:^(){
+                   }
      ];
 }
 
