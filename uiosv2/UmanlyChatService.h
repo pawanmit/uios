@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FireBaseDelegate.h"
+#import "FireBaseService.h"
 #import "User.h"
 
 @interface UmanlyChatService : NSObject
 
-@property FireBaseDelegate *fireBaseDelegate;
+@property FireBaseService *fireBaseService;
 
 
 typedef void (^UmanlyChatSuccessHandler)(void);

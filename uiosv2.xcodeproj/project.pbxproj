@@ -61,7 +61,7 @@
 		D4E3BCBE1912E7170032A215 /* ChatMessagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E3BCBD1912E7170032A215 /* ChatMessagingViewController.m */; };
 		D4E46C5218EE0B0C009B6306 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E46C5118EE0B0C009B6306 /* UserProfileViewController.m */; };
 		D4FC994E19008CB100C15606 /* UmanlyChatService.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FC994D19008CB100C15606 /* UmanlyChatService.m */; };
-		D4FC995119008CDB00C15606 /* FireBaseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FC995019008CDB00C15606 /* FireBaseDelegate.m */; };
+		D4FC995119008CDB00C15606 /* FireBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FC995019008CDB00C15606 /* FireBaseService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,8 +167,8 @@
 		D4E46C5118EE0B0C009B6306 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		D4FC994C19008CB100C15606 /* UmanlyChatService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UmanlyChatService.h; sourceTree = "<group>"; };
 		D4FC994D19008CB100C15606 /* UmanlyChatService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UmanlyChatService.m; sourceTree = "<group>"; };
-		D4FC994F19008CDB00C15606 /* FireBaseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FireBaseDelegate.h; sourceTree = "<group>"; };
-		D4FC995019008CDB00C15606 /* FireBaseDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FireBaseDelegate.m; sourceTree = "<group>"; };
+		D4FC994F19008CDB00C15606 /* FireBaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FireBaseService.h; sourceTree = "<group>"; };
+		D4FC995019008CDB00C15606 /* FireBaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FireBaseService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +204,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D465C7DC1919565600F28E50 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D4FC994F19008CDB00C15606 /* FireBaseService.h */,
+				D4FC995019008CDB00C15606 /* FireBaseService.m */,
+				D4FC994C19008CB100C15606 /* UmanlyChatService.h */,
+				D4FC994D19008CB100C15606 /* UmanlyChatService.m */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		D48A748518DCED13008D1C9A = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +259,7 @@
 		D48A749718DCED13008D1C9A /* uiosv2 */ = {
 			isa = PBXGroup;
 			children = (
+				D465C7DC1919565600F28E50 /* Services */,
 				D4B9DE621901D31000819F8F /* Custom */,
 				D4FC994B19008C8000C15606 /* Delegates */,
 				D4C6783018E0ED63006847FF /* UserLocation.h */,
@@ -376,10 +388,6 @@
 				D48A74A118DCED13008D1C9A /* AppDelegate.m */,
 				D4BC77DE18DD013600171C7C /* UmanlyClientDelegate.h */,
 				D4BC77DF18DD013600171C7C /* UmanlyClientDelegate.m */,
-				D4FC994C19008CB100C15606 /* UmanlyChatService.h */,
-				D4FC994D19008CB100C15606 /* UmanlyChatService.m */,
-				D4FC994F19008CDB00C15606 /* FireBaseDelegate.h */,
-				D4FC995019008CDB00C15606 /* FireBaseDelegate.m */,
 			);
 			name = Delegates;
 			sourceTree = "<group>";
@@ -496,7 +504,7 @@
 				D4B9DE5E1901B1A000819F8F /* ChatConfirmationController.m in Sources */,
 				D4B9DE651901D34100819F8F /* UmanlyStoryboardSegue.m in Sources */,
 				D48A750918DCEFE7008D1C9A /* UIProgressView+AFNetworking.m in Sources */,
-				D4FC995119008CDB00C15606 /* FireBaseDelegate.m in Sources */,
+				D4FC995119008CDB00C15606 /* FireBaseService.m in Sources */,
 				D4BC77DD18DD00F900171C7C /* User.m in Sources */,
 				D48A74EC18DCEFDC008D1C9A /* AFNetworkReachabilityManager.m in Sources */,
 				D48A74F018DCEFDC008D1C9A /* AFURLResponseSerialization.m in Sources */,

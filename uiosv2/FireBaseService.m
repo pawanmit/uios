@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 umanly. All rights reserved.
 //
 
-#import "FireBaseDelegate.h"
+#import "FireBaseService.h"
 
-@implementation FireBaseDelegate
+@implementation FireBaseService
 
 NSString *const FireBaseURL = @"https://popping-fire-3020.firebaseIO.com/";
 

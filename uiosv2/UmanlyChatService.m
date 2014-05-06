@@ -15,7 +15,7 @@
 -(id) init {
     self = [super init];
     if (self) {
-        self.fireBaseDelegate = [[FireBaseDelegate alloc] init];
+        self.fireBaseService = [[FireBaseService alloc] init];
     }
     return(self);
 }
@@ -32,7 +32,7 @@
     NSMutableDictionary *requestChatParams = [[NSMutableDictionary alloc] init];
     [requestChatParams setObject:thisUser.userId forKey:@"user_id"];
     [requestChatParams setObject:@"request" forKey:@"status"];
-    [self.fireBaseDelegate appendValue:requestChatParams
+    [self.fireBaseService appendValue:requestChatParams
                             ToLocation:chatRequestLocation
                             withSuccessHandler: ^(){
                             }
@@ -48,11 +48,11 @@
 {
     User *thisUser = [User sharedUser];
     NSString *chatRequestLocation = [self getChatRequestLocationForUser:thisUser.userId];
-    [self.fireBaseDelegate observeLocation:chatRequestLocation
+    [self.fireBaseService observeLocation:chatRequestLocation
                         withSuccessHandler: ^(){
-                            NSLog(@"%@",self.fireBaseDelegate.fireBaseData);
-                            self.userIdForIncomingChatRequest = [self.fireBaseDelegate.fireBaseData objectForKey:@"user_id"];
-                            self.chatStatus = [self.fireBaseDelegate.fireBaseData objectForKey:@"status"];
+                            NSLog(@"%@",self.fireBaseService.fireBaseData);
+                            self.userIdForIncomingChatRequest = [self.fireBaseService.fireBaseData objectForKey:@"user_id"];
+                            self.chatStatus = [self.fireBaseService.fireBaseData objectForKey:@"status"];
                             NSLog(@"Chat request received from %@ with status %@", self.userIdForIncomingChatRequest, self.chatStatus);
                             //NSEnumerator
                             successHandler();
@@ -85,7 +85,7 @@
     NSMutableDictionary *requestChatParams = [[NSMutableDictionary alloc] init];
     [requestChatParams setObject:thisUser.userId forKey:@"user_id"];
     [requestChatParams setObject:chatStatus forKey:@"status"];
-    [self.fireBaseDelegate appendValue:requestChatParams
+    [self.fireBaseService appendValue:requestChatParams
                             ToLocation:chatRequestLocation
                     withSuccessHandler: ^(){
                         successHandler();
@@ -101,7 +101,7 @@
 {
     User *thisUser = [User sharedUser];
     NSString *chatRequestLocation = [self getChatRequestLocationForUser:thisUser.userId];
-    [self.fireBaseDelegate removeValueFromLocation:chatRequestLocation
+    [self.fireBaseService removeValueFromLocation:chatRequestLocation
                                 withSuccessHandler:^{
                                 }
                                 withFailureHandler:^{

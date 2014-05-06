@@ -12,7 +12,7 @@
 typedef void (^FireBaseSuccessHandler)(void);
 typedef void (^FireBaseFailureHandler)(void);
 
-@interface FireBaseDelegate : NSObject
+@interface FireBaseService : NSObject
 
 @property id fireBaseData;
 
