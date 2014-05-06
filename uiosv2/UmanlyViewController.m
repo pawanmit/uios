@@ -28,7 +28,7 @@
     }
     
     if (self.umanlyChatService == nil) {
-        self.umanlyChatService = [[UmanlyChatService alloc] init];
+        self.umanlyChatService = [UmanlyChatService sharedChatService];
         self.umanlyChatService.delegate = self;
     }
     if (self.viewUtility == nil) {

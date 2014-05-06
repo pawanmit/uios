@@ -20,6 +20,15 @@
     return(self);
 }
 
++ (id)sharedChatService {
+    static UmanlyChatService *umanlyChatService = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        umanlyChatService = [[self alloc] init];
+    });
+    return umanlyChatService;
+}
+
 -(void) sendChatRequestToUser:(NSString *) userId
          withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
          withFailureHandler: (UmanlyChatFailureHandler) failureHander
