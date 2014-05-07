@@ -7,10 +7,11 @@
 //
 
 #import "UmanlyViewController.h"
+#import "UIBubbleTableViewDataSource.h"
 
-@interface ChatWindowViewController : UmanlyViewController
+@interface ChatWindowViewController : UmanlyViewController <UIBubbleTableViewDataSource>
 
 @property NSString* userIdForIncomingChatRequest;
-
+@property NSMutableArray *bubbleData;
 
 @end
