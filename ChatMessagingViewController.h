@@ -8,9 +8,6 @@
 
 #import "UmanlyViewController.h"
 
-@interface ChatWindowViewController : UmanlyViewController
-
-@property NSString* userIdForIncomingChatRequest;
-
+@interface ChatMessagingViewController : UmanlyViewController
 
 @end

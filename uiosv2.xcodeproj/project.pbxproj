@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		D43FC18718E6192C0059EC05 /* ViewUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D43FC18618E6192C0059EC05 /* ViewUtility.m */; };
 		D441536C18E6302E00108730 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D441536B18E6302E00108730 /* Images.xcassets */; };
-		D458B707191AC41C008E4F82 /* NSBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = D458B706191AC41C008E4F82 /* NSBubbleData.m */; };
-		D458B70A191AC469008E4F82 /* UIBubbleTypingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D458B709191AC469008E4F82 /* UIBubbleTypingTableViewCell.m */; };
-		D458B70D191AC4D3008E4F82 /* UIBubbleHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D458B70C191AC4D3008E4F82 /* UIBubbleHeaderTableViewCell.m */; };
 		D45D64B818E6405500EA87D0 /* UserMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D45D64B718E6405500EA87D0 /* UserMenuViewController.m */; };
 		D48A749218DCED13008D1C9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48A749118DCED13008D1C9A /* Foundation.framework */; };
 		D48A749418DCED13008D1C9A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48A749318DCED13008D1C9A /* CoreGraphics.framework */; };
@@ -55,7 +52,7 @@
 		D4BC77DD18DD00F900171C7C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BC77DC18DD00F900171C7C /* User.m */; };
 		D4BC77E018DD013600171C7C /* UmanlyClientDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BC77DF18DD013600171C7C /* UmanlyClientDelegate.m */; };
 		D4C6782C18E0DABC006847FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4C6782B18E0DABC006847FF /* MapKit.framework */; };
-		D4D3027C191AC23900F4760C /* UIBubbleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D3027B191AC23900F4760C /* UIBubbleTableView.m */; };
+		D4C6783218E0ED63006847FF /* UserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C6783118E0ED63006847FF /* UserLocation.m */; };
 		D4D8F5FE18FDA4D400A33BEC /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D8F5FD18FDA4D400A33BEC /* Firebase.framework */; };
 		D4D8F60018FDA52700A33BEC /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D8F5FF18FDA52700A33BEC /* libicucore.dylib */; };
 		D4D8F60218FDA54000A33BEC /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D8F60118FDA54000A33BEC /* libc++.dylib */; };
@@ -63,8 +60,6 @@
 		D4E1049C18E4D522004CFB3A /* UserAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E1049B18E4D522004CFB3A /* UserAnnotationView.m */; };
 		D4E3BCBE1912E7170032A215 /* ChatWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E3BCBD1912E7170032A215 /* ChatWindowViewController.m */; };
 		D4E46C5218EE0B0C009B6306 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E46C5118EE0B0C009B6306 /* UserProfileViewController.m */; };
-		D4E78F91191AC35C00776AF0 /* UserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E78F90191AC35C00776AF0 /* UserLocation.m */; };
-		D4E78F94191AC37900776AF0 /* UIBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E78F93191AC37900776AF0 /* UIBubbleTableViewCell.m */; };
 		D4FC994E19008CB100C15606 /* UmanlyChatService.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FC994D19008CB100C15606 /* UmanlyChatService.m */; };
 		D4FC995119008CDB00C15606 /* FireBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FC995019008CDB00C15606 /* FireBaseService.m */; };
 /* End PBXBuildFile section */
@@ -83,12 +78,6 @@
 		D43FC18518E6192C0059EC05 /* ViewUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewUtility.h; sourceTree = "<group>"; };
 		D43FC18618E6192C0059EC05 /* ViewUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewUtility.m; sourceTree = "<group>"; };
 		D441536B18E6302E00108730 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D458B705191AC41C008E4F82 /* NSBubbleData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSBubbleData.h; sourceTree = "<group>"; };
-		D458B706191AC41C008E4F82 /* NSBubbleData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSBubbleData.m; sourceTree = "<group>"; };
-		D458B708191AC469008E4F82 /* UIBubbleTypingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTypingTableViewCell.h; sourceTree = "<group>"; };
-		D458B709191AC469008E4F82 /* UIBubbleTypingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTypingTableViewCell.m; sourceTree = "<group>"; };
-		D458B70B191AC4D3008E4F82 /* UIBubbleHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleHeaderTableViewCell.h; sourceTree = "<group>"; };
-		D458B70C191AC4D3008E4F82 /* UIBubbleHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleHeaderTableViewCell.m; sourceTree = "<group>"; };
 		D45D64B618E6405500EA87D0 /* UserMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserMenuViewController.h; sourceTree = "<group>"; };
 		D45D64B718E6405500EA87D0 /* UserMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserMenuViewController.m; sourceTree = "<group>"; };
 		D465C7DD1919587100F28E50 /* UmanlyChatDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UmanlyChatDelegate.h; sourceTree = "<group>"; };
@@ -165,9 +154,8 @@
 		D4BC77DE18DD013600171C7C /* UmanlyClientDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UmanlyClientDelegate.h; sourceTree = "<group>"; };
 		D4BC77DF18DD013600171C7C /* UmanlyClientDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UmanlyClientDelegate.m; sourceTree = "<group>"; };
 		D4C6782B18E0DABC006847FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		D4D3027A191AC23900F4760C /* UIBubbleTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableView.h; sourceTree = "<group>"; };
-		D4D3027B191AC23900F4760C /* UIBubbleTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTableView.m; sourceTree = "<group>"; };
-		D4D3027D191AC29200F4760C /* UIBubbleTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewDataSource.h; sourceTree = "<group>"; };
+		D4C6783018E0ED63006847FF /* UserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserLocation.h; path = ../UserLocation.h; sourceTree = "<group>"; };
+		D4C6783118E0ED63006847FF /* UserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserLocation.m; path = ../UserLocation.m; sourceTree = "<group>"; };
 		D4D8F5FD18FDA4D400A33BEC /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = ../../Downloads/Firebase.framework; sourceTree = "<group>"; };
 		D4D8F5FF18FDA52700A33BEC /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		D4D8F60118FDA54000A33BEC /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
@@ -178,10 +166,6 @@
 		D4E3BCBD1912E7170032A215 /* ChatWindowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatWindowViewController.m; sourceTree = "<group>"; };
 		D4E46C5018EE0B0C009B6306 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
 		D4E46C5118EE0B0C009B6306 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
-		D4E78F8F191AC35C00776AF0 /* UserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLocation.h; sourceTree = "<group>"; };
-		D4E78F90191AC35C00776AF0 /* UserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLocation.m; sourceTree = "<group>"; };
-		D4E78F92191AC37900776AF0 /* UIBubbleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewCell.h; sourceTree = "<group>"; };
-		D4E78F93191AC37900776AF0 /* UIBubbleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTableViewCell.m; sourceTree = "<group>"; };
 		D4FC994C19008CB100C15606 /* UmanlyChatService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UmanlyChatService.h; sourceTree = "<group>"; };
 		D4FC994D19008CB100C15606 /* UmanlyChatService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UmanlyChatService.m; sourceTree = "<group>"; };
 		D4FC994F19008CDB00C15606 /* FireBaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FireBaseService.h; sourceTree = "<group>"; };
@@ -236,7 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				D4BC77D818DD005A00171C7C /* DisplayUsersOnMapViewController.h */,
-				D4BC77D918DD005A00171C7C /* DisplayUsersOnMapViewController.m */,
 				D45D64B618E6405500EA87D0 /* UserMenuViewController.h */,
 				D4AEF28618EB6D620078F291 /* UmanlyViewController.h */,
 				D4AEF28718EB6D620078F291 /* UmanlyViewController.m */,
@@ -247,6 +230,7 @@
 				D4E3BCBC1912E7170032A215 /* ChatWindowViewController.h */,
 				D4E3BCBD1912E7170032A215 /* ChatWindowViewController.m */,
 				D45D64B718E6405500EA87D0 /* UserMenuViewController.m */,
+				D4BC77D918DD005A00171C7C /* DisplayUsersOnMapViewController.m */,
 				D48A74C618DCED50008D1C9A /* FacebookLoginViewController.h */,
 				D48A74C718DCED50008D1C9A /* FacebookLoginViewController.m */,
 			);
@@ -301,8 +285,8 @@
 				D465C7DC1919565600F28E50 /* Services */,
 				D4B9DE621901D31000819F8F /* Custom */,
 				D4FC994B19008C8000C15606 /* Delegates */,
-				D4E78F8F191AC35C00776AF0 /* UserLocation.h */,
-				D4E78F90191AC35C00776AF0 /* UserLocation.m */,
+				D4C6783018E0ED63006847FF /* UserLocation.h */,
+				D4C6783118E0ED63006847FF /* UserLocation.m */,
 				D48A74A318DCED13008D1C9A /* Main.storyboard */,
 				D48A749818DCED13008D1C9A /* Supporting Files */,
 				D4BC77DB18DD00F900171C7C /* User.h */,
@@ -314,17 +298,6 @@
 				D43FC18518E6192C0059EC05 /* ViewUtility.h */,
 				D43FC18618E6192C0059EC05 /* ViewUtility.m */,
 				D441536B18E6302E00108730 /* Images.xcassets */,
-				D458B708191AC469008E4F82 /* UIBubbleTypingTableViewCell.h */,
-				D458B709191AC469008E4F82 /* UIBubbleTypingTableViewCell.m */,
-				D458B70B191AC4D3008E4F82 /* UIBubbleHeaderTableViewCell.h */,
-				D458B70C191AC4D3008E4F82 /* UIBubbleHeaderTableViewCell.m */,
-				D4E78F92191AC37900776AF0 /* UIBubbleTableViewCell.h */,
-				D4E78F93191AC37900776AF0 /* UIBubbleTableViewCell.m */,
-				D4D3027A191AC23900F4760C /* UIBubbleTableView.h */,
-				D4D3027B191AC23900F4760C /* UIBubbleTableView.m */,
-				D4D3027D191AC29200F4760C /* UIBubbleTableViewDataSource.h */,
-				D458B705191AC41C008E4F82 /* NSBubbleData.h */,
-				D458B706191AC41C008E4F82 /* NSBubbleData.m */,
 			);
 			path = uiosv2;
 			sourceTree = "<group>";
@@ -533,7 +506,6 @@
 				D4BC77DA18DD005A00171C7C /* DisplayUsersOnMapViewController.m in Sources */,
 				D48A750818DCEFE7008D1C9A /* UIImageView+AFNetworking.m in Sources */,
 				D48A74C818DCED50008D1C9A /* FacebookLoginViewController.m in Sources */,
-				D458B707191AC41C008E4F82 /* NSBubbleData.m in Sources */,
 				D4E1049C18E4D522004CFB3A /* UserAnnotationView.m in Sources */,
 				D4E3BCBE1912E7170032A215 /* ChatWindowViewController.m in Sources */,
 				D43FC18718E6192C0059EC05 /* ViewUtility.m in Sources */,
@@ -541,9 +513,6 @@
 				D48A74EA18DCEFDC008D1C9A /* AFHTTPRequestOperationManager.m in Sources */,
 				D4B9DE5E1901B1A000819F8F /* ChatConfirmationController.m in Sources */,
 				D4B9DE651901D34100819F8F /* UmanlyStoryboardSegue.m in Sources */,
-				D4E78F94191AC37900776AF0 /* UIBubbleTableViewCell.m in Sources */,
-				D4E78F91191AC35C00776AF0 /* UserLocation.m in Sources */,
-				D458B70D191AC4D3008E4F82 /* UIBubbleHeaderTableViewCell.m in Sources */,
 				D48A750918DCEFE7008D1C9A /* UIProgressView+AFNetworking.m in Sources */,
 				D4FC995119008CDB00C15606 /* FireBaseService.m in Sources */,
 				D4BC77DD18DD00F900171C7C /* User.m in Sources */,
@@ -558,13 +527,12 @@
 				D48A750A18DCEFE7008D1C9A /* UIRefreshControl+AFNetworking.m in Sources */,
 				D48A750B18DCEFE7008D1C9A /* UIWebView+AFNetworking.m in Sources */,
 				D48A74EB18DCEFDC008D1C9A /* AFHTTPSessionManager.m in Sources */,
-				D458B70A191AC469008E4F82 /* UIBubbleTypingTableViewCell.m in Sources */,
 				D48A750618DCEFE7008D1C9A /* UIAlertView+AFNetworking.m in Sources */,
+				D4C6783218E0ED63006847FF /* UserLocation.m in Sources */,
 				D48A74EF18DCEFDC008D1C9A /* AFURLRequestSerialization.m in Sources */,
 				D48A750418DCEFE7008D1C9A /* AFNetworkActivityIndicatorManager.m in Sources */,
 				D4AFDE8718E24A4800813320 /* UserAnnotation.m in Sources */,
 				D48A74F118DCEFDC008D1C9A /* AFURLSessionManager.m in Sources */,
-				D4D3027C191AC23900F4760C /* UIBubbleTableView.m in Sources */,
 				D4BC77E018DD013600171C7C /* UmanlyClientDelegate.m in Sources */,
 				D48A74A218DCED13008D1C9A /* AppDelegate.m in Sources */,
 				D4E46C5218EE0B0C009B6306 /* UserProfileViewController.m in Sources */,
@@ -709,7 +677,6 @@
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				VALID_ARCHS = "arm64 armv7 armv7s arm6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -733,7 +700,6 @@
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				VALID_ARCHS = "arm64 armv7 armv7s arm6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
