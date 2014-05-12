@@ -46,6 +46,12 @@
 		D49BAB6418E38D42007ADB35 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49BAB6318E38D42007ADB35 /* FacebookSDK.framework */; };
 		D4AEF28818EB6D620078F291 /* UmanlyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AEF28718EB6D620078F291 /* UmanlyViewController.m */; };
 		D4AFDE8718E24A4800813320 /* UserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AFDE8618E24A4800813320 /* UserAnnotation.m */; };
+		D4B36084191DA6FA00F65ED9 /* ChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B36079191DA6FA00F65ED9 /* ChatMessage.m */; };
+		D4B36085191DA6FA00F65ED9 /* ChatUIDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B3607B191DA6FA00F65ED9 /* ChatUIDataSource.m */; };
+		D4B36086191DA6FA00F65ED9 /* ChatUIHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B3607D191DA6FA00F65ED9 /* ChatUIHeaderTableViewCell.m */; };
+		D4B36087191DA6FA00F65ED9 /* ChatUITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B3607F191DA6FA00F65ED9 /* ChatUITableView.m */; };
+		D4B36088191DA6FA00F65ED9 /* ChatUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B36081191DA6FA00F65ED9 /* ChatUITableViewCell.m */; };
+		D4B3608C19214BC300F65ED9 /* ChatUIViewConroller.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B3608B19214BC300F65ED9 /* ChatUIViewConroller.m */; };
 		D4B9DE5E1901B1A000819F8F /* ChatConfirmationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B9DE5D1901B1A000819F8F /* ChatConfirmationController.m */; };
 		D4B9DE651901D34100819F8F /* UmanlyStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B9DE641901D34100819F8F /* UmanlyStoryboardSegue.m */; };
 		D4BC77DA18DD005A00171C7C /* DisplayUsersOnMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BC77D918DD005A00171C7C /* DisplayUsersOnMapViewController.m */; };
@@ -58,7 +64,6 @@
 		D4D8F60218FDA54000A33BEC /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D8F60118FDA54000A33BEC /* libc++.dylib */; };
 		D4D8F60418FDA54F00A33BEC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D8F60318FDA54F00A33BEC /* CFNetwork.framework */; };
 		D4E1049C18E4D522004CFB3A /* UserAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E1049B18E4D522004CFB3A /* UserAnnotationView.m */; };
-		D4E3BCBE1912E7170032A215 /* ChatWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E3BCBD1912E7170032A215 /* ChatWindowViewController.m */; };
 		D4E46C5218EE0B0C009B6306 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E46C5118EE0B0C009B6306 /* UserProfileViewController.m */; };
 		D4FC994E19008CB100C15606 /* UmanlyChatService.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FC994D19008CB100C15606 /* UmanlyChatService.m */; };
 		D4FC995119008CDB00C15606 /* FireBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FC995019008CDB00C15606 /* FireBaseService.m */; };
@@ -143,6 +148,18 @@
 		D4AEF28718EB6D620078F291 /* UmanlyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UmanlyViewController.m; sourceTree = "<group>"; };
 		D4AFDE8518E24A4800813320 /* UserAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAnnotation.h; sourceTree = "<group>"; };
 		D4AFDE8618E24A4800813320 /* UserAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAnnotation.m; sourceTree = "<group>"; };
+		D4B36078191DA6FA00F65ED9 /* ChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessage.h; sourceTree = "<group>"; };
+		D4B36079191DA6FA00F65ED9 /* ChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessage.m; sourceTree = "<group>"; };
+		D4B3607A191DA6FA00F65ED9 /* ChatUIDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatUIDataSource.h; sourceTree = "<group>"; };
+		D4B3607B191DA6FA00F65ED9 /* ChatUIDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatUIDataSource.m; sourceTree = "<group>"; };
+		D4B3607C191DA6FA00F65ED9 /* ChatUIHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatUIHeaderTableViewCell.h; sourceTree = "<group>"; };
+		D4B3607D191DA6FA00F65ED9 /* ChatUIHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatUIHeaderTableViewCell.m; sourceTree = "<group>"; };
+		D4B3607E191DA6FA00F65ED9 /* ChatUITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatUITableView.h; sourceTree = "<group>"; };
+		D4B3607F191DA6FA00F65ED9 /* ChatUITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatUITableView.m; sourceTree = "<group>"; };
+		D4B36080191DA6FA00F65ED9 /* ChatUITableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatUITableViewCell.h; sourceTree = "<group>"; };
+		D4B36081191DA6FA00F65ED9 /* ChatUITableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatUITableViewCell.m; sourceTree = "<group>"; };
+		D4B3608A19214BC300F65ED9 /* ChatUIViewConroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatUIViewConroller.h; sourceTree = "<group>"; };
+		D4B3608B19214BC300F65ED9 /* ChatUIViewConroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatUIViewConroller.m; sourceTree = "<group>"; };
 		D4B9DE5C1901B1A000819F8F /* ChatConfirmationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatConfirmationController.h; sourceTree = "<group>"; };
 		D4B9DE5D1901B1A000819F8F /* ChatConfirmationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatConfirmationController.m; sourceTree = "<group>"; };
 		D4B9DE631901D34100819F8F /* UmanlyStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UmanlyStoryboardSegue.h; sourceTree = "<group>"; };
@@ -162,8 +179,6 @@
 		D4D8F60318FDA54F00A33BEC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D4E1049A18E4D522004CFB3A /* UserAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAnnotationView.h; sourceTree = "<group>"; };
 		D4E1049B18E4D522004CFB3A /* UserAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAnnotationView.m; sourceTree = "<group>"; };
-		D4E3BCBC1912E7170032A215 /* ChatWindowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatWindowViewController.h; sourceTree = "<group>"; };
-		D4E3BCBD1912E7170032A215 /* ChatWindowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatWindowViewController.m; sourceTree = "<group>"; };
 		D4E46C5018EE0B0C009B6306 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
 		D4E46C5118EE0B0C009B6306 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		D4FC994C19008CB100C15606 /* UmanlyChatService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UmanlyChatService.h; sourceTree = "<group>"; };
@@ -227,12 +242,12 @@
 				D4E46C5118EE0B0C009B6306 /* UserProfileViewController.m */,
 				D4B9DE5C1901B1A000819F8F /* ChatConfirmationController.h */,
 				D4B9DE5D1901B1A000819F8F /* ChatConfirmationController.m */,
-				D4E3BCBC1912E7170032A215 /* ChatWindowViewController.h */,
-				D4E3BCBD1912E7170032A215 /* ChatWindowViewController.m */,
 				D45D64B718E6405500EA87D0 /* UserMenuViewController.m */,
 				D4BC77D918DD005A00171C7C /* DisplayUsersOnMapViewController.m */,
 				D48A74C618DCED50008D1C9A /* FacebookLoginViewController.h */,
 				D48A74C718DCED50008D1C9A /* FacebookLoginViewController.m */,
+				D4B3608A19214BC300F65ED9 /* ChatUIViewConroller.h */,
+				D4B3608B19214BC300F65ED9 /* ChatUIViewConroller.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -281,6 +296,7 @@
 		D48A749718DCED13008D1C9A /* uiosv2 */ = {
 			isa = PBXGroup;
 			children = (
+				D4B36077191DA6AE00F65ED9 /* ChatUI */,
 				D465C7E019195A6E00F28E50 /* Controllers */,
 				D465C7DC1919565600F28E50 /* Services */,
 				D4B9DE621901D31000819F8F /* Custom */,
@@ -379,6 +395,23 @@
 				D48A750318DCEFE7008D1C9A /* UIWebView+AFNetworking.m */,
 			);
 			path = "UIKit+AFNetworking";
+			sourceTree = "<group>";
+		};
+		D4B36077191DA6AE00F65ED9 /* ChatUI */ = {
+			isa = PBXGroup;
+			children = (
+				D4B36078191DA6FA00F65ED9 /* ChatMessage.h */,
+				D4B36079191DA6FA00F65ED9 /* ChatMessage.m */,
+				D4B3607A191DA6FA00F65ED9 /* ChatUIDataSource.h */,
+				D4B3607B191DA6FA00F65ED9 /* ChatUIDataSource.m */,
+				D4B3607C191DA6FA00F65ED9 /* ChatUIHeaderTableViewCell.h */,
+				D4B3607D191DA6FA00F65ED9 /* ChatUIHeaderTableViewCell.m */,
+				D4B3607E191DA6FA00F65ED9 /* ChatUITableView.h */,
+				D4B3607F191DA6FA00F65ED9 /* ChatUITableView.m */,
+				D4B36080191DA6FA00F65ED9 /* ChatUITableViewCell.h */,
+				D4B36081191DA6FA00F65ED9 /* ChatUITableViewCell.m */,
+			);
+			name = ChatUI;
 			sourceTree = "<group>";
 		};
 		D4B9DE621901D31000819F8F /* Custom */ = {
@@ -507,22 +540,26 @@
 				D48A750818DCEFE7008D1C9A /* UIImageView+AFNetworking.m in Sources */,
 				D48A74C818DCED50008D1C9A /* FacebookLoginViewController.m in Sources */,
 				D4E1049C18E4D522004CFB3A /* UserAnnotationView.m in Sources */,
-				D4E3BCBE1912E7170032A215 /* ChatWindowViewController.m in Sources */,
 				D43FC18718E6192C0059EC05 /* ViewUtility.m in Sources */,
 				D45D64B818E6405500EA87D0 /* UserMenuViewController.m in Sources */,
 				D48A74EA18DCEFDC008D1C9A /* AFHTTPRequestOperationManager.m in Sources */,
 				D4B9DE5E1901B1A000819F8F /* ChatConfirmationController.m in Sources */,
 				D4B9DE651901D34100819F8F /* UmanlyStoryboardSegue.m in Sources */,
 				D48A750918DCEFE7008D1C9A /* UIProgressView+AFNetworking.m in Sources */,
+				D4B36085191DA6FA00F65ED9 /* ChatUIDataSource.m in Sources */,
 				D4FC995119008CDB00C15606 /* FireBaseService.m in Sources */,
 				D4BC77DD18DD00F900171C7C /* User.m in Sources */,
 				D48A74EC18DCEFDC008D1C9A /* AFNetworkReachabilityManager.m in Sources */,
+				D4B36086191DA6FA00F65ED9 /* ChatUIHeaderTableViewCell.m in Sources */,
 				D48A74F018DCEFDC008D1C9A /* AFURLResponseSerialization.m in Sources */,
+				D4B3608C19214BC300F65ED9 /* ChatUIViewConroller.m in Sources */,
+				D4B36087191DA6FA00F65ED9 /* ChatUITableView.m in Sources */,
 				D4FC994E19008CB100C15606 /* UmanlyChatService.m in Sources */,
 				D4AEF28818EB6D620078F291 /* UmanlyViewController.m in Sources */,
 				D48A74EE18DCEFDC008D1C9A /* AFURLConnectionOperation.m in Sources */,
 				D48A750718DCEFE7008D1C9A /* UIButton+AFNetworking.m in Sources */,
 				D48A750518DCEFE7008D1C9A /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				D4B36084191DA6FA00F65ED9 /* ChatMessage.m in Sources */,
 				D48A74ED18DCEFDC008D1C9A /* AFSecurityPolicy.m in Sources */,
 				D48A750A18DCEFE7008D1C9A /* UIRefreshControl+AFNetworking.m in Sources */,
 				D48A750B18DCEFE7008D1C9A /* UIWebView+AFNetworking.m in Sources */,
@@ -531,6 +568,7 @@
 				D4C6783218E0ED63006847FF /* UserLocation.m in Sources */,
 				D48A74EF18DCEFDC008D1C9A /* AFURLRequestSerialization.m in Sources */,
 				D48A750418DCEFE7008D1C9A /* AFNetworkActivityIndicatorManager.m in Sources */,
+				D4B36088191DA6FA00F65ED9 /* ChatUITableViewCell.m in Sources */,
 				D4AFDE8718E24A4800813320 /* UserAnnotation.m in Sources */,
 				D48A74F118DCEFDC008D1C9A /* AFURLSessionManager.m in Sources */,
 				D4BC77E018DD013600171C7C /* UmanlyClientDelegate.m in Sources */,
