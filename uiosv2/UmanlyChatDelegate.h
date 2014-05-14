@@ -10,19 +10,14 @@
 
 @protocol UmanlyChatDelegate
 
-@required
 - (void) chatRequestReceived;
 
-@required
 - (void) chatRequestDeclined;
 
-@required
 - (void) chatRequestAccepted;
 
-@required
-- (void) chatMessageReceived;
+- (void) chatMessageReceived:(NSString *) chatMessage;
 
-@required
 - (void) chatTerminated;
 
 @end

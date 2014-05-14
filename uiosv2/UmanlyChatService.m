@@ -51,6 +51,48 @@
     
 }
 
+-(void) listenForIncomingChatMessagesFromUser:(NSString *) userId
+                           withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
+                           withFailureHandler: (UmanlyChatFailureHandler) failureHander
+{
+    User *thisUser = [User sharedUser];
+    NSMutableString *chatMessageLocation = [NSMutableString stringWithCapacity:20];
+    [chatMessageLocation appendString:thisUser.userId];
+    [chatMessageLocation appendString:@"/chat_messages"];
+    [self.fireBaseService observeLocation:chatMessageLocation
+                       withSuccessHandler: ^(){
+                           NSLog(@"Output from chat_messages location %@",self.fireBaseService.fireBaseData);
+                           self.userIdForIncomingChatRequest = [self.fireBaseService.fireBaseData objectForKey:@"user_id"];
+                           NSString *chatMessage = [self.fireBaseService.fireBaseData objectForKey:@"message"];
+                           NSLog(@"Chat request received from %@ with status %@", self.userIdForIncomingChatRequest, self.chatStatus);
+                           //NSEnumerator
+                           [self handleChatMessage:chatMessage];
+                       }
+                       withFailureHandler:^(){}
+     ];
+}
+
+-(void) sendChatMessage:(NSString *)message toUser:(NSString *)userId
+     withSuccessHandler:(UmanlyChatSuccessHandler)successHandler
+     withFailureHandler:(UmanlyChatFailureHandler)failureHander
+{
+    NSMutableString *chatMessageLocation = [NSMutableString stringWithCapacity:20];
+    User *thisUser = [User sharedUser];
+    [chatMessageLocation appendString:userId];
+    [chatMessageLocation appendString:@"/chat_messages/"];
+    [chatMessageLocation appendString:thisUser.userId];
+    NSMutableDictionary *chatMessageParams = [[NSMutableDictionary alloc] init];
+    [chatMessageParams setObject:thisUser.userId forKey:@"user_id"];
+    [chatMessageParams setObject:message forKey:@"message"];
+    [self.fireBaseService appendValue:chatMessageParams
+                           ToLocation:chatMessageLocation
+                   withSuccessHandler: ^(){
+                   }
+                   withFailureHandler:^(){
+                   }
+     ];
+}
+
 - (void) listenForIncomingChatRequests:(User *) user
            withSuccessHandler: (UmanlyChatSuccessHandler) successHandler
            withFailureHandler: (UmanlyChatFailureHandler) failureHander;
@@ -68,6 +110,12 @@
                         }
                         withFailureHandler:^(){}
      ];
+}
+
+-(void) handleChatMessage:(NSString *) chatMessage
+
+{
+    [self.delegate chatMessageReceived:chatMessage];
 }
 
 -(void) handleChatRequests
@@ -191,7 +239,6 @@
 
 -(NSMutableString *) getChatRequestLocationForUser:(NSString *) userId
 {
-    
     NSMutableString *chatRequestLocation = [NSMutableString stringWithCapacity:20];
     [chatRequestLocation appendString:userId];
     [chatRequestLocation appendFormat:@"/chat_requests"];

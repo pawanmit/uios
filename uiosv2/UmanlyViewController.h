@@ -13,7 +13,7 @@
 #import "UmanlyClientDelegate.h"
 #import "UmanlyChatService.h"
 
-@interface UmanlyViewController : UIViewController
+@interface UmanlyViewController : UIViewController <UmanlyChatDelegate>
 
 @property NSString *sourceView;
 @property UmanlyClientDelegate *umanlyClientDelegate;

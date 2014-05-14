@@ -234,7 +234,6 @@
 		D465C7E019195A6E00F28E50 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D4BC77D818DD005A00171C7C /* DisplayUsersOnMapViewController.h */,
 				D45D64B618E6405500EA87D0 /* UserMenuViewController.h */,
 				D4AEF28618EB6D620078F291 /* UmanlyViewController.h */,
 				D4AEF28718EB6D620078F291 /* UmanlyViewController.m */,
@@ -243,6 +242,7 @@
 				D4B9DE5C1901B1A000819F8F /* ChatConfirmationController.h */,
 				D4B9DE5D1901B1A000819F8F /* ChatConfirmationController.m */,
 				D45D64B718E6405500EA87D0 /* UserMenuViewController.m */,
+				D4BC77D818DD005A00171C7C /* DisplayUsersOnMapViewController.h */,
 				D4BC77D918DD005A00171C7C /* DisplayUsersOnMapViewController.m */,
 				D48A74C618DCED50008D1C9A /* FacebookLoginViewController.h */,
 				D48A74C718DCED50008D1C9A /* FacebookLoginViewController.m */,

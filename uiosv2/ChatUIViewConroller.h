@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UmanlyViewController.h"
 
-@interface ChatUIViewConroller : UIViewController
+@interface ChatUIViewConroller : UmanlyViewController
+
+@property NSString *userIdForIncomingChatRequest;
 
 @end

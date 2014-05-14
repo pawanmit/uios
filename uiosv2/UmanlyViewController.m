@@ -8,6 +8,7 @@
 
 #import "UmanlyViewController.h"
 #import "ChatConfirmationController.h"
+#import "ChatUIViewConroller.h"
 #import "UserMenuViewController.h"
 #import "UmanlyStoryboardSegue.h"
 
@@ -79,10 +80,10 @@
 
 -(void) segueToChatWindow
 {
-//    ChatUIViewConroller *chatWindowVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ChatWindowViewController"];
-//    chatWindowVC.userIdForIncomingChatRequest = self.umanlyChatService.userIdForIncomingChatRequest;
-//    [self segueToDestinationViewController:chatWindowVC
-//                  fromSourceViewController:self];
+    ChatUIViewConroller *chatWindowVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ChatUIViewConroller"];
+    chatWindowVC.userIdForIncomingChatRequest = self.umanlyChatService.userIdForIncomingChatRequest;
+    [self segueToDestinationViewController:chatWindowVC
+                  fromSourceViewController:self];
 }
 
 

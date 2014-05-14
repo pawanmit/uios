@@ -43,6 +43,15 @@
     [self.chatView setDataSource:chatUIDataSource];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardWillShowNotification object:nil];
+    self.currentViewControllerIdentifier = @"ChatUIViewConroller";
+    NSLog(@"Listening for incoming chat requests from user %@", self.userIdForIncomingChatRequest);
+    [self.umanlyChatService listenForIncomingChatMessagesFromUser:self.userIdForIncomingChatRequest
+                                               withSuccessHandler:^{
+                                                   //code
+                                               }
+                                               withFailureHandler:^{
+                                                   //<#code#>
+                                               }];
     
 }
 
@@ -72,7 +81,21 @@
     NSLog(self.textField.text);
     ChatMessage *newChatMessage = [ChatMessage initWithText:self.textField.text date:[NSDate dateWithTimeIntervalSinceNow:-300]  type:TypeMine];
     [chatUIDataSource addChatMessage:newChatMessage];
+    [self.umanlyChatService sendChatMessage:self.textField.text toUser:self.userIdForIncomingChatRequest
+                         withSuccessHandler:^{
+                             //
+                         } withFailureHandler:^{
+                             //<#code#>
+                         }];
     self.textField.text = @"";
+    [self.chatView reloadData];
+}
+
+-(void) chatMessageReceived:(NSString *)chatMessage
+{
+    NSLog(@"Chat message received %@", chatMessage);
+    ChatMessage *newChatMessage = [ChatMessage initWithText:chatMessage date:[NSDate dateWithTimeIntervalSinceNow:-300]  type:TypeSomeoneElse];
+    [chatUIDataSource addChatMessage:newChatMessage];
     [self.chatView reloadData];
 }
 
